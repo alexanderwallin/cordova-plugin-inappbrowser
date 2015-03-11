@@ -478,7 +478,7 @@
     CGRect webViewBounds = self.view.bounds;
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
-    if (!toolbarIsAtBottom && statusBarFrame.size.height > 20.0)
+    // if (!toolbarIsAtBottom && statusBarFrame.size.height > 20.0)
         webViewBounds.origin.y = 120.0;
     self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
 
