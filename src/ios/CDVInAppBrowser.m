@@ -554,7 +554,7 @@
     self.addressLabel.alpha = 0.9;
     self.addressLabel.autoresizesSubviews = YES;
     self.addressLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
-    self.addressLabel.backgroundColor = [UIColor clearColor];
+    self.addressLabel.backgroundColor = [UIColor colorWithWhite:0.267 alpha:1.0];
     self.addressLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     self.addressLabel.clearsContextBeforeDrawing = YES;
     self.addressLabel.clipsToBounds = YES;
@@ -576,7 +576,7 @@
     self.addressLabel.shadowOffset = CGSizeMake(0.0, -1.0);
     self.addressLabel.text = NSLocalizedString(@"Laddar...", nil);
     self.addressLabel.textAlignment = NSTextAlignmentLeft;
-    self.addressLabel.textColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.addressLabel.textColor = [UIColor colorWithWhite:0.75 alpha:1.0];
     self.addressLabel.userInteractionEnabled = NO;
 
     // w: 256, h: 448
