@@ -729,12 +729,16 @@
         }
 
         if ([toolbarPosition isEqualToString:kInAppBrowserToolbarBarPositionTop]) {
-            toolbarFrame.origin.y = -20.0;
+            toolbarFrame.origin.y = 0;
             webViewBounds.origin.y += toolbarFrame.size.height;
             [self setWebViewFrame:webViewBounds];
         } else {
             toolbarFrame.origin.y = (webViewBounds.size.height + LOCATIONBAR_HEIGHT);
         }
+
+        toolbarFrame.origin.y = -20.0;
+        self.toolbar.frame = toolbarFrame;
+
         [self setWebViewFrame:webViewBounds];
 
     } else {
