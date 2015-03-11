@@ -484,7 +484,7 @@
     [self.view sendSubviewToBack:self.webView];
 
     self.webView.delegate = _webViewDelegate;
-    self.webView.backgroundColor = [UIColor redColor];
+    self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
 
     self.webView.clearsContextBeforeDrawing = YES;
     self.webView.clipsToBounds = YES;
@@ -509,11 +509,28 @@
     self.spinner.userInteractionEnabled = NO;
     [self.spinner stopAnimating];
 
-    self.closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
+    // Close button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    // [button setBackgroundImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
+    [button setTitle:@"Stäng" forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.0f];
+    // [button.layer setCornerRadius:4.0f];
+    [button.layer setMasksToBounds:YES];
+    // [button.layer setBorderWidth:1.0f];
+    // [button.layer setBorderColor: [[UIColor grayColor] CGColor]];
+    // button.frame = CGRectMake(0.0, 0.0, 60.0, 30.0);
+    [button addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+
+    self.closeButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+        
+    // self.closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
+    // self.closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Stäng" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
     self.closeButton.enabled = YES;
 
+    // Flexible space
     UIBarButtonItem* flexibleSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
+    // Fixed space
     UIBarButtonItem* fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButton.width = 20;
 
@@ -534,7 +551,7 @@
     self.toolbar.opaque = NO;
     self.toolbar.userInteractionEnabled = YES;
 
-    CGFloat labelInset = 0.0;
+    CGFloat labelInset = 10.0;
     float locationBarY = toolbarIsAtBottom ? self.view.bounds.size.height - FOOTER_HEIGHT : self.view.bounds.size.height - LOCATIONBAR_HEIGHT;
 
     self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelInset, locationBarY, self.view.bounds.size.width - labelInset, LOCATIONBAR_HEIGHT)];
@@ -577,7 +594,7 @@
     self.backButton.enabled = YES;
     self.backButton.imageInsets = UIEdgeInsetsZero;
 
-    [self.toolbar setItems:@[self.closeButton, flexibleSpaceButton, self.backButton, fixedSpaceButton, self.forwardButton]];
+    [self.toolbar setItems:@[self.backButton, fixedSpaceButton, self.forwardButton, flexibleSpaceButton, self.closeButton]];
 
     self.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.toolbar];
