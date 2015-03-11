@@ -599,12 +599,23 @@
     self.backButton.enabled = YES;
     self.backButton.imageInsets = UIEdgeInsetsZero;
 
-    // Page title
-    UILabel *pageTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 10.0, 200.0, 24.0)];
-    pageTitleLabel.text = @"Page title";
-    pageTitleLabel.font = [UIFont systemFontOfSize:16];
+    // Page title + url
+    UIView *pageInfoView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, TOOLBAR_HEIGHT)];
 
-    self.pageTitle = [[UIBarButtonItem alloc] initWithCustomView:pageTitleLabel];
+    UILabel *pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, pageInfoView.bounds.size.width, 16.0)];
+    pageTitleLabel.text      = @"Page title";
+    pageTitleLabel.font      = [UIFont boldSystemFontOfSize:14];
+    pageTitleLabel.textColor = [UIColor colorWithWhite:0.067 alpha:1.0];
+
+    UILabel *pageUrlLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 16.0, pageInfoView.bounds.size.width, pageInfoView.bounds.size.height - 16.0)];
+    pageUrlLabel.text      = @"http://www.example.com";
+    pageUrlLabel.font      = [UIFont systemFontOfSize:10];
+    pageUrlLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+
+    [pageInfoView addSubview:pageTitleLabel];
+    [pageInfoView addSubview:pageUrlLabel];
+
+    self.pageTitle = [[UIBarButtonItem alloc] initWithCustomView:pageTitleView];
 
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
