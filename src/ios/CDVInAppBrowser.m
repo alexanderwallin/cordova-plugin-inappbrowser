@@ -609,7 +609,7 @@
     pageTitleLabel.font      = [UIFont boldSystemFontOfSize:14];
     pageTitleLabel.textColor = [UIColor colorWithWhite:0.267 alpha:1.0];
 
-    UILabel *pageUrlLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 30.0, pageInfoView.bounds.size.width, 10.0)];
+    UILabel *pageUrlLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 26.0, pageInfoView.bounds.size.width, 10.0)];
     pageUrlLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     pageUrlLabel.text      = @"http://www.example.com";
     pageUrlLabel.font      = [UIFont systemFontOfSize:10];
