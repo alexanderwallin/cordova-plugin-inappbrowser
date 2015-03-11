@@ -488,7 +488,7 @@
     webViewBounds.origin.y = 200.0;
     self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
 
-    self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    self.webView.autoresizingMask = UIViewAutoresizingNone; // (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 
     [self.view addSubview:self.webView];
     [self.view sendSubviewToBack:self.webView];
