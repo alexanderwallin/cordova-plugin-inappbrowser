@@ -492,10 +492,10 @@
     [self.view addSubview:self.webView];
     [self.view sendSubviewToBack:self.webView];
 
-    self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.view.backgroundColor = [UIColor clearColor];
 
     self.webView.delegate = _webViewDelegate;
-    self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.webView.backgroundColor = [UIColor clearColor];
 
     self.webView.clearsContextBeforeDrawing = YES;
     self.webView.clipsToBounds = YES;
@@ -605,7 +605,7 @@
 
     self.pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 10.0, pageInfoView.bounds.size.width, 16.0)];
     self.pageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.pageTitleLabel.text      = @"Page title";
+    self.pageTitleLabel.text      = @"Laddar...";
     self.pageTitleLabel.font      = [UIFont boldSystemFontOfSize:14];
     self.pageTitleLabel.textColor = [UIColor colorWithWhite:0.267 alpha:1.0];
 
