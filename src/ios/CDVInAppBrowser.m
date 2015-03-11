@@ -599,7 +599,7 @@
     UIImage *backArrowImage = [UIImage imageWithData:backArrowImageData];
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 44)];
     [backButton setContentEdgeInsets:buttonInsets];
-    [backButton setBackgroundImage:backArrowImage forState:UIControlStateNormal];
+    [backButton setImage:backArrowImage forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     
     self.backButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
