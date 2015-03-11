@@ -893,7 +893,7 @@
         self.currentURL = request.URL;
     }
 
-    self.pageUrlLabel.text = request.URL;
+    self.pageUrlLabel.text = [request.URL absoluteString];
 
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
