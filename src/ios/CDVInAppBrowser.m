@@ -473,9 +473,13 @@
 {
     // We create the views in code for primarily for ease of upgrades and not requiring an external .xib to be included
 
+    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+
     CGRect webViewBounds = self.view.bounds;
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
+    if (toolbarIsAtBottom == false && statusBarFrame.size.height == 40.0)
+        webViewBounds.origin.y -= 20.0;
     self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
 
     self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -592,9 +596,6 @@
 
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
-    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-    if (toolbarIsAtBottom == false && statusBarFrame.size.height == 40.0)
-        toolbarY -= 20.0;
     CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
 
     self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
