@@ -478,8 +478,8 @@
     CGRect webViewBounds = self.view.bounds;
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
-    if (toolbarIsAtBottom == false && statusBarFrame.size.height == 40.0)
-        webViewBounds.origin.y -= 20.0;
+    if (!toolbarIsAtBottom && statusBarFrame.size.height > 20.0)
+        webViewBounds.origin.y = 120.0;
     self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
 
     self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -490,7 +490,7 @@
     self.view.backgroundColor = [UIColor redColor];
 
     self.webView.delegate = _webViewDelegate;
-    self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.webView.backgroundColor = [UIColor orangeColor]; // [UIColor colorWithWhite:0.909 alpha:1.0];
 
     self.webView.clearsContextBeforeDrawing = YES;
     self.webView.clipsToBounds = YES;
