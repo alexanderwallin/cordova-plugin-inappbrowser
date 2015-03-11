@@ -473,8 +473,6 @@
 {
     // We create the views in code for primarily for ease of upgrades and not requiring an external .xib to be included
 
-    self.view.autoresizingMask = UIViewAutoresizingNone;
-
     CGRect webViewBounds = self.view.bounds;
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
@@ -484,6 +482,8 @@
 
     [self.view addSubview:self.webView];
     [self.view sendSubviewToBack:self.webView];
+
+    self.view.backgroundColor = [UIColor redColor];
 
     self.webView.delegate = _webViewDelegate;
     self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
