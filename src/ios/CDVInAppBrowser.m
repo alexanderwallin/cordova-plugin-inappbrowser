@@ -880,10 +880,6 @@
     self.backButton.enabled = theWebView.canGoBack;
     self.forwardButton.enabled = theWebView.canGoForward;
 
-    // Update URL label
-    NSLog(@"new url: %@", theWebView.request.URL.absoluteString);
-    self.pageUrlLabel.text = theWebView.request.URL.absoluteString;
-
     [self.spinner startAnimating];
 
     return [self.navigationDelegate webViewDidStartLoad:theWebView];
@@ -895,6 +891,10 @@
 
     if (isTopLevelNavigation) {
         self.currentURL = request.URL;
+
+        // Update URL label
+        NSLog(@"new url: %@", theWebView.request.URL.absoluteString);
+        self.pageUrlLabel.text = theWebView.request.URL.absoluteString;
     }
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
