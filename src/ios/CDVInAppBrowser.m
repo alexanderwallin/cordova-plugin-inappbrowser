@@ -602,7 +602,7 @@
     // Page title
     self.pageTitle = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 10.0, 200.0, 24.0)];
     self.pageTitle.text = @"Page title";
-    self.pageTitle.font = [UIFont boldSystemFontOfSize:16.0];
+    self.pageTitle.font = [UIFont systemFontOfSize:16];
 
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
@@ -763,11 +763,6 @@
             [self setWebViewFrame:self.view.bounds];
         }
     }
-}
-
-- (void)setPageTitle
-{
-    // Update label in toolbar
 }
 
 - (void)viewDidLoad
