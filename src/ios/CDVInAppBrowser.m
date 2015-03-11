@@ -707,6 +707,8 @@
 
     // prevent double show/hide
     if (show == !(self.toolbar.hidden)) {
+        toolbarFrame.origin.y = -20.0;
+        self.toolbar.frame = toolbarFrame;
         return;
     }
 
