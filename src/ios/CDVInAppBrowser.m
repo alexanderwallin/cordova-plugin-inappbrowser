@@ -510,21 +510,8 @@
     [self.spinner stopAnimating];
 
     // Close button
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    // [button setBackgroundImage:[UIImage imageNamed:@"delete.png"] forState:UIControlStateNormal];
-    [button setTitle:@"Stäng" forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.0f];
-    // [button.layer setCornerRadius:4.0f];
-    [button.layer setMasksToBounds:YES];
-    // [button.layer setBorderWidth:1.0f];
-    // [button.layer setBorderColor: [[UIColor grayColor] CGColor]];
-    // button.frame = CGRectMake(0.0, 0.0, 60.0, 30.0);
-    [button addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
-
-    self.closeButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-        
     // self.closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
-    // self.closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Stäng" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
+    self.closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Stäng" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
     self.closeButton.enabled = YES;
 
     // Flexible space
