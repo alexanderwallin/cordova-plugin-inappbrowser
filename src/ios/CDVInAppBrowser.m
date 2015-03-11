@@ -475,7 +475,9 @@
 
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
 
-    self.view.frame.origin.y = 150;
+    viewBounds = self.view.bounds;
+    viewBounds.origin.y = 150;
+    [self.view setFrame:viewBounds];
 
     CGRect webViewBounds = self.view.bounds;
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
