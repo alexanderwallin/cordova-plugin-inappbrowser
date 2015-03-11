@@ -512,6 +512,7 @@
     // Close button
     // self.closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
     self.closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Stäng" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
+    [self.closeButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     self.closeButton.enabled = YES;
 
     // Flexible space
