@@ -881,8 +881,8 @@
     self.forwardButton.enabled = theWebView.canGoForward;
 
     // Update URL label
-    NSLog(@"new url: %@", [theWebView.request.URL absoluteString]);
-    self.pageUrlLabel.text = [theWebView.request.URL absoluteString];
+    NSLog(@"new url: %@", theWebView.request.URL.absoluteString);
+    self.pageUrlLabel.text = theWebView.request.URL.absoluteString;
 
     [self.spinner startAnimating];
 
@@ -911,6 +911,7 @@
 
     NSString *pageTitle = [theWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.pageTitleLabel.text = pageTitle;
+    self.pageUrlLabel.text   = theWebView.request.URL.absoluteString;
 
     // Work around a bug where the first time a PDF is opened, all UIWebViews
     // reload their User-Agent from NSUserDefaults.
