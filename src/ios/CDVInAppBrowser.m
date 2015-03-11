@@ -196,10 +196,6 @@
         self.inAppBrowserViewController.webView.suppressesIncrementalRendering = browserOptions.suppressesincrementalrendering;
     }
 
-    CGRect toolbarFrame = self.inAppBrowserViewController.toolbar.frame;
-    toolbarFrame.origin.y = 200;
-    self.inAppBrowserViewController.toolbar.frame = toolbarFrame;
-
     [self.inAppBrowserViewController navigateTo:url];
     if (!browserOptions.hidden) {
         [self show:nil];
@@ -481,10 +477,10 @@
     CGRect viewBounds = self.view.bounds;
     CGRect webViewBounds = self.view.bounds;
 
-    viewBounds.origin.y = 150.0;
-    viewBounds.size.width = 200.0;
-    viewBounds.size.height = 300.0;
-    [self.view setFrame:viewBounds];
+    // viewBounds.origin.y = 150.0;
+    // viewBounds.size.width = 200.0;
+    // viewBounds.size.height = 300.0;
+    // [self.view setFrame:viewBounds];
 
     
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
@@ -496,10 +492,10 @@
     [self.view addSubview:self.webView];
     [self.view sendSubviewToBack:self.webView];
 
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
 
     self.webView.delegate = _webViewDelegate;
-    self.webView.backgroundColor = [UIColor orangeColor]; // [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
 
     self.webView.clearsContextBeforeDrawing = YES;
     self.webView.clipsToBounds = YES;
@@ -546,10 +542,10 @@
 
     self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelInset, locationBarY, self.view.bounds.size.width - labelInset, LOCATIONBAR_HEIGHT)];
     self.addressLabel.adjustsFontSizeToFitWidth = NO;
-    self.addressLabel.alpha = 0.9;
+    self.addressLabel.alpha = 1.0;
     self.addressLabel.autoresizesSubviews = YES;
     self.addressLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
-    self.addressLabel.backgroundColor = [UIColor colorWithWhite:0.267 alpha:1.0];
+    self.addressLabel.backgroundColor = [UIColor clearColor];
     self.addressLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     self.addressLabel.clearsContextBeforeDrawing = YES;
     self.addressLabel.clipsToBounds = YES;
@@ -569,9 +565,9 @@
     self.addressLabel.numberOfLines = 1;
     self.addressLabel.opaque = NO;
     self.addressLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-    // self.addressLabel.text = NSLocalizedString(@"Laddar...", nil);
+    self.addressLabel.text = NSLocalizedString(@"Laddar...", nil);
     self.addressLabel.textAlignment = NSTextAlignmentLeft;
-    self.addressLabel.textColor = [UIColor colorWithWhite:0.75 alpha:1.0];
+    self.addressLabel.textColor = [UIColor colorWithWhite:0.25 alpha:1.0];
     self.addressLabel.userInteractionEnabled = NO;
 
     // w: 256, h: 448
@@ -604,10 +600,10 @@
 
 
     // Toolbar
-    float toolbarY = 200.0; // toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
-    CGRect toolbarFrame = CGRectMake(0.0, toolbarY, 140.0 /*self.view.bounds.size.width*/, TOOLBAR_HEIGHT);
+    float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
+    CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
 
-    self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
+    // self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
 
     self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
     self.toolbar.alpha = 1.000;
