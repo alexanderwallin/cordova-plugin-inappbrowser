@@ -474,21 +474,25 @@
     // We create the views in code for primarily for ease of upgrades and not requiring an external .xib to be included
 
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-
     CGRect viewBounds = self.view.bounds;
-    viewBounds.origin.y = 150;
-    viewBounds.size.width = 100;
+    CGRect webViewBounds = self.view.bounds;
+
+    viewBounds.origin.y = 150.0;
+    viewBounds.size.width = 200.0;
+    viewBounds.size.height: 300.0;
     [self.view setFrame:viewBounds];
 
-    CGRect webViewBounds = self.view.bounds;
+    
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
     // if (!toolbarIsAtBottom && statusBarFrame.size.height > 20.0)
+    webViewBounds.size.width = 100.0;
+    webViewBounds.size.width = 100.0;
     webViewBounds.origin.x = 200.0;
     webViewBounds.origin.y = 200.0;
     self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
 
-    self.webView.autoresizingMask = UIViewAutoresizingNone; // (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 
     [self.view addSubview:self.webView];
     [self.view sendSubviewToBack:self.webView];
