@@ -477,6 +477,7 @@
 
     CGRect viewBounds = self.view.bounds;
     viewBounds.origin.y = 150;
+    viewBounds.size.width = 100;
     [self.view setFrame:viewBounds];
 
     CGRect webViewBounds = self.view.bounds;
