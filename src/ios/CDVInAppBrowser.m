@@ -535,6 +535,8 @@
     // Fixed space
     UIBarButtonItem* fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButton.width = 10;
+    UIBarButtonItem* fixedSpaceButton2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpaceButton2.width = 10;
 
     // URL label
     CGFloat labelInset = 10.0;
@@ -597,7 +599,10 @@
     self.backButton.enabled = YES;
     self.backButton.imageInsets = UIEdgeInsetsZero;
 
-
+    // Page title
+    self.pageTitle = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 10.0, 200.0, 24.0)];
+    self.pageTitle.text = @"Page title";
+    self.pageTitle.font = [UIFont boldSystemFontOfSize:16.0];
 
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
@@ -620,7 +625,7 @@
     self.toolbar.userInteractionEnabled = YES;
 
 
-    [self.toolbar setItems:@[self.backButton, fixedSpaceButton, self.forwardButton, flexibleSpaceButton, self.closeButton]];
+    [self.toolbar setItems:@[self.pageTitle, flexibleSpaceButton, self.backButton, fixedSpaceButton, self.forwardButton, fixedSpaceButton2, self.closeButton]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.view addSubview:self.toolbar];
@@ -760,6 +765,11 @@
     }
 }
 
+- (void)setPageTitle
+{
+    // Update label in toolbar
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -883,6 +893,9 @@
     self.forwardButton.enabled = theWebView.canGoForward;
 
     [self.spinner stopAnimating];
+
+    NSString *pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+
 
     // Work around a bug where the first time a PDF is opened, all UIWebViews
     // reload their User-Agent from NSUserDefaults.
