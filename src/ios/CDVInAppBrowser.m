@@ -529,6 +529,9 @@
 
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
+    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+    if (statusBarFrame.height == 40.0)
+        toolbarY -= 20.0;
     CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
 
     self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
