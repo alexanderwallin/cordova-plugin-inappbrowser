@@ -556,7 +556,7 @@
     self.addressLabel.numberOfLines = 1;
     self.addressLabel.opaque = NO;
     self.addressLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-    self.addressLabel.text = NSLocalizedString(@"Laddar...", nil);
+    // self.addressLabel.text = NSLocalizedString(@"Laddar...", nil);
     self.addressLabel.textAlignment = NSTextAlignmentLeft;
     self.addressLabel.textColor = [UIColor colorWithWhite:0.75 alpha:1.0];
     self.addressLabel.userInteractionEnabled = NO;
