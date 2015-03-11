@@ -479,7 +479,7 @@
 
     viewBounds.origin.y = 150.0;
     viewBounds.size.width = 200.0;
-    viewBounds.size.height: 300.0;
+    viewBounds.size.height = 300.0;
     [self.view setFrame:viewBounds];
 
     
