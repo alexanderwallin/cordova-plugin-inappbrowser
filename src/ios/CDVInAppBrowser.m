@@ -475,7 +475,7 @@
 
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
 
-    viewBounds = self.view.bounds;
+    CGRect viewBounds = self.view.bounds;
     viewBounds.origin.y = 150;
     [self.view setFrame:viewBounds];
 
