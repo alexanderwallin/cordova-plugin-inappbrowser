@@ -893,8 +893,8 @@
         self.currentURL = request.URL;
 
         // Update URL label
-        NSLog(@"new url: %@", theWebView.request.URL.absoluteString);
-        self.pageUrlLabel.text = theWebView.request.URL.absoluteString;
+        NSLog(@"new url: %@", request.URL.absoluteString);
+        self.pageUrlLabel.text = request.URL.absoluteString;
     }
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
