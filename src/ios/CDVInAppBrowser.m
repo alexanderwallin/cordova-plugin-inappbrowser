@@ -485,11 +485,6 @@
     
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
-    // if (!toolbarIsAtBottom && statusBarFrame.size.height > 20.0)
-    webViewBounds.size.width = 100.0;
-    webViewBounds.size.width = 100.0;
-    webViewBounds.origin.x = 200.0;
-    webViewBounds.origin.y = 200.0;
     self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
 
     self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -734,7 +729,7 @@
         }
 
         if ([toolbarPosition isEqualToString:kInAppBrowserToolbarBarPositionTop]) {
-            toolbarFrame.origin.y = 0;
+            toolbarFrame.origin.y = -20.0;
             webViewBounds.origin.y += toolbarFrame.size.height;
             [self setWebViewFrame:webViewBounds];
         } else {
