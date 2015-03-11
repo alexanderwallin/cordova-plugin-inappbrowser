@@ -600,23 +600,23 @@
     self.backButton.imageInsets = UIEdgeInsetsZero;
 
     // Page title + url
-    UIView *pageInfoView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, TOOLBAR_HEIGHT)];
+    UIView *pageInfoView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, TOOLBAR_HEIGHT)];
     pageInfoView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-    UILabel *pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 10.0, pageInfoView.bounds.size.width, 16.0)];
-    pageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    pageTitleLabel.text      = @"Page title";
-    pageTitleLabel.font      = [UIFont boldSystemFontOfSize:14];
-    pageTitleLabel.textColor = [UIColor colorWithWhite:0.267 alpha:1.0];
+    self.pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 10.0, pageInfoView.bounds.size.width, 16.0)];
+    self.pageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.pageTitleLabel.text      = @"Page title";
+    self.pageTitleLabel.font      = [UIFont boldSystemFontOfSize:14];
+    self.pageTitleLabel.textColor = [UIColor colorWithWhite:0.267 alpha:1.0];
 
-    UILabel *pageUrlLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 26.0, pageInfoView.bounds.size.width, 10.0)];
-    pageUrlLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    pageUrlLabel.text      = @"http://www.example.com";
-    pageUrlLabel.font      = [UIFont systemFontOfSize:10];
-    pageUrlLabel.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+    self.pageUrlLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 26.0, pageInfoView.bounds.size.width, 10.0)];
+    self.pageUrlLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.pageUrlLabel.text      = @"http://www.example.com";
+    self.pageUrlLabel.font      = [UIFont systemFontOfSize:10];
+    self.pageUrlLabel.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
 
-    [pageInfoView addSubview:pageTitleLabel];
-    [pageInfoView addSubview:pageUrlLabel];
+    [pageInfoView addSubview:self.pageTitleLabel];
+    [pageInfoView addSubview:self.pageUrlLabel];
 
     self.pageTitle = [[UIBarButtonItem alloc] initWithCustomView:pageInfoView];
 
@@ -906,7 +906,7 @@
     [self.spinner stopAnimating];
 
     NSString *pageTitle = [theWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
-
+    self.pageTitleLabel.text = pageTitle;
 
     // Work around a bug where the first time a PDF is opened, all UIWebViews
     // reload their User-Agent from NSUserDefaults.

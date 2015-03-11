@@ -78,6 +78,8 @@
 @property (nonatomic, strong) IBOutlet UIBarButtonItem* backButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem* forwardButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem* pageTitle;
+@property (nonatomic, strong) IBOutlet UILabel* pageTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel* pageUrlLabel;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView* spinner;
 @property (nonatomic, strong) IBOutlet UIToolbar* toolbar;
 
