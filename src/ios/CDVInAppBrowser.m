@@ -600,9 +600,11 @@
     self.backButton.imageInsets = UIEdgeInsetsZero;
 
     // Page title
-    self.pageTitle = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 10.0, 200.0, 24.0)];
-    self.pageTitle.text = @"Page title";
-    self.pageTitle.font = [UIFont systemFontOfSize:16];
+    UILabel *pageTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 10.0, 200.0, 24.0)];
+    pageTitleLabel.text = @"Page title";
+    pageTitleLabel.font = [UIFont systemFontOfSize:16];
+
+    self.pageTitle = [[UIBarButtonItem alloc] initWithCustomView:pageTitleLabel];
 
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
