@@ -196,6 +196,10 @@
         self.inAppBrowserViewController.webView.suppressesIncrementalRendering = browserOptions.suppressesincrementalrendering;
     }
 
+    CGRect toolbarFrame = self.inAppBrowserViewController.toolbar.frame;
+    toolbarFrame.origin.y = 200;
+    self.inAppBrowserViewController.toolbar.frame = toolbarFrame;
+
     [self.inAppBrowserViewController navigateTo:url];
     if (!browserOptions.hidden) {
         [self show:nil];
@@ -707,8 +711,6 @@
 
     // prevent double show/hide
     if (show == !(self.toolbar.hidden)) {
-        toolbarFrame.origin.y = -20.0;
-        self.toolbar.frame = toolbarFrame;
         return;
     }
 
@@ -737,9 +739,6 @@
         } else {
             toolbarFrame.origin.y = (webViewBounds.size.height + LOCATIONBAR_HEIGHT);
         }
-
-        toolbarFrame.origin.y = -20.0;
-        self.toolbar.frame = toolbarFrame;
 
         [self setWebViewFrame:webViewBounds];
 
