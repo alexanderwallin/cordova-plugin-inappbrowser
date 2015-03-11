@@ -605,7 +605,7 @@
 
     // Toolbar
     float toolbarY = 200.0; // toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
-    CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
+    CGRect toolbarFrame = CGRectMake(0.0, toolbarY, 140.0 /*self.view.bounds.size.width*/, TOOLBAR_HEIGHT);
 
     self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
 
