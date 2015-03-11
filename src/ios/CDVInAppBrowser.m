@@ -893,8 +893,8 @@
         self.currentURL = request.URL;
 
         // Update URL label
-        NSLog(@"new url: %@", request.URL.absoluteString);
-        self.pageUrlLabel.text = request.URL.absoluteString;
+        self.pageTitleLabel.text = @"Laddar...";
+        self.pageUrlLabel.text   = request.URL.absoluteString;
     }
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
@@ -909,8 +909,7 @@
 
     [self.spinner stopAnimating];
 
-    NSString *pageTitle = [theWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    self.pageTitleLabel.text = pageTitle;
+    self.pageTitleLabel.text = [theWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.pageUrlLabel.text   = theWebView.request.URL.absoluteString;
 
     // Work around a bug where the first time a PDF is opened, all UIWebViews
