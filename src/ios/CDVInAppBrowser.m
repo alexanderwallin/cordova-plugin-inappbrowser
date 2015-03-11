@@ -527,27 +527,6 @@
     UIBarButtonItem* fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButton.width = 20;
 
-    // Toolbar
-    float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
-    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-    if (statusBarFrame.size.height == 40.0)
-        toolbarY -= 20.0;
-    CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
-
-    self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
-    self.toolbar.alpha = 1.000;
-    self.toolbar.autoresizesSubviews = YES;
-    self.toolbar.autoresizingMask = toolbarIsAtBottom ? (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin) : UIViewAutoresizingFlexibleWidth;
-    self.toolbar.barStyle = UIBarStyleBlack;
-    self.toolbar.barTintColor = [UIColor colorWithWhite:0.909 alpha:1.0];
-    self.toolbar.clearsContextBeforeDrawing = NO;
-    self.toolbar.clipsToBounds = NO;
-    self.toolbar.contentMode = UIViewContentModeScaleToFill;
-    self.toolbar.hidden = NO;
-    self.toolbar.multipleTouchEnabled = NO;
-    self.toolbar.opaque = NO;
-    self.toolbar.userInteractionEnabled = YES;
-
     // URL label
     CGFloat labelInset = 10.0;
     float locationBarY = toolbarIsAtBottom ? self.view.bounds.size.height - FOOTER_HEIGHT : self.view.bounds.size.height - LOCATIONBAR_HEIGHT;
@@ -608,6 +587,32 @@
     self.backButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.backButton.enabled = YES;
     self.backButton.imageInsets = UIEdgeInsetsZero;
+
+
+
+    // Toolbar
+    float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
+    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+    if (toolbarIsAtBottom == false && statusBarFrame.size.height == 40.0)
+        toolbarY -= 20.0;
+    CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
+
+    self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
+
+    self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
+    self.toolbar.alpha = 1.000;
+    self.toolbar.autoresizesSubviews = YES;
+    self.toolbar.autoresizingMask = toolbarIsAtBottom ? (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin) : UIViewAutoresizingFlexibleWidth;
+    self.toolbar.barStyle = UIBarStyleBlack;
+    self.toolbar.barTintColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.toolbar.clearsContextBeforeDrawing = NO;
+    self.toolbar.clipsToBounds = NO;
+    self.toolbar.contentMode = UIViewContentModeScaleToFill;
+    self.toolbar.hidden = NO;
+    self.toolbar.multipleTouchEnabled = NO;
+    self.toolbar.opaque = NO;
+    self.toolbar.userInteractionEnabled = YES;
+
 
     [self.toolbar setItems:@[self.backButton, fixedSpaceButton, self.forwardButton, flexibleSpaceButton, self.closeButton]];
 
