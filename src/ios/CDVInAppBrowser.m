@@ -892,6 +892,9 @@
     if (isTopLevelNavigation) {
         self.currentURL = request.URL;
     }
+
+    self.pageUrlLabel.text = request.URL;
+
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 
