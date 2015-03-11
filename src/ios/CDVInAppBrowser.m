@@ -623,7 +623,7 @@
 
     [self.toolbar setItems:@[self.backButton, fixedSpaceButton, self.forwardButton, flexibleSpaceButton, self.closeButton]];
 
-    self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.view addSubview:self.toolbar];
     [self.view addSubview:self.addressLabel];
     [self.view addSubview:self.spinner];
