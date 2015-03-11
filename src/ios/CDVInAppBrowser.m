@@ -881,6 +881,7 @@
     self.forwardButton.enabled = theWebView.canGoForward;
 
     // Update URL label
+    NSLog(@"new url: %@", [theWebView.request.URL absoluteString]);
     self.pageUrlLabel.text = [theWebView.request.URL absoluteString];
 
     [self.spinner startAnimating];
