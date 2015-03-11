@@ -615,7 +615,7 @@
     [pageInfoView addSubview:pageTitleLabel];
     [pageInfoView addSubview:pageUrlLabel];
 
-    self.pageTitle = [[UIBarButtonItem alloc] initWithCustomView:pageTitleView];
+    self.pageTitle = [[UIBarButtonItem alloc] initWithCustomView:pageInfoView];
 
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
