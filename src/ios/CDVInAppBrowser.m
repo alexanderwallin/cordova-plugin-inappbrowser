@@ -894,7 +894,7 @@
 
     [self.spinner stopAnimating];
 
-    NSString *pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    NSString *pageTitle = [theWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
 
 
     // Work around a bug where the first time a PDF is opened, all UIWebViews
