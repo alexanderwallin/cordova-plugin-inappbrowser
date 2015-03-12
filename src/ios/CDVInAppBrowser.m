@@ -499,7 +499,8 @@
     [self.viewContainer addSubview:self.webView];
     [self.viewContainer sendSubviewToBack:self.webView];
 
-    self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:0.0];
+    // self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:0.0];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
 
     self.webView.delegate = _webViewDelegate;
     self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
