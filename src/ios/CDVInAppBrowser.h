@@ -72,6 +72,7 @@
     CDVWebViewDelegate* _webViewDelegate;
 }
 
+@property (nonatomic, strong) IBOutlet UIView *viewContainer;
 @property (nonatomic, strong) IBOutlet UIWebView* webView;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem* closeButton;
 @property (nonatomic, strong) IBOutlet UILabel* addressLabel;

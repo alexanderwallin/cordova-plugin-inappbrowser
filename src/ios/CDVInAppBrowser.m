@@ -503,6 +503,8 @@
     // viewBounds.size.height = 300.0;
     // [self.view setFrame:viewBounds];
 
+
+    self.viewContainer = [[UIView alloc] initWithFrame:viewBounds];
     
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
@@ -510,8 +512,8 @@
 
     self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 
-    [self.view addSubview:self.webView];
-    [self.view sendSubviewToBack:self.webView];
+    [self.viewContainer addSubview:self.webView];
+    [self.viewContainer sendSubviewToBack:self.webView];
 
     self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:1.0];
 
@@ -674,9 +676,11 @@
     [self.toolbar addGestureRecognizer:panGestureRecognizer];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
-    [self.view addSubview:self.toolbar];
-    [self.view addSubview:self.addressLabel];
-    [self.view addSubview:self.spinner];
+    [self.viewContainer addSubview:self.toolbar];
+    [self.viewContainer addSubview:self.addressLabel];
+    [self.viewContainer addSubview:self.spinner];
+
+    [self.view addSubview:self.viewContainer];
 }
 
 - (void) handleToolbarPan:(UIPanGestureRecognizer *)panGestureRecognizer
@@ -701,20 +705,22 @@
             [UIView setAnimationDelay:0.0];
             [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
          
-            CGRect viewFrame = self.view.frame;
+            CGRect viewFrame = self.viewContainer.frame;
             viewFrame.origin.y = 0;
-            [self.view setFrame:viewFrame];
+            [self.viewContainer setFrame:viewFrame];
          
+            self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:1.0];
+
             [UIView commitAnimations];
         }
     }
     else
     {
-        CGRect viewFrame = self.view.frame;
-        viewFrame.origin.y = panMove.y;
-        [self.view setFrame:viewFrame];
+        CGRect viewFrame = self.viewContainer.frame;
+        viewFrame.origin.y = panMove.y > 0.0 ? panMove.y : 0.0;
+        [self.viewContainer setFrame:viewFrame];
 
-        CGFloat bgAlpha = 1.0 - (self.view.frame.origin.y / self.view.frame.size.height);
+        CGFloat bgAlpha = 1.0 - (self.viewContainer.frame.origin.y / self.viewContainer.frame.size.height);
         self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:bgAlpha];
     }
 }
