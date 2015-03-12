@@ -504,7 +504,7 @@
     // [self.view setFrame:viewBounds];
 
     CGRect containerInitFrame = self.view.bounds;
-    containerInitFrame.origin.y = containerInitFrame.size.height;
+    containerInitFrame.origin.y = 100; // containerInitFrame.size.height;
     self.viewContainer = [[UIView alloc] initWithFrame:containerInitFrame];
     
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
