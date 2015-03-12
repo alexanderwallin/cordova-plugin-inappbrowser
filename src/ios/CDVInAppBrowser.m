@@ -161,7 +161,8 @@
             presentationStyle = UIModalPresentationFormSheet;
         }
     }
-    self.inAppBrowserViewController.modalPresentationStyle = presentationStyle;
+    // self.inAppBrowserViewController.modalPresentationStyle = presentationStyle;
+    self.inAppBrowserViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
 
     // Set Transition Style
     UIModalTransitionStyle transitionStyle = UIModalTransitionStyleCoverVertical; // default
