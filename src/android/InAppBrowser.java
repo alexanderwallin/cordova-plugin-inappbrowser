@@ -45,7 +45,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -87,7 +87,7 @@ public class InAppBrowser extends CordovaPlugin {
 
     private InAppBrowserDialog dialog;
     private WebView inAppWebView;
-    private EditText edittext;
+    private TextView urlLabel;
     private CallbackContext callbackContext;
     private boolean showToolbar = true;
     private boolean showLocationBar = true;
@@ -437,7 +437,7 @@ public class InAppBrowser extends CordovaPlugin {
      */
     private void navigate(String url) {
         InputMethodManager imm = (InputMethodManager)this.cordova.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(edittext.getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(urlLabel.getWindowToken(), 0);
 
         if (!url.startsWith("http") && !url.startsWith("file:")) {
             this.inAppWebView.loadUrl("http://" + url);
@@ -573,7 +573,7 @@ public class InAppBrowser extends CordovaPlugin {
                 // Back button
                 Button back = new Button(cordova.getActivity());
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-                backLayoutParams.addRule(RelativeLayout.ALIGN_LEFT);
+                backLayoutParams.addRule(RelativeLayout.RIGHT_OF, 4);
                 back.setLayoutParams(backLayoutParams);
                 back.setContentDescription("Back Button");
                 back.setId(2);
@@ -618,27 +618,27 @@ public class InAppBrowser extends CordovaPlugin {
                 });
 
                 // Edit Text Box
-                edittext = new EditText(cordova.getActivity());
+                urlLabel = new TextView(cordova.getActivity());
                 RelativeLayout.LayoutParams textLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                textLayoutParams.addRule(RelativeLayout.RIGHT_OF, 1);
-                textLayoutParams.addRule(RelativeLayout.LEFT_OF, 5);
-                edittext.setLayoutParams(textLayoutParams);
-                edittext.setId(4);
-                edittext.setSingleLine(true);
-                edittext.setText(url);
-                edittext.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
-                edittext.setImeOptions(EditorInfo.IME_ACTION_GO);
-                edittext.setInputType(InputType.TYPE_NULL); // Will not except input... Makes the text NON-EDITABLE
-                edittext.setOnKeyListener(new View.OnKeyListener() {
+                // textLayoutParams.addRule(RelativeLayout.RIGHT_OF, 1);
+                textLayoutParams.addRule(RelativeLayout.LEFT_OF, 2);
+                urlLabel.setLayoutParams(textLayoutParams);
+                urlLabel.setId(4);
+                urlLabel.setSingleLine(true);
+                urlLabel.setText(url);
+                urlLabel.setTextColor(android.graphics.Color.LTGRAY);
+                urlLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+                // urlLabel.setImeOptions(EditorInfo.IME_ACTION_GO);
+                /*urlLabel.setOnKeyListener(new View.OnKeyListener() {
                     public boolean onKey(View v, int keyCode, KeyEvent event) {
                         // If the event is a key-down event on the "enter" button
                         if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                          navigate(edittext.getText().toString());
+                          navigate(urlLabel.getText().toString());
                           return true;
                         }
                         return false;
                     }
-                });
+                });*/
 
                 // Close/Done button
                 Button close = new Button(cordova.getActivity());
@@ -667,7 +667,7 @@ public class InAppBrowser extends CordovaPlugin {
                 inAppWebView = new WebView(cordova.getActivity());
                 inAppWebView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
                 inAppWebView.setWebChromeClient(new InAppChromeClient(thatWebView));
-                WebViewClient client = new InAppBrowserClient(thatWebView, edittext);
+                WebViewClient client = new InAppBrowserClient(thatWebView, urlLabel);
                 inAppWebView.setWebViewClient(client);
                 WebSettings settings = inAppWebView.getSettings();
                 settings.setJavaScriptEnabled(true);
@@ -704,7 +704,7 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Add the views to our toolbar
                 toolbar.addView(actionButtonContainer);
-                toolbar.addView(edittext);
+                toolbar.addView(urlLabel);
                 toolbar.addView(close);
 
                 // Don't add the toolbar if its been disabled
@@ -765,18 +765,18 @@ public class InAppBrowser extends CordovaPlugin {
      * The webview client receives notifications about appView
      */
     public class InAppBrowserClient extends WebViewClient {
-        EditText edittext;
+        TextView urlLabel;
         CordovaWebView webView;
 
         /**
          * Constructor.
          *
          * @param mContext
-         * @param edittext
+         * @param urlLabel
          */
-        public InAppBrowserClient(CordovaWebView webView, EditText mEditText) {
+        public InAppBrowserClient(CordovaWebView webView, TextView murlLabel) {
             this.webView = webView;
-            this.edittext = mEditText;
+            this.urlLabel = murlLabel;
         }
 
         /**
@@ -847,8 +847,8 @@ public class InAppBrowser extends CordovaPlugin {
                 newloc = "http://" + url;
             }
 
-            if (!newloc.equals(edittext.getText().toString())) {
-                edittext.setText(newloc);
+            if (!newloc.equals(urlLabel.getText().toString())) {
+                urlLabel.setText(newloc);
             }
 
             try {
