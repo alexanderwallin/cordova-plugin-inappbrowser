@@ -563,33 +563,45 @@ public class InAppBrowser extends CordovaPlugin {
                 toolbar.setHorizontalGravity(Gravity.LEFT);
                 toolbar.setVerticalGravity(Gravity.TOP);
 
+                // Title and url container
+                RelativeLayout pageInfoContainer = new RelativeLayout(cordova.getActivity());
+                RelativeLayout.LayoutParams pageInfoLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                pageInfoLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                pageInfoContainer.setLayoutParams(pageInfoLayoutParams);
+                pageInfoContainer.setHorizontalGravity(Gravity.LEFT);
+                pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
+                pageInfoContainer.setId(10);
+
+                // Page title label
+                pageTitle = new TextView(cordova.getActivity());
+                RelativeLayout.LayoutParams pageTitleLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                pageTitleLayoutParams.setGravity(Gravity.LEFT | Gravity.TOP);
+                pageTitle.setLayoutParams(pageTitleLayoutParams);
+                pageTitle.setId(11);
+                pageTitle.setSingleLine(true);
+                pageTitle.setText("Page title");
+                pageTitle.setTextColor(android.graphics.Color.argb(255, 68, 68, 68));
+                pageTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+                pageTitle.setTypeface(Typeface.BOLD);
+
                 // URL Label
                 urlLabel = new TextView(cordova.getActivity());
-                RelativeLayout.LayoutParams textLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                // textLayoutParams.addRule(RelativeLayout.RIGHT_OF, 1);
-                textLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                urlLabel.setLayoutParams(textLayoutParams);
+                RelativeLayout.LayoutParams urlLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                urlLayoutParams.setGravity(Gravity.LEFT | Gravity.BOTTOM);
+                urlLabel.setLayoutParams(urlLayoutParams);
                 urlLabel.setId(4);
                 urlLabel.setSingleLine(true);
                 urlLabel.setText(url);
                 urlLabel.setTextColor(android.graphics.Color.LTGRAY);
                 urlLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
-                // urlLabel.setImeOptions(EditorInfo.IME_ACTION_GO);
-                /*urlLabel.setOnKeyListener(new View.OnKeyListener() {
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        // If the event is a key-down event on the "enter" button
-                        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                          navigate(urlLabel.getText().toString());
-                          return true;
-                        }
-                        return false;
-                    }
-                });*/
+
+                pageInfoContainer.addView(pageTitle);
+                pageInfoContainer.addView(urlLabel);
 
                 // Action Button Container layout
                 RelativeLayout actionButtonContainer = new RelativeLayout(cordova.getActivity());
                 RelativeLayout.LayoutParams actionButtonLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                actionButtonLayoutParams.addRule(RelativeLayout.RIGHT_OF, 4);
+                actionButtonLayoutParams.addRule(RelativeLayout.RIGHT_OF, 10);
                 actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
                 actionButtonContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
@@ -705,6 +717,7 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.addView(forward);
 
                 // Add the views to our toolbar
+                toolbar.addView(pageInfoContainer);
                 toolbar.addView(actionButtonContainer);
                 toolbar.addView(urlLabel);
                 toolbar.addView(close);
