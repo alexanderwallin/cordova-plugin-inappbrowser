@@ -563,9 +563,34 @@ public class InAppBrowser extends CordovaPlugin {
                 toolbar.setHorizontalGravity(Gravity.LEFT);
                 toolbar.setVerticalGravity(Gravity.TOP);
 
+                // URL Label
+                urlLabel = new TextView(cordova.getActivity());
+                RelativeLayout.LayoutParams textLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                // textLayoutParams.addRule(RelativeLayout.RIGHT_OF, 1);
+                textLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                urlLabel.setLayoutParams(textLayoutParams);
+                urlLabel.setId(4);
+                urlLabel.setSingleLine(true);
+                urlLabel.setText(url);
+                urlLabel.setTextColor(android.graphics.Color.LTGRAY);
+                urlLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+                // urlLabel.setImeOptions(EditorInfo.IME_ACTION_GO);
+                /*urlLabel.setOnKeyListener(new View.OnKeyListener() {
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        // If the event is a key-down event on the "enter" button
+                        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                          navigate(urlLabel.getText().toString());
+                          return true;
+                        }
+                        return false;
+                    }
+                });*/
+
                 // Action Button Container layout
                 RelativeLayout actionButtonContainer = new RelativeLayout(cordova.getActivity());
-                actionButtonContainer.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                RelativeLayout.LayoutParams actionButtonLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                actionButtonLayoutParams.addRule(RelativeLayout.RIGHT_OF, 4);
+                actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
                 actionButtonContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
                 actionButtonContainer.setId(1);
@@ -573,7 +598,7 @@ public class InAppBrowser extends CordovaPlugin {
                 // Back button
                 Button back = new Button(cordova.getActivity());
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-                backLayoutParams.addRule(RelativeLayout.RIGHT_OF, 4);
+                backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
                 back.setContentDescription("Back Button");
                 back.setId(2);
@@ -616,29 +641,6 @@ public class InAppBrowser extends CordovaPlugin {
                         goForward();
                     }
                 });
-
-                // Edit Text Box
-                urlLabel = new TextView(cordova.getActivity());
-                RelativeLayout.LayoutParams textLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                // textLayoutParams.addRule(RelativeLayout.RIGHT_OF, 1);
-                textLayoutParams.addRule(RelativeLayout.LEFT_OF, 2);
-                urlLabel.setLayoutParams(textLayoutParams);
-                urlLabel.setId(4);
-                urlLabel.setSingleLine(true);
-                urlLabel.setText(url);
-                urlLabel.setTextColor(android.graphics.Color.LTGRAY);
-                urlLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
-                // urlLabel.setImeOptions(EditorInfo.IME_ACTION_GO);
-                /*urlLabel.setOnKeyListener(new View.OnKeyListener() {
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        // If the event is a key-down event on the "enter" button
-                        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                          navigate(urlLabel.getText().toString());
-                          return true;
-                        }
-                        return false;
-                    }
-                });*/
 
                 // Close/Done button
                 Button close = new Button(cordova.getActivity());
