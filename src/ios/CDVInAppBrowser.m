@@ -673,7 +673,7 @@
 
         if (shouldClose)
         {
-            [self.rootViewController dismissViewControllerAnimated:YES];
+            [self.navigationDelegate close:nil];
         }
         else
         {
