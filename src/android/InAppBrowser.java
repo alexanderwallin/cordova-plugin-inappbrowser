@@ -614,12 +614,13 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
-                back.setPadding(this.dpToPixels(4), this.dpToPixels(8), this.dpToPixels(4), this.dpToPixels(8));
+                // back.setPadding(this.dpToPixels(4), this.dpToPixels(8), this.dpToPixels(4), this.dpToPixels(8));
                 back.setContentDescription("Back Button");
                 back.setId(2);
                 Resources activityRes = cordova.getActivity().getResources();
                 int backResId = activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName());
                 Drawable backIcon = activityRes.getDrawable(backResId);
+                backIcon.setBounds(4, 8, 4, 8);
                 if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
                 {
                     back.setBackgroundDrawable(backIcon);
