@@ -617,7 +617,7 @@ public class InAppBrowser extends CordovaPlugin {
                 back.setContentDescription("Back Button");
                 back.setId(2);
                 Resources activityRes = cordova.getActivity().getResources();
-                int backResId = activityRes.getIdentifier("chevron-left", "drawable", cordova.getActivity().getPackageName());
+                int backResId = activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName());
                 Drawable backIcon = activityRes.getDrawable(backResId);
                 if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
                 {
@@ -640,7 +640,7 @@ public class InAppBrowser extends CordovaPlugin {
                 forward.setLayoutParams(forwardLayoutParams);
                 forward.setContentDescription("Forward Button");
                 forward.setId(3);
-                int fwdResId = activityRes.getIdentifier("chevron-right", "drawable", cordova.getActivity().getPackageName());
+                int fwdResId = activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName());
                 Drawable fwdIcon = activityRes.getDrawable(fwdResId);
                 if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
                 {
