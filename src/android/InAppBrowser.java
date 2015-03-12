@@ -75,6 +75,7 @@ public class InAppBrowser extends CordovaPlugin {
     // private static final String BLANK = "_blank";
     private static final String EXIT_EVENT = "exit";
     private static final String LOCATION = "location";
+    private static final String TOOLBAR = "toolbar";
     private static final String ZOOM = "zoom";
     private static final String HIDDEN = "hidden";
     private static final String LOAD_START_EVENT = "loadstart";
@@ -88,6 +89,7 @@ public class InAppBrowser extends CordovaPlugin {
     private WebView inAppWebView;
     private EditText edittext;
     private CallbackContext callbackContext;
+    private boolean showToolbar = true;
     private boolean showLocationBar = true;
     private boolean showZoomControls = true;
     private boolean openWindowHidden = false;
@@ -456,6 +458,15 @@ public class InAppBrowser extends CordovaPlugin {
     }
 
     /**
+     * Should we show the toolbar?
+     *
+     * @return boolean
+     */
+    private boolean getShowToolbar() {
+        return this.showToolbar;
+    }
+
+    /**
      * Should we show the zoom controls?
      *
      * @return boolean
@@ -477,12 +488,17 @@ public class InAppBrowser extends CordovaPlugin {
     public String showWebPage(final String url, HashMap<String, Boolean> features) {
         // Determine if we should hide the location bar.
         showLocationBar = true;
+        showToolbar = true;
         showZoomControls = true;
         openWindowHidden = false;
         if (features != null) {
-            Boolean show = features.get(LOCATION);
-            if (show != null) {
-                showLocationBar = show.booleanValue();
+            Boolean showLocationBarOpt = features.get(LOCATION);
+            if (showLocationBarOpt != null) {
+                showLocationBar = showLocationBarOpt.booleanValue();
+            }
+            Boolean showToolbarOpt = features.get(TOOLBAR);
+            if (showToolbarOpt != null) {
+                showToolbar = showToolbarOpt.booleanValue();
             }
             Boolean zoom = features.get(ZOOM);
             if (zoom != null) {
@@ -692,7 +708,7 @@ public class InAppBrowser extends CordovaPlugin {
                 toolbar.addView(close);
 
                 // Don't add the toolbar if its been disabled
-                if (getShowLocationBar()) {
+                if (getShowToolbar()) {
                     // Add our toolbar to our main view/layout
                     main.addView(toolbar);
                 }
