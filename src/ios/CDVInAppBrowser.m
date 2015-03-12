@@ -647,13 +647,21 @@
     self.toolbar.opaque = NO;
     self.toolbar.userInteractionEnabled = YES;
 
-
     [self.toolbar setItems:@[self.pageTitle, flexibleSpaceButton, self.backButton, self.forwardButton, self.closeButton]];
+
+    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleToolbarTap:)];
+    [self.toolbar addGestureRecognizer:singleTapGestureRecognizer];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.view addSubview:self.toolbar];
     [self.view addSubview:self.addressLabel];
     [self.view addSubview:self.spinner];
+}
+
+- (void) handleToolbarTap:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    NSLog(@"tap ended: %d", tapGestureRecognizer.state == UIGestureRecognizerStateEnded);
+
 }
 
 - (void) setWebViewFrame : (CGRect) frame {

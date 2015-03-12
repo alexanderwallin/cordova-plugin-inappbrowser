@@ -95,6 +95,8 @@
 
 - (id)initWithUserAgent:(NSString*)userAgent prevUserAgent:(NSString*)prevUserAgent browserOptions: (CDVInAppBrowserOptions*) browserOptions;
 
+- (void) handleToolbarTap:(UITapGestureRecognizer *)tapGestureRecognizer;
+
 @end
 
 @interface CDVInAppBrowserNavigationController : UINavigationController
