@@ -712,13 +712,19 @@
 
         if (shouldClose)
         {
-            [self.navigationDelegate close:nil];
+            // [self.navigationDelegate close:nil];
+            [UIView animateWithDuration:0.5 animations:^{
+                CGRect viewFrame = self.viewContainer.frame;
+                viewFrame.origin.y = viewFrame.size.height;
+                [self.viewContainer setFrame:viewFrame];
+            } completion:^(BOOL finished) {
+                [self.navigationDelegate close:nil];
+            }];
         }
         else
         {
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:0.5];
-            [UIView setAnimationDelay:0.0];
             [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
          
             CGRect viewFrame = self.viewContainer.frame;
