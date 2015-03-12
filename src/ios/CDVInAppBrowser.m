@@ -686,13 +686,17 @@
 - (void) handleToolbarPan:(UIPanGestureRecognizer *)panGestureRecognizer
 {
     CGPoint panMove = [panGestureRecognizer translationInView:self.view];
+    CGPoint panVel  = [panGestureRecognizer velocityInView:self.view];
     NSLog(@"pan move: x = %f, y = %f", panMove.x, panMove.y);
+    NSLog(@"pan vel: x = %f, y = %f", panVel.x, panVel.y);
 
     if (   panGestureRecognizer.state == UIGestureRecognizerStateEnded
         || panGestureRecognizer.state == UIGestureRecognizerStateCancelled
         || panGestureRecognizer.state == UIGestureRecognizerStateFailed)
     {
         BOOL shouldClose = panMove.y >= 0.3 * self.view.frame.size.height;
+
+        
 
         if (shouldClose)
         {
