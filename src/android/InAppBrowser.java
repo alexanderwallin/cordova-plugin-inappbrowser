@@ -571,7 +571,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.setLayoutParams(pageInfoLayoutParams);
                 pageInfoContainer.setHorizontalGravity(Gravity.LEFT);
                 pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
-                pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(4), this.dpToPixels(8), this.dpToPixels(4));
+                pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(5), this.dpToPixels(8), this.dpToPixels(5));
                 pageInfoContainer.setId(10);
 
                 // Page title label
@@ -583,7 +583,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageTitle.setText("Page title");
                 pageTitle.setTextColor(android.graphics.Color.argb(255, 68, 68, 68));
                 pageTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
-                // pageTitle.setTypeface(android.graphics.Typeface.BOLD);
+                pageTitle.setTypeface(android.graphics.Typeface.BOLD);
                 pageTitle.setGravity(Gravity.LEFT | Gravity.TOP);
 
                 // URL Label
