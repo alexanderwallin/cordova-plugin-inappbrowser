@@ -222,6 +222,7 @@
     nav.navigationBarHidden = YES;
     nav.modalPresentationStyle = UIModalPresentationCustom;
     nav.transitioningDelegate = self;
+    
     // Run later to avoid the "took a long time" log message.
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.inAppBrowserViewController != nil) {
@@ -512,7 +513,7 @@
     [self.view addSubview:self.webView];
     [self.view sendSubviewToBack:self.webView];
 
-    self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:1.0];
 
     self.webView.delegate = _webViewDelegate;
     self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
@@ -712,6 +713,9 @@
         CGRect viewFrame = self.view.frame;
         viewFrame.origin.y = panMove.y;
         [self.view setFrame:viewFrame];
+
+        CGFloat bgAlpha = 1.0 - (self.view.frame.origin.y / self.view.frame.size.height);
+        self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:bgAlpha];
     }
 }
 
