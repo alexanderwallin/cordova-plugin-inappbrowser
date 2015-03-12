@@ -649,8 +649,10 @@
 
     [self.toolbar setItems:@[self.pageTitle, flexibleSpaceButton, self.backButton, self.forwardButton, self.closeButton]];
 
-    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleToolbarTap:)];
-    [self.toolbar addGestureRecognizer:singleTapGestureRecognizer];
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleToolbarPan:)];
+    panGestureRecognizer.minimumNumberOfTouches = 1;
+    panGestureRecognizer.maximumNumberOfTouches = 1;
+    [self.toolbar addGestureRecognizer:panGestureRecognizer];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.view addSubview:self.toolbar];
@@ -658,10 +660,10 @@
     [self.view addSubview:self.spinner];
 }
 
-- (void) handleToolbarTap:(UITapGestureRecognizer *)tapGestureRecognizer
+- (void) handleToolbarPan:(UIPanGestureRecognizer *)panGestureRecognizer
 {
-    NSLog(@"tap ended: %d", tapGestureRecognizer.state == UIGestureRecognizerStateEnded);
-
+    CGPoint panMove = [panGestureRecognizer translationInView:self.view];
+    NSLog(@"pan move: x = %f, y = %f", panMove.x, panMove.y);
 }
 
 - (void) setWebViewFrame : (CGRect) frame {
