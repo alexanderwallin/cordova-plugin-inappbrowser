@@ -105,3 +105,10 @@
 
 @end
 
+
+
+@interface SemiModalAnimatedTransition : NSObject <UIViewControllerAnimatedTransitioning>
+
+@property (nonatomic, assign) BOOL presenting;
+
+@end
