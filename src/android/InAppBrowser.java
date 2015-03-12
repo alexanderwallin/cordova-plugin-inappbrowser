@@ -614,6 +614,7 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
+                back.setPadding(this.dpToPixels(4), this.dpToPixels(8), this.dpToPixels(4), this.dpToPixels(8));
                 back.setContentDescription("Back Button");
                 back.setId(2);
                 Resources activityRes = cordova.getActivity().getResources();
@@ -638,6 +639,7 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams forwardLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
                 forwardLayoutParams.addRule(RelativeLayout.RIGHT_OF, 2);
                 forward.setLayoutParams(forwardLayoutParams);
+                forward.setPadding(this.dpToPixels(6), this.dpToPixels(12), this.dpToPixels(6), this.dpToPixels(12));
                 forward.setContentDescription("Forward Button");
                 forward.setId(3);
                 int fwdResId = activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName());
@@ -661,7 +663,8 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
                 closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 close.setLayoutParams(closeLayoutParams);
-                forward.setContentDescription("Close Button");
+                close.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
+                close.setContentDescription("Close Button");
                 close.setId(5);
                 int closeResId = activityRes.getIdentifier("close", "drawable", cordova.getActivity().getPackageName());
                 Drawable closeIcon = activityRes.getDrawable(closeResId);
