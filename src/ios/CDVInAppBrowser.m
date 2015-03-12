@@ -665,7 +665,31 @@
     CGPoint panMove = [panGestureRecognizer translationInView:self.view];
     NSLog(@"pan move: x = %f, y = %f", panMove.x, panMove.y);
 
-    if (panMove.y > 5)
+    if (   panGestureRecognizer.state == UIGestureRecognizerStateEnded
+        || panGestureRecognizer.state == UIGestureRecognizerStateCancelled
+        || panGestureRecognizer.state == UIGestureRecognizerStateFailed)
+    {
+        BOOL shouldClose = panMove.y >= 0.3 * self.view.frame.size.height;
+
+        if (shouldClose)
+        {
+            [self.rootViewController dismissViewControllerAnimated:YES];
+        }
+        else
+        {
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.5];
+            [UIView setAnimationDelay:0.0];
+            [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+         
+            CGRect viewFrame = self.view.frame;
+            viewFrame.origin.y = 0;
+            [self.view setFrame:viewFrame];
+         
+            [UIView commitAnimations];
+        }
+    }
+    else
     {
         CGRect viewFrame = self.view.frame;
         viewFrame.origin.y = panMove.y;
