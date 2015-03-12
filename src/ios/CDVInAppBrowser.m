@@ -664,6 +664,13 @@
 {
     CGPoint panMove = [panGestureRecognizer translationInView:self.view];
     NSLog(@"pan move: x = %f, y = %f", panMove.x, panMove.y);
+
+    if (panMove.y > 5)
+    {
+        CGRect viewFrame = self.view.frame;
+        viewFrame.y = panMove.y;
+        [self.view setFrame:viewFrame];
+    }
 }
 
 - (void) setWebViewFrame : (CGRect) frame {
