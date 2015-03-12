@@ -582,7 +582,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageTitle.setText("Page title");
                 pageTitle.setTextColor(android.graphics.Color.argb(255, 68, 68, 68));
                 pageTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
-                pageTitle.setTypeface(Typeface.BOLD);
+                pageTitle.setTypeface(android.graphics.Typeface.BOLD);
                 pageTitle.setGravity(Gravity.LEFT | Gravity.TOP);
 
                 // URL Label
