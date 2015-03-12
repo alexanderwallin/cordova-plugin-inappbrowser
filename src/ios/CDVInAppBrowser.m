@@ -668,7 +668,7 @@
     if (panMove.y > 5)
     {
         CGRect viewFrame = self.view.frame;
-        viewFrame.y = panMove.y;
+        viewFrame.origin.y = panMove.y;
         [self.view setFrame:viewFrame];
     }
 }
