@@ -694,9 +694,8 @@
         || panGestureRecognizer.state == UIGestureRecognizerStateCancelled
         || panGestureRecognizer.state == UIGestureRecognizerStateFailed)
     {
-        BOOL shouldClose = panMove.y >= 0.3 * self.view.frame.size.height;
-
-        
+        BOOL shouldClose = (panMove.y >= 0.3 * self.view.frame.size.height)
+            && (panVel.y > -400.0);
 
         if (shouldClose)
         {
