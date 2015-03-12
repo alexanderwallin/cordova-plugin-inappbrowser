@@ -96,9 +96,6 @@
 
 - (id)initWithUserAgent:(NSString*)userAgent prevUserAgent:(NSString*)prevUserAgent browserOptions: (CDVInAppBrowserOptions*) browserOptions;
 
-- (void) presentViews;
-- (void) handleToolbarPan:(UIPanGestureRecognizer *)panGestureRecognizer;
-
 @end
 
 @interface CDVInAppBrowserNavigationController : UINavigationController
@@ -107,10 +104,3 @@
 
 @end
 
-
-
-@interface SemiModalAnimatedTransition : NSObject <UIViewControllerAnimatedTransitioning>
-
-@property (nonatomic, assign) BOOL presenting;
-
-@end

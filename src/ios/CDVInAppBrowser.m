@@ -220,8 +220,6 @@
                                    initWithRootViewController:self.inAppBrowserViewController];
     nav.orientationDelegate = self.inAppBrowserViewController;
     nav.navigationBarHidden = YES;
-    nav.modalPresentationStyle = UIModalPresentationCustom;
-    nav.transitioningDelegate = self;
 
     // Run later to avoid the "took a long time" log message.
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -451,21 +449,6 @@
     _previousStatusBarStyle = -1; // this value was reset before reapplying it. caused statusbar to stay black on ios7
 }
 
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
-{
-    SemiModalAnimatedTransition *semiModalAnimatedTransition = [[SemiModalAnimatedTransition alloc] init];
-    semiModalAnimatedTransition.presenting = YES;
-    return semiModalAnimatedTransition;
-}
-
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
-{
-    SemiModalAnimatedTransition *semiModalAnimatedTransition = [[SemiModalAnimatedTransition alloc] init];
-    return semiModalAnimatedTransition;
-}
-
-
-
 @end
 
 #pragma mark CDVInAppBrowserViewController
@@ -504,7 +487,7 @@
     // [self.view setFrame:viewBounds];
 
     CGRect containerInitFrame = self.view.bounds;
-    containerInitFrame.origin.y = 100; // containerInitFrame.size.height;
+    // containerInitFrame.origin.y = 100; // containerInitFrame.size.height;
     self.viewContainer = [[UIView alloc] initWithFrame:containerInitFrame];
     
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
@@ -671,80 +654,12 @@
 
     [self.toolbar setItems:@[self.pageTitle, flexibleSpaceButton, self.backButton, self.forwardButton, self.closeButton]];
 
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleToolbarPan:)];
-    panGestureRecognizer.minimumNumberOfTouches = 1;
-    panGestureRecognizer.maximumNumberOfTouches = 1;
-    [self.toolbar addGestureRecognizer:panGestureRecognizer];
-
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
     [self.viewContainer addSubview:self.addressLabel];
     [self.viewContainer addSubview:self.spinner];
 
     [self.view addSubview:self.viewContainer];
-}
-
-- (void) presentViews
-{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
- 
-    self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:1.0];
-    self.viewContainer.frame = self.view.bounds;
-
-    [UIView commitAnimations];
-}
-
-- (void) handleToolbarPan:(UIPanGestureRecognizer *)panGestureRecognizer
-{
-    CGPoint panMove = [panGestureRecognizer translationInView:self.view];
-    CGPoint panVel  = [panGestureRecognizer velocityInView:self.view];
-    NSLog(@"pan move: x = %f, y = %f", panMove.x, panMove.y);
-    NSLog(@"pan vel: x = %f, y = %f", panVel.x, panVel.y);
-
-    if (   panGestureRecognizer.state == UIGestureRecognizerStateEnded
-        || panGestureRecognizer.state == UIGestureRecognizerStateCancelled
-        || panGestureRecognizer.state == UIGestureRecognizerStateFailed)
-    {
-        BOOL shouldClose = (panMove.y >= 0.3 * self.view.frame.size.height)
-            && (panVel.y > -400.0);
-
-        if (shouldClose)
-        {
-            // [self.navigationDelegate close:nil];
-            [UIView animateWithDuration:0.5 animations:^{
-                CGRect viewFrame = self.viewContainer.frame;
-                viewFrame.origin.y = viewFrame.size.height;
-                [self.viewContainer setFrame:viewFrame];
-            } completion:^(BOOL finished) {
-                [self.navigationDelegate close:nil];
-            }];
-        }
-        else
-        {
-            [UIView beginAnimations:nil context:nil];
-            [UIView setAnimationDuration:0.5];
-            [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-         
-            CGRect viewFrame = self.viewContainer.frame;
-            viewFrame.origin.y = 0;
-            [self.viewContainer setFrame:viewFrame];
-         
-            self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:1.0];
-
-            [UIView commitAnimations];
-        }
-    }
-    else
-    {
-        CGRect viewFrame = self.viewContainer.frame;
-        viewFrame.origin.y = panMove.y > 0.0 ? panMove.y : 0.0;
-        [self.viewContainer setFrame:viewFrame];
-
-        CGFloat bgAlpha = 1.0 - (self.viewContainer.frame.origin.y / self.viewContainer.frame.size.height);
-        self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:bgAlpha];
-    }
 }
 
 - (void) setWebViewFrame : (CGRect) frame {
@@ -1139,12 +1054,6 @@
 
 @implementation CDVInAppBrowserNavigationController : UINavigationController
 
-- (void)viewDidLoad
-{
-    NSLog(@"CDVInAppBrowserNavigationController viewDidLoad");
-    [(CDVInAppBrowserViewController *)self.topViewController presentViews];
-}
-
 #pragma mark CDVScreenOrientationDelegate
 
 - (BOOL)shouldAutorotate
@@ -1181,59 +1090,5 @@
     }
 }
 
-
-@end
-
-
-
-@implementation SemiModalAnimatedTransition
-
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
-{
-    // return self.presenting ? 0.6 : 0.3;
-    return 0.0;
-}
-
-- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
-{
-    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-
-    CGRect endFrame = fromViewController.view.bounds;
-
-    if (self.presenting) {
-        fromViewController.view.userInteractionEnabled = NO;
-
-        [transitionContext.containerView addSubview:fromViewController.view];
-        [transitionContext.containerView addSubview:toViewController.view];
-
-        CGRect startFrame = endFrame;
-        startFrame.origin.y = endFrame.size.height;
-
-        toViewController.view.frame = startFrame;
-
-        [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            fromViewController.view.tintAdjustmentMode = UIViewTintAdjustmentModeDimmed;
-            toViewController.view.frame = endFrame;
-        } completion:^(BOOL finished) {
-            [transitionContext completeTransition:YES];
-        }];
-    }
-    else {
-        toViewController.view.userInteractionEnabled = YES;
-
-        [transitionContext.containerView addSubview:toViewController.view];
-        [transitionContext.containerView addSubview:fromViewController.view];
-
-        endFrame.origin.y = endFrame.size.height;
-
-        [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            toViewController.view.tintAdjustmentMode = UIViewTintAdjustmentModeAutomatic;
-            fromViewController.view.frame = endFrame;
-        } completion:^(BOOL finished) {
-            [transitionContext completeTransition:YES];
-        }];
-    }
-}
 
 @end
