@@ -96,6 +96,7 @@
 
 - (id)initWithUserAgent:(NSString*)userAgent prevUserAgent:(NSString*)prevUserAgent browserOptions: (CDVInAppBrowserOptions*) browserOptions;
 
+- (void) presentViews;
 - (void) handleToolbarPan:(UIPanGestureRecognizer *)panGestureRecognizer;
 
 @end

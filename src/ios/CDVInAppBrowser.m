@@ -222,7 +222,7 @@
     nav.navigationBarHidden = YES;
     nav.modalPresentationStyle = UIModalPresentationCustom;
     nav.transitioningDelegate = self;
-    
+
     // Run later to avoid the "took a long time" log message.
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.inAppBrowserViewController != nil) {
@@ -503,8 +503,9 @@
     // viewBounds.size.height = 300.0;
     // [self.view setFrame:viewBounds];
 
-
-    self.viewContainer = [[UIView alloc] initWithFrame:viewBounds];
+    CGRect containerInitFrame = self.view.bounds;
+    containerInitFrame.origin.y = containerInitFrame.size.height;
+    self.viewContainer = [[UIView alloc] initWithFrame:containerInitFrame];
     
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
@@ -515,7 +516,7 @@
     [self.viewContainer addSubview:self.webView];
     [self.viewContainer sendSubviewToBack:self.webView];
 
-    self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:0.0];
 
     self.webView.delegate = _webViewDelegate;
     self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
@@ -681,6 +682,18 @@
     [self.viewContainer addSubview:self.spinner];
 
     [self.view addSubview:self.viewContainer];
+}
+
+- (void) presentViews
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+ 
+    self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:1.0];
+    self.viewContainer.frame = self.view.bounds;
+
+    [UIView commitAnimations];
 }
 
 - (void) handleToolbarPan:(UIPanGestureRecognizer *)panGestureRecognizer
@@ -1119,6 +1132,12 @@
 @end
 
 @implementation CDVInAppBrowserNavigationController : UINavigationController
+
+- (void)viewDidLoad
+{
+    NSLog(@"CDVInAppBrowserNavigationController viewDidLoad");
+    [(CDVInAppBrowserViewController *)self.topViewController presentViews];
+}
 
 #pragma mark CDVScreenOrientationDelegate
 
