@@ -620,7 +620,7 @@ public class InAppBrowser extends CordovaPlugin {
                 Resources activityRes = cordova.getActivity().getResources();
                 int backResId = activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName());
                 Drawable backIcon = activityRes.getDrawable(backResId);
-                backIcon.setBounds(4, 8, 4, 8);
+                backIcon.setBounds(0, 0, this.dpToPixels(3), this.dpToPixels(3));
                 if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
                 {
                     back.setBackgroundDrawable(backIcon);
