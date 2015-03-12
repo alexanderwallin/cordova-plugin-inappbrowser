@@ -576,7 +576,6 @@ public class InAppBrowser extends CordovaPlugin {
                 // Page title label
                 pageTitle = new TextView(cordova.getActivity());
                 RelativeLayout.LayoutParams pageTitleLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                pageTitleLayoutParams.setGravity(Gravity.LEFT | Gravity.TOP);
                 pageTitle.setLayoutParams(pageTitleLayoutParams);
                 pageTitle.setId(11);
                 pageTitle.setSingleLine(true);
@@ -584,17 +583,18 @@ public class InAppBrowser extends CordovaPlugin {
                 pageTitle.setTextColor(android.graphics.Color.argb(255, 68, 68, 68));
                 pageTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 pageTitle.setTypeface(Typeface.BOLD);
+                pageTitle.setGravity(Gravity.LEFT | Gravity.TOP);
 
                 // URL Label
                 urlLabel = new TextView(cordova.getActivity());
                 RelativeLayout.LayoutParams urlLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                urlLayoutParams.setGravity(Gravity.LEFT | Gravity.BOTTOM);
                 urlLabel.setLayoutParams(urlLayoutParams);
                 urlLabel.setId(4);
                 urlLabel.setSingleLine(true);
                 urlLabel.setText(url);
                 urlLabel.setTextColor(android.graphics.Color.LTGRAY);
                 urlLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+                urlLabel.setGravity(Gravity.LEFT | Gravity.BOTTOM);
 
                 pageInfoContainer.addView(pageTitle);
                 pageInfoContainer.addView(urlLabel);
