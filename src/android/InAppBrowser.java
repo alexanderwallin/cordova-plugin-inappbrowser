@@ -87,6 +87,7 @@ public class InAppBrowser extends CordovaPlugin {
 
     private InAppBrowserDialog dialog;
     private WebView inAppWebView;
+    private TextView pageTitle;
     private TextView urlLabel;
     private CallbackContext callbackContext;
     private boolean showToolbar = true;
