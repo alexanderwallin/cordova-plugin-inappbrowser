@@ -587,7 +587,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
                 pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(5), this.dpToPixels(8), this.dpToPixels(5));
                 pageInfoContainer.setId(10);
-
+                pageInfoContainer.setOrientation(HORIZONTAL);
                 pageInfoContainer.setBackgroundColor(android.graphics.Color.argb(255, 240, 180, 0));
 
                 // Page title label
@@ -618,7 +618,7 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Action Button Container layout
                 LinearLayout actionButtonContainer = new LinearLayout(cordova.getActivity());
-                LinearLayout.LayoutParams actionButtonLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 0);
+                LinearLayout.LayoutParams actionButtonLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT, 0);
                 // actionButtonLayoutParams.addRule(LinearLayout.LEFT_OF, 5);
                 actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
