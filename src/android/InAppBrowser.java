@@ -595,7 +595,7 @@ public class InAppBrowser extends CordovaPlugin {
                 urlLabel.setId(4);
                 urlLabel.setSingleLine(true);
                 urlLabel.setText(url);
-                urlLabel.setTextColor(android.graphics.Color.argb(255, 204, 204, 204));
+                urlLabel.setTextColor(android.graphics.Color.argb(255, 180, 180, 180));
                 urlLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
                 urlLabel.setGravity(Gravity.LEFT | Gravity.BOTTOM);
 
@@ -610,6 +610,7 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
                 actionButtonContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
                 actionButtonContainer.setPadding(0, 0, this.dpToPixels(10), 0);
+                actionButtonContainer.setAlpha(0.933);
                 actionButtonContainer.setId(1);
 
                 // Back button
@@ -665,10 +666,10 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Close/Done button
                 ImageButton close = new ImageButton(cordova.getActivity());
-                RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
+                RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(buttonWidth + this.dpToPixels(10), buttonHeight);
                 closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 close.setLayoutParams(closeLayoutParams);
-                close.setPadding(0, this.dpToPixels(10), 0, this.dpToPixels(10));
+                close.setPadding(0, this.dpToPixels(12), this.dpToPixels(10), this.dpToPixels(12));
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
