@@ -650,7 +650,7 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams forwardLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
                 forwardLayoutParams.addRule(RelativeLayout.RIGHT_OF, 2);
                 forward.setLayoutParams(forwardLayoutParams);
-                forward.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
+                forward.setPadding(0, this.dpToPixels(10), 0, this.dpToPixels(10));
                 forward.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 forward.setContentDescription("Forward Button");
                 forward.setId(3);
@@ -668,7 +668,7 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
                 closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 close.setLayoutParams(closeLayoutParams);
-                close.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
+                close.setPadding(0, this.dpToPixels(10), 0, this.dpToPixels(10));
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
