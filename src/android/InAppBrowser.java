@@ -639,7 +639,7 @@ public class InAppBrowser extends CordovaPlugin {
                 back.setId(2);
                 back.setImageResource(activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName()));
                 back.setBackgroundResource(0);
-                back.setAlpha(0.25);
+                back.setAlpha((float) 0.25);
 
                 back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
@@ -658,7 +658,7 @@ public class InAppBrowser extends CordovaPlugin {
                 forward.setId(3);
                 forward.setImageResource(activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName()));
                 forward.setBackgroundResource(0);
-                forward.setAlpha(0.25);
+                forward.setAlpha((float) 0.25);
 
                 forward.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
