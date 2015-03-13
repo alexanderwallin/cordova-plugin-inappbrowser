@@ -618,7 +618,7 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Action Button Container layout
                 RelativeLayout actionButtonContainer = new RelativeLayout(cordova.getActivity());
-                RelativeLayout.LayoutParams actionButtonLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                RelativeLayout.LayoutParams actionButtonLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(100), LayoutParams.WRAP_CONTENT);
                 actionButtonLayoutParams.addRule(RelativeLayout.LEFT_OF, 5);
                 actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
