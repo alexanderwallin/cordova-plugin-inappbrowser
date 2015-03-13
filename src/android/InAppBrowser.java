@@ -570,8 +570,8 @@ public class InAppBrowser extends CordovaPlugin {
                 main.setOrientation(LinearLayout.VERTICAL);
 
                 // Toolbar layout
-                RelativeLayout toolbar = new RelativeLayout(cordova.getActivity());
-                //Please, no more black! 
+                LinearLayout toolbar = new LinearLayout(cordova.getActivity());
+                toolbar.setOrientation(LinearLayout.HORIZONTAL);
                 toolbar.setBackgroundColor(android.graphics.Color.argb(255, 232, 232, 232));
                 toolbar.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, this.dpToPixels(44)));
                 toolbar.setPadding(this.dpToPixels(2), this.dpToPixels(2), this.dpToPixels(2), this.dpToPixels(2));
@@ -587,7 +587,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
                 pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(5), this.dpToPixels(8), this.dpToPixels(5));
                 pageInfoContainer.setId(10);
-                pageInfoContainer.setOrientation(LinearLayout.HORIZONTAL);
+                // pageInfoContainer.setOrientation(LinearLayout.HORIZONTAL);
                 pageInfoContainer.setBackgroundColor(android.graphics.Color.argb(255, 240, 180, 0));
 
                 // Page title label
