@@ -587,7 +587,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
                 pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(5), this.dpToPixels(8), this.dpToPixels(5));
                 pageInfoContainer.setId(10);
-                pageInfoContainer.setOrientation(HORIZONTAL);
+                pageInfoContainer.setOrientation(LinearLayout.HORIZONTAL);
                 pageInfoContainer.setBackgroundColor(android.graphics.Color.argb(255, 240, 180, 0));
 
                 // Page title label
