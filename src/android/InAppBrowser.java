@@ -812,6 +812,9 @@ public class InAppBrowser extends CordovaPlugin {
             String newloc = "";
             if (url.startsWith("http:") || url.startsWith("https:") || url.startsWith("file:")) {
                 newloc = url;
+
+                this.delegate.pageTitle.setText("Laddar...");
+                this.delegate.urlLabel.setText(url);
             } 
             // If dialing phone (tel:5551212)
             else if (url.startsWith(WebView.SCHEME_TEL)) {
@@ -866,9 +869,6 @@ public class InAppBrowser extends CordovaPlugin {
             }
             else {
                 newloc = "http://" + url;
-
-                this.delegate.pageTitle.setText("Laddar...");
-                this.delegate.urlLabel.setText(url);
             }
 
             if (!newloc.equals(this.delegate.urlLabel.getText().toString())) {
@@ -889,7 +889,7 @@ public class InAppBrowser extends CordovaPlugin {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             
-            this.delegate.pageTitle.setText("");
+            this.delegate.pageTitle.setText(view.getTitle());
             this.delegate.urlLabel.setText(url);
 
             this.delegate.back.setAlpha(   (float) (this.delegate.canGoBack()    ? 1.0 : 0.25));
