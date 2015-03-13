@@ -579,16 +579,18 @@ public class InAppBrowser extends CordovaPlugin {
                 toolbar.setVerticalGravity(Gravity.TOP);
 
                 // Title and url container
-                RelativeLayout pageInfoContainer = new RelativeLayout(cordova.getActivity());
-                RelativeLayout.LayoutParams pageInfoLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-                pageInfoLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                LinearLayout pageInfoContainer = new LinearLayout(cordova.getActivity());
+                LinearLayout.LayoutParams pageInfoLayoutParams = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT, 1);
+                pageInfoLayoutParams.addRule(LinearLayout.ALIGN_PARENT_LEFT);
                 pageInfoContainer.setLayoutParams(pageInfoLayoutParams);
-                pageInfoContainer.setHorizontalGravity(Gravity.LEFT | 0x07);
+                pageInfoContainer.setHorizontalGravity(Gravity.LEFT);
                 pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
                 pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(5), this.dpToPixels(8), this.dpToPixels(5));
                 pageInfoContainer.setId(10);
 
                 pageInfoContainer.setBackgroundColor(android.graphics.Color.argb(255, 240, 180, 0));
+
+                pageInfoContainer.set
 
                 // Page title label
                 pageTitle = new TextView(cordova.getActivity());
@@ -617,9 +619,9 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.addView(urlLabel);
 
                 // Action Button Container layout
-                RelativeLayout actionButtonContainer = new RelativeLayout(cordova.getActivity());
-                RelativeLayout.LayoutParams actionButtonLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(100), LayoutParams.WRAP_CONTENT);
-                actionButtonLayoutParams.addRule(RelativeLayout.LEFT_OF, 5);
+                LinearLayout actionButtonContainer = new LinearLayout(cordova.getActivity());
+                LinearLayout.LayoutParams actionButtonLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 0);
+                actionButtonLayoutParams.addRule(LinearLayout.LEFT_OF, 5);
                 actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
                 actionButtonContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
