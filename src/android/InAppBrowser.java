@@ -609,7 +609,7 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
                 actionButtonContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
-                actionButtonContainer.setPadding(0, 0, this.dpToPixels(10));
+                actionButtonContainer.setPadding(0, 0, this.dpToPixels(10), 0);
                 actionButtonContainer.setId(1);
 
                 // Back button
