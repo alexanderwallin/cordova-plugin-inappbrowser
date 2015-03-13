@@ -634,13 +634,8 @@ public class InAppBrowser extends CordovaPlugin {
                 // back.setBackgroundResource(0);
                 back.setContentDescription("Back Button");
                 back.setId(2);
-                
-                int backResId = activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName());
-                back.setImageResource(backResId);
-                if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
-                    back.setBackgroundDrawable(0);
-                else
-                    back.setBackground(0);
+                back.setImageResource(activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName()));
+                back.setBackgroundResource(0);
                 
                 back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
@@ -657,13 +652,8 @@ public class InAppBrowser extends CordovaPlugin {
                 forward.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 forward.setContentDescription("Forward Button");
                 forward.setId(3);
-
-                int fwdResId = activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName());
-                forward.setImageResource(fwdResId);
-                if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
-                    forward.setBackgroundDrawable(0);
-                else
-                    forward.setBackground(0);
+                forward.setImageResource(activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName()));
+                forward.setBackgroundResource(0);
 
                 forward.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
@@ -680,13 +670,8 @@ public class InAppBrowser extends CordovaPlugin {
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
-
-                int closeResId = activityRes.getIdentifier("close", "drawable", cordova.getActivity().getPackageName());
-                close.setImageResource(closeResId);
-                if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
-                    close.setBackgroundDrawable(0);
-                else
-                    close.setBackground(0);
+                close.setImageResource(activityRes.getIdentifier("close", "drawable", cordova.getActivity().getPackageName()));
+                close.setBackgroundResource(0);
 
                 close.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
