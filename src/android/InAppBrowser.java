@@ -865,7 +865,7 @@ public class InAppBrowser extends CordovaPlugin {
             else {
                 newloc = "http://" + url;
 
-                this.delegate.pageTitleLabel.setText("Laddar...");
+                this.delegate.pageTitle.setText("Laddar...");
                 this.delegate.urlLabel.setText(url);
             }
 
@@ -887,7 +887,7 @@ public class InAppBrowser extends CordovaPlugin {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             
-            this.delegate.pageTitleLabel.setText("");
+            this.delegate.pageTitle.setText("");
             this.delegate.urlLabel.setText(url);
 
             this.delegate.back.setAlpha(   (float) (this.delegate.canGoBack()    ? 1.0 : 0.25));
