@@ -623,8 +623,10 @@ public class InAppBrowser extends CordovaPlugin {
 
                 Resources activityRes = cordova.getActivity().getResources();
 
+                int buttonSize = this.dpToPixels(40);
+
                 ImageButton back = new ImageButton(cordova.getActivity());
-                RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(30), this.dpToPixels(30));
+                RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(buttonSize, buttonSize);
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
                 back.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
@@ -634,9 +636,6 @@ public class InAppBrowser extends CordovaPlugin {
                 back.setId(2);
                 
                 int backResId = activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName());
-                Drawable backIcon = activityRes.getDrawable(backResId);
-                // backIcon.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()*0.1), (int)(drawable.getIntrinsicHeight()*0.1));
-
                 back.setImageResource(backResId);
                 back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
@@ -645,23 +644,17 @@ public class InAppBrowser extends CordovaPlugin {
                 });
 
                 // Forward button
-                Button forward = new Button(cordova.getActivity());
-                RelativeLayout.LayoutParams forwardLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+                ImageButton forward = new ImageButton(cordova.getActivity());
+                RelativeLayout.LayoutParams forwardLayoutParams = new RelativeLayout.LayoutParams(buttonSize, buttonSize);
                 forwardLayoutParams.addRule(RelativeLayout.RIGHT_OF, 2);
                 forward.setLayoutParams(forwardLayoutParams);
-                forward.setPadding(this.dpToPixels(6), this.dpToPixels(12), this.dpToPixels(6), this.dpToPixels(12));
+                forward.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
+                forward.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 forward.setContentDescription("Forward Button");
                 forward.setId(3);
+
                 int fwdResId = activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName());
-                Drawable fwdIcon = activityRes.getDrawable(fwdResId);
-                if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    forward.setBackgroundDrawable(fwdIcon);
-                }
-                else
-                {
-                    forward.setBackground(fwdIcon);
-                }
+                forward.setImageResource(fwdResId);
                 forward.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         goForward();
@@ -669,23 +662,17 @@ public class InAppBrowser extends CordovaPlugin {
                 });
 
                 // Close/Done button
-                Button close = new Button(cordova.getActivity());
-                RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+                ImageButton close = new ImageButton(cordova.getActivity());
+                RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(buttonSize, buttonSize);
                 closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 close.setLayoutParams(closeLayoutParams);
                 close.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
+                close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
+
                 int closeResId = activityRes.getIdentifier("close", "drawable", cordova.getActivity().getPackageName());
-                Drawable closeIcon = activityRes.getDrawable(closeResId);
-                if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    close.setBackgroundDrawable(closeIcon);
-                }
-                else
-                {
-                    close.setBackground(closeIcon);
-                }
+                close.setImageResource(closeResId);
                 close.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         closeDialog();
