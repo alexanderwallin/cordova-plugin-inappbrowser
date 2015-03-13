@@ -91,6 +91,8 @@ public class InAppBrowser extends CordovaPlugin {
     private WebView inAppWebView;
     private TextView pageTitle;
     private TextView urlLabel;
+    public ImageButton back;
+    public ImageButton forward;
     private CallbackContext callbackContext;
     private boolean showToolbar = true;
     private boolean showLocationBar = true;
@@ -434,6 +436,14 @@ public class InAppBrowser extends CordovaPlugin {
     }
 
     /**
+     * Can the web browser go forward?
+     * @return boolean
+     */
+    public boolean canGoForward() {
+        return this.inAppWebView.canGoForward();
+    }
+
+    /**
      * Navigate to the new page
      *
      * @param url to load
@@ -610,25 +620,15 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
                 actionButtonContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
                 actionButtonContainer.setPadding(0, 0, this.dpToPixels(10), 0);
-                actionButtonContainer.setAlpha((float) 0.933);
+                actionButtonContainer.setAlpha((float) 0.733); // #444
                 actionButtonContainer.setId(1);
-
-                // Back button
-                // 
-                // Drawable drawable = getResources().getDrawable(R.drawable.s_vit);
-                // drawable.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()*0.5), 
-                //                          (int)(drawable.getIntrinsicHeight()*0.5));
-                // ScaleDrawable sd = new ScaleDrawable(drawable, 0, scaleWidth, scaleHeight);
-                // Button btn = findViewbyId(R.id.yourbtnID);
-                // btn.setCompoundDrawables(sd.getDrawable(), null, null, null);
-                // 
 
                 Resources activityRes = cordova.getActivity().getResources();
 
                 int buttonWidth  = this.dpToPixels(30);
                 int buttonHeight = this.dpToPixels(40);
 
-                ImageButton back = new ImageButton(cordova.getActivity());
+                back = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
@@ -639,7 +639,8 @@ public class InAppBrowser extends CordovaPlugin {
                 back.setId(2);
                 back.setImageResource(activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName()));
                 back.setBackgroundResource(0);
-                
+                back.setAlpha(0.25);
+
                 back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         goBack();
@@ -647,7 +648,7 @@ public class InAppBrowser extends CordovaPlugin {
                 });
 
                 // Forward button
-                ImageButton forward = new ImageButton(cordova.getActivity());
+                forward = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams forwardLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
                 forwardLayoutParams.addRule(RelativeLayout.RIGHT_OF, 2);
                 forward.setLayoutParams(forwardLayoutParams);
@@ -657,6 +658,7 @@ public class InAppBrowser extends CordovaPlugin {
                 forward.setId(3);
                 forward.setImageResource(activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName()));
                 forward.setBackgroundResource(0);
+                forward.setAlpha(0.25);
 
                 forward.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
@@ -669,7 +671,7 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(buttonWidth + this.dpToPixels(10), buttonHeight);
                 closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 close.setLayoutParams(closeLayoutParams);
-                close.setPadding(0, this.dpToPixels(12), this.dpToPixels(10), this.dpToPixels(12));
+                close.setPadding(0, this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
@@ -686,7 +688,7 @@ public class InAppBrowser extends CordovaPlugin {
                 inAppWebView = new WebView(cordova.getActivity());
                 inAppWebView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
                 inAppWebView.setWebChromeClient(new InAppChromeClient(thatWebView));
-                WebViewClient client = new InAppBrowserClient(thatWebView, urlLabel);
+                WebViewClient client = new InAppBrowserClient(this);
                 inAppWebView.setWebViewClient(client);
                 WebSettings settings = inAppWebView.getSettings();
                 settings.setJavaScriptEnabled(true);
@@ -784,8 +786,7 @@ public class InAppBrowser extends CordovaPlugin {
      * The webview client receives notifications about appView
      */
     public class InAppBrowserClient extends WebViewClient {
-        TextView urlLabel;
-        CordovaWebView webView;
+        InAppBrowser delegate;
 
         /**
          * Constructor.
@@ -793,9 +794,8 @@ public class InAppBrowser extends CordovaPlugin {
          * @param mContext
          * @param urlLabel
          */
-        public InAppBrowserClient(CordovaWebView webView, TextView murlLabel) {
-            this.webView = webView;
-            this.urlLabel = murlLabel;
+        public InAppBrowserClient(InAppBrowser delegate) {
+            this.delegate = delegate;
         }
 
         /**
@@ -864,10 +864,13 @@ public class InAppBrowser extends CordovaPlugin {
             }
             else {
                 newloc = "http://" + url;
+
+                this.delegate.pageTitleLabel.setText("Laddar...");
+                this.delegate.urlLabel.setText(url);
             }
 
-            if (!newloc.equals(urlLabel.getText().toString())) {
-                urlLabel.setText(newloc);
+            if (!newloc.equals(this.delegate.urlLabel.getText().toString())) {
+                this.delegate.urlLabel.setText(newloc);
             }
 
             try {
@@ -884,6 +887,12 @@ public class InAppBrowser extends CordovaPlugin {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             
+            this.delegate.pageTitleLabel.setText("");
+            this.delegate.urlLabel.setText(url);
+
+            this.delegate.back.setAlpha(   (float) (this.delegate.canGoBack()    ? 1.0 : 0.25));
+            this.delegate.forward.setAlpha((float) (this.delegate.canGoForward() ? 1.0 : 0.25));
+
             try {
                 JSONObject obj = new JSONObject();
                 obj.put("type", LOAD_STOP_EVENT);
