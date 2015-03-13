@@ -538,7 +538,7 @@ public class InAppBrowser extends CordovaPlugin {
         
 
         final CordovaWebView thatWebView = this.webView;
-        InAppBrowser self = this;
+        final InAppBrowser self = this;
 
         // Create dialog in new thread
         Runnable runnable = new Runnable() {
