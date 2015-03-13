@@ -579,7 +579,7 @@ public class InAppBrowser extends CordovaPlugin {
                 toolbar.setVerticalGravity(Gravity.TOP);
 
                 // Title and url container
-                LinearLayout pageInfoContainer = new LinearLayout(cordova.getActivity());
+                RelativeLayout pageInfoContainer = new RelativeLayout(cordova.getActivity());
                 LinearLayout.LayoutParams pageInfoLayoutParams = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT, 1);
                 // pageInfoLayoutParams.addRule(LinearLayout.ALIGN_PARENT_LEFT);
                 pageInfoContainer.setLayoutParams(pageInfoLayoutParams);
@@ -617,7 +617,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.addView(urlLabel);
 
                 // Action Button Container layout
-                LinearLayout actionButtonContainer = new LinearLayout(cordova.getActivity());
+                RelativeLayout actionButtonContainer = new RelativeLayout(cordova.getActivity());
                 LinearLayout.LayoutParams actionButtonLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT, 0);
                 // actionButtonLayoutParams.addRule(LinearLayout.LEFT_OF, 5);
                 actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
