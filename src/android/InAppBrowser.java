@@ -627,6 +627,7 @@ public class InAppBrowser extends CordovaPlugin {
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
                 back.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
+                back.setCropToPadding(true);
                 back.setContentDescription("Back Button");
                 back.setId(2);
                 
