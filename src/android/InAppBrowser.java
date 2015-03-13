@@ -45,6 +45,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -610,25 +611,29 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.setId(1);
 
                 // Back button
-                Button back = new Button(cordova.getActivity());
+                // 
+                // Drawable drawable = getResources().getDrawable(R.drawable.s_vit);
+                // drawable.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()*0.5), 
+                //                          (int)(drawable.getIntrinsicHeight()*0.5));
+                // ScaleDrawable sd = new ScaleDrawable(drawable, 0, scaleWidth, scaleHeight);
+                // Button btn = findViewbyId(R.id.yourbtnID);
+                // btn.setCompoundDrawables(sd.getDrawable(), null, null, null);
+                // 
+
+                Resources activityRes = cordova.getActivity().getResources();
+
+                Button back = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
-                // back.setPadding(this.dpToPixels(4), this.dpToPixels(8), this.dpToPixels(4), this.dpToPixels(8));
                 back.setContentDescription("Back Button");
                 back.setId(2);
-                Resources activityRes = cordova.getActivity().getResources();
+                
                 int backResId = activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName());
                 Drawable backIcon = activityRes.getDrawable(backResId);
-                backIcon.setBoundsInParent(new Rect(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10)));
-                if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    back.setBackgroundDrawable(backIcon);
-                }
-                else
-                {
-                    back.setBackground(backIcon);
-                }
+                // backIcon.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()*0.1), (int)(drawable.getIntrinsicHeight()*0.1));
+
+                back.setImageResource(backResId);
                 back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         goBack();
