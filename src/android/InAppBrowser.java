@@ -624,7 +624,7 @@ public class InAppBrowser extends CordovaPlugin {
                 Resources activityRes = cordova.getActivity().getResources();
 
                 ImageButton back = new ImageButton(cordova.getActivity());
-                RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(30, 30);
+                RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(30), this.dpToPixels(30));
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
                 back.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
