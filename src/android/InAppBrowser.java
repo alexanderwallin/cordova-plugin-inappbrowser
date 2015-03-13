@@ -628,20 +628,20 @@ public class InAppBrowser extends CordovaPlugin {
                 int buttonWidth  = this.dpToPixels(30);
                 int buttonHeight = this.dpToPixels(40);
 
-                back = new ImageButton(cordova.getActivity());
+                this.back = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                back.setLayoutParams(backLayoutParams);
-                back.setPadding(0, this.dpToPixels(10), 0, this.dpToPixels(10));
-                back.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-                // back.setBackgroundResource(0);
-                back.setContentDescription("Back Button");
-                back.setId(2);
-                back.setImageResource(activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName()));
-                back.setBackgroundResource(0);
-                back.setAlpha(0.25);
+                this.back.setLayoutParams(this.backLayoutParams);
+                this.back.setPadding(0, this.dpToPixels(10), 0, this.dpToPixels(10));
+                this.back.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                // this.back.setBackgroundResource(0);
+                this.back.setContentDescription("Back Button");
+                this.back.setId(2);
+                this.back.setImageResource(activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName()));
+                this.back.setBackgroundResource(0);
+                this.back.setAlpha(0.25);
 
-                back.setOnClickListener(new View.OnClickListener() {
+                this.back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         goBack();
                     }
