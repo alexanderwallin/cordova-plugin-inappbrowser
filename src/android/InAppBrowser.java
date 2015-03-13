@@ -580,7 +580,7 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Title and url container
                 RelativeLayout pageInfoContainer = new RelativeLayout(cordova.getActivity());
-                RelativeLayout.LayoutParams pageInfoLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                RelativeLayout.LayoutParams pageInfoLayoutParams = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
                 pageInfoLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 pageInfoContainer.setLayoutParams(pageInfoLayoutParams);
                 pageInfoContainer.setHorizontalGravity(Gravity.LEFT);
