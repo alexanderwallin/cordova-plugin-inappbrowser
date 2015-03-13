@@ -588,7 +588,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(5), this.dpToPixels(8), this.dpToPixels(5));
                 pageInfoContainer.setId(10);
 
-                pageInfoContainer.setBackgroundColor(angular.graphics.Color.argb(255, 240, 180, 0));
+                pageInfoContainer.setBackgroundColor(android.graphics.Color.argb(255, 240, 180, 0));
 
                 // Page title label
                 pageTitle = new TextView(cordova.getActivity());
