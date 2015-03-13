@@ -637,6 +637,11 @@ public class InAppBrowser extends CordovaPlugin {
                 
                 int backResId = activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName());
                 back.setImageResource(backResId);
+                if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
+                    back.setBackgroundDrawable(0);
+                else
+                    back.setBackground(0);
+                
                 back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         goBack();
@@ -655,6 +660,11 @@ public class InAppBrowser extends CordovaPlugin {
 
                 int fwdResId = activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName());
                 forward.setImageResource(fwdResId);
+                if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
+                    forward.setBackgroundDrawable(0);
+                else
+                    forward.setBackground(0);
+
                 forward.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         goForward();
@@ -673,6 +683,11 @@ public class InAppBrowser extends CordovaPlugin {
 
                 int closeResId = activityRes.getIdentifier("close", "drawable", cordova.getActivity().getPackageName());
                 close.setImageResource(closeResId);
+                if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
+                    close.setBackgroundDrawable(0);
+                else
+                    close.setBackground(0);
+
                 close.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         closeDialog();
