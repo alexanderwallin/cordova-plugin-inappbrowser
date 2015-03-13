@@ -587,8 +587,6 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
                 pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(5), this.dpToPixels(8), this.dpToPixels(5));
                 pageInfoContainer.setId(10);
-                // pageInfoContainer.setOrientation(LinearLayout.HORIZONTAL);
-                pageInfoContainer.setBackgroundColor(android.graphics.Color.argb(255, 240, 180, 0));
 
                 // Page title label
                 pageTitle = new TextView(cordova.getActivity());
@@ -596,7 +594,8 @@ public class InAppBrowser extends CordovaPlugin {
                 pageTitle.setLayoutParams(pageTitleLayoutParams);
                 pageTitle.setId(11);
                 pageTitle.setSingleLine(true);
-                pageTitle.setText("Page title");
+                pageTitle.setText("Laddar...");
+                pageTitle.setEllipsize(TextUtils.TruncateAt.END);
                 pageTitle.setTextColor(android.graphics.Color.argb(255, 68, 68, 68));
                 pageTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 pageTitle.setTypeface(android.graphics.Typeface.defaultFromStyle(android.graphics.Typeface.BOLD));
@@ -609,6 +608,7 @@ public class InAppBrowser extends CordovaPlugin {
                 urlLabel.setId(4);
                 urlLabel.setSingleLine(true);
                 urlLabel.setText(url);
+                urlLabel.setEllipsize(TextUtils.TruncateAt.END);
                 urlLabel.setTextColor(android.graphics.Color.argb(255, 180, 180, 180));
                 urlLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
                 urlLabel.setGravity(Gravity.LEFT | Gravity.BOTTOM);
