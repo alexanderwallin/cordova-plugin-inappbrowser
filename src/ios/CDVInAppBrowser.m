@@ -798,6 +798,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(rePositionViews)
+                                                 name:UIApplicationDidChangeStatusBarFrameNotification
+                                               object:nil];
 }
 
 - (void)viewDidUnload
