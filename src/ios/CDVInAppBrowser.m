@@ -874,6 +874,7 @@
 - (float) getStatusBarOffset {
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
     float statusBarOffset = IsAtLeastiOSVersion(@"7.0") ? MIN(statusBarFrame.size.width, statusBarFrame.size.height) : 0.0;
+    NSLog(@"getStatusBarOffset: %f", statusBarOffset);
     return statusBarOffset;
 }
 
