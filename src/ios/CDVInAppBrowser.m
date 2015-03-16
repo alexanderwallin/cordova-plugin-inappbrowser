@@ -884,8 +884,10 @@
 }
 
 - (void) rePositionViews {
+    NSLog(@"reposition views");
+
     if ([_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop]) {
-        [self.webView setFrame:CGRectMake(self.webView.frame.origin.x, TOOLBAR_HEIGHT, self.webView.frame.size.width, self.webView.frame.size.height)];
+        [self.webView setFrame:CGRectMake(self.webView.frame.origin.x, TOOLBAR_HEIGHT, self.webView.frame.size.width, self.view.frame.size.height - 20.0)];
         [self.toolbar setFrame:CGRectMake(self.toolbar.frame.origin.x, 20.0, self.toolbar.frame.size.width, self.toolbar.frame.size.height)];
     }
 }
