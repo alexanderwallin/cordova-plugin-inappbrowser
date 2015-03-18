@@ -654,7 +654,7 @@
     CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
 
     self.toolbarPlain = [[UIView alloc] initWithFrame:toolbarFrame];
-    self.toolbarPlain.backgroundColor = [UIColor greenColor];
+    self.toolbarPlain.backgroundColor = toolbarBg;
     [self.toolbarPlain addSubview:self.closeButton];
     [self.toolbarPlain addSubview:divider1];
     [self.toolbarPlain addSubview:self.pageTitle];
