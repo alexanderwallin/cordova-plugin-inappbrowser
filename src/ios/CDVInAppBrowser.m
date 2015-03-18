@@ -683,10 +683,10 @@
     noSpace5.width = -10.0;
     noSpace6.width = -10.0;
 
-    UIBarButtonItem *aSpace1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    aSpace1.width = 10.0;
+    UIView *aSpace1View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 10.0, TOOLBAR_HEIGHT)];
+    UIBarButtonItem *aSpace1 = [[UIBarButtonItem alloc] initWithCustomView:aSpace1View];
 
-    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, noSpace1, divider1, self.pageTitle, aSpace1, divider2, noSpace4, self.backButton, noSpace5, divider3, noSpace6, self.forwardButton, fixedSpaceButtonRight]];
+    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, noSpace1, divider1, self.pageTitle, flexibleSpaceButtonRight, aSpace1, divider2, noSpace4, self.backButton, noSpace5, divider3, noSpace6, self.forwardButton, fixedSpaceButtonRight]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
