@@ -581,32 +581,32 @@
     self.closeButton = [[UIButton alloc] initWithFrame:frameCloseButton];
     NSString *closeButtonBase64String = @"iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAAAXNSR0IArs4c6QAAAuFJREFUeAHt3VFypCAQBuBsLrU5Wt7ikTcnyNKT/BNlEAEZpLt/qpgWREq/ocAHJnl5Saf3UP2WPsXahMDfUCdmRWkJrb5C/gxZLmTKC4jRv5DFbAk5m5ZwVhoiEznLdRuAwIWZGCbTEmrRaB2JnORK4sJNLDdpCSWcTEUib7iyuPD7wCUyOaMyFwWZC9/3uhRPC3tut4VP0ARvr9G63vtIXi9oa5fU8WZAEjmMsIPUjIt+pQOOZGhsYy2utE8mIj+ydMNF10SGRN2CVrU+EfmJuPj+PCN3nxaAGkePyMNwge0JeTiuJ+TLcD0gX45rGXkaXIvI0+FaQp4W1wLy9LiakdXgakRWh6sJWS2uBmT1uDMjm8GdEdkc7kzIZnFnQDaPeyWyG9wrkN3hjkR2izsC2T1uC7Ls/xK4o0TcSEhASncQHSETN8JFsQcycaG5E88gE3cHNa5uQSZurHhQrkUu3fxctVfs4B7Vn64ZlanNznHd0eKoHqzlAXohEzejfxaZuBlcnGpFJi4EC2It8rS4rwUPq6HJHw03Ocs91o5evEHwtazgG2zFJfIAXCJnkM+OXOAicrpYYdfgytuCZEDmoiC7/211La60lyx4OVyccz2SW3CD6y0RGRI78QwuuiQyJKLYAxddEhkSP7EnLrom8hNxiTwA1z3yM6YFoMbR3XQxEhfYbpCvwHWDfCWueeQZcM0iz4RrDnlGXDPIM+OqR9aAqxZZE646ZI24apA1406PbAG3BXnI7iFLuNMhW8SdBtky7uXIHnDXyKX7LrrMyZ5whyN7xB2G7Bn36cjEBXHdX8EumpOJ+4uLo24m3TrCnRmKp21Od2AIc+9Rmo2aL9y7E8P1TVbyD42wnzYXiyZxw7h4tBpksb2lJXwS99ui5LMEWUw36SOUUsgcuRumeyGHvNxbRQcxMnEjoKiYQl6iNg9FIBP3gSZZsUZeki0SlTI5y4VMZQJidV/Q1pf8B+aS7SrsrkmwAAAAAElFTkSuQmCC";
     UIImage *closeButtonImage = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:closeButtonBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters]];
-    [closeButton setContentEdgeInsets:UIEdgeInsetsMake(14.0, 14.0, 14.0, 14.0)];
-    [closeButton setImage:closeButtonImage forState:UIControlStateNormal];
-    [closeButton setBackgroundColor:[UIColor redColor]];
-    [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    [self.closeButton setContentEdgeInsets:UIEdgeInsetsMake(14.0, 14.0, 14.0, 14.0)];
+    [self.closeButton setImage:closeButtonImage forState:UIControlStateNormal];
+    [self.closeButton setBackgroundColor:[UIColor redColor]];
+    [self.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
 
     // Back button
     NSString *backArrowImageBase64String = @"iVBORw0KGgoAAAANSUhEUgAAADIAAABYCAYAAAC3UKSNAAAAAXNSR0IArs4c6QAAAU5JREFUeAHtm0sKwlAMRYu7cSO6ECd+Fq47cKivgwuF1sY3MNzUI5SgEZJ7jg+k0GGo9Tq2dS+1Vp5vO4Z4tuvVrtu8XeOTaYgxSMkwSyHKhVkLUSbMNyEU5uR6QnpC3FuIvWMQQrhY+TsTjy2cCUL88vz0nAlMYCIgwM8pAJTWxkQa6mAQJgJAaW1MpKEOBmEiAJTWxkQa6mDQofV1G1O3Zj5V27/ihAgsp7UxkYY6GISJAFBaGxNpqINBmAgApbUxkYY6GISJAFBaexMmdmm4kgZtwopYEUYk3Cpm3IxoH8yIhFvFjJsR7YMZkXCrmHEzon0wIxJuFTNuRrQPZkTCrWLGzYj2wYxIuFXMuBnRPpgRCbeKGTcj2gczIuFWMeNmRPtgRiTcKmbcjGifHjO2Dx33hLnqy+51zUyZEIK8FKZciKUwZUNMw5z1ZlrfQaqRJsc1vK8AAAAASUVORK5CYII=";
     NSData *backArrowImageData = [[NSData alloc] initWithBase64EncodedString:backArrowImageBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
     UIImage *backArrowImage = [UIImage imageWithData:backArrowImageData];
     self.backButton = [[UIButton alloc] initWithFrame:frameNavBack];
-    [backButton setContentEdgeInsets:buttonInsets];
-    [backButton setImage:backArrowImage forState:UIControlStateNormal];
-    [backButton setBackgroundColor:[UIColor yellowColor]];
-    [backButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setEnabled:NO];
+    [self.backButton setContentEdgeInsets:buttonInsets];
+    [self.backButton setImage:backArrowImage forState:UIControlStateNormal];
+    [self.backButton setBackgroundColor:[UIColor yellowColor]];
+    [self.backButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+    [self.backButton setEnabled:NO];
 
     // Forward button
     NSString *forwArrowImageBase64String = @"iVBORw0KGgoAAAANSUhEUgAAADIAAABYCAYAAAC3UKSNAAAAAXNSR0IArs4c6QAAAYNJREFUeAHtnEFOAzEMRYEegVPAQehB2EA5M/vegCU4SJasEha2HOln9EaKEqVj9///pouOOj3dzY9323608Tl/eY/dD5P5bePLxnkPyX9VXmxrmPCxpZlbE1ua+c/EVmZew6Xkwmez/GX2bEaumLEE1A7IqBFxPZDxJNRmyKgRcT2Q8STUZsioEXE9kPEk1GbIqBFxPZDxJNRmyKgRcT2Q8STU5iyZFzUDUc+hzDyZs8x9M2kymInXqdIaMko0ohbIxDSU1pBRohG1QCamobSGjBKNqCVN5iFWC63vhbSUpRziOwwmyvybCyHRHGi5HSTK0TUXQqI50HI7SJSjay6ERHOg5XaQKEfXXAiJ5kDL7SBRjq65EBLNgZbbpW/blN9pYSEmFoabag2JVFwLT4bEwnBTrSGRimvhyZBYGG6qNSRScS08GRILw021PgSJ4Tjz0LH07w2HGf9XgdlT02NvPDktb2IYGcfFxszIViZ+nUzMbGni1szWJtzMmy22+UwM0T/QxZICjR2eTQAAAABJRU5ErkJggg==";
     NSData *forwArrowImageData = [[NSData alloc] initWithBase64EncodedString:forwArrowImageBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
     UIImage *forwArrowImage = [UIImage imageWithData:forwArrowImageData];
     self.forwardButton = [[UIButton alloc] initWithFrame:frameNavForward];
-    [forwardButton setContentEdgeInsets:buttonInsets];
-    [forwardButton setImage:forwArrowImage forState:UIControlStateNormal];
-    [forwardButton setBackgroundColor:[UIColor orangeColor]];
-    [forwardButton addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
-    [forwardButton setEnabled:NO];
+    [self.forwardButton setContentEdgeInsets:buttonInsets];
+    [self.forwardButton setImage:forwArrowImage forState:UIControlStateNormal];
+    [self.forwardButton setBackgroundColor:[UIColor orangeColor]];
+    [self.forwardButton addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
+    [self.forwardButton setEnabled:NO];
 
     // self.forwardButton = [[UIBarButtonItem alloc] initWithCustomView:forwButton];
     // self.forwardButton.enabled = YES;
