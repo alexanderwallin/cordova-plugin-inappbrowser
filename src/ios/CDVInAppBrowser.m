@@ -491,7 +491,7 @@
     CGRect framePageInfo    = CGRectMake(closeButtonWidth + dividerWidth + pageInfoPadding, 0.0, viewBounds.size.width - (2 * navButtonWidth) - closeButtonWidth - (3 * dividerWidth) - (2 * pageInfoPadding), TOOLBAR_HEIGHT);
     CGRect frameDivider2    = CGRectMake(viewBounds.size.width - (2 * navButtonWidth) - (2 * dividerWidth), 0.0, dividerWidth, TOOLBAR_HEIGHT);
     CGRect frameNavBack     = CGRectMake(viewBounds.size.width - (2 * navButtonWidth) - dividerWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
-    CGRect frameDivider3    = CGRectMake(videBounds.size.width - navButtonWidth - dividerWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
+    CGRect frameDivider3    = CGRectMake(viewBounds.size.width - navButtonWidth - dividerWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
     CGRect frameNavForward  = CGRectMake(viewBounds.size.width - navButtonWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
 
     // Colors
