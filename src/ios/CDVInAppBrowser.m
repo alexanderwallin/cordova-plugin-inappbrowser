@@ -657,7 +657,12 @@
     UIBarButtonItem* fixedSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButtonRight.width = -16.0;
 
-    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, flexibleSpaceButtonRight, self.backButton, self.forwardButton, fixedSpaceButtonRight]];
+    // Dividers
+    UIView *divider1View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
+    [divider1 setBackgroundColor:[UIColor blackColor]];
+    UIBarButtonItem *divider1 = [[UIBarButtonItem alloc] initWithCustomView:divider1View];
+
+    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, flexibleSpaceButtonRight, self.backButton, divider1, self.forwardButton, fixedSpaceButtonRight]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
