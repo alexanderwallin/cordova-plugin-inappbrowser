@@ -494,6 +494,10 @@
     CGRect frameNavForward  = CGRectMake(viewBounds.size.width - navButtonWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
     CGRect frameDivider3    = CGRectMake(closeButtonWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
 
+    // Colors
+    UIColor *toolbarBg     = [UIColor colorWithWhite:0.937 alpha:1.0];
+    UIColor *toolbarShadow = [UIColor colorWithWhite:0.843 alpha:1.0];
+
     CGRect containerInitFrame = self.view.bounds;
     // containerInitFrame.origin.y = 100; // containerInitFrame.size.height;
     self.viewContainer = [[UIView alloc] initWithFrame:containerInitFrame];
@@ -508,10 +512,10 @@
     [self.viewContainer sendSubviewToBack:self.webView];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:0.0];
-    self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.view.backgroundColor = toolbarBg;
 
     self.webView.delegate = _webViewDelegate;
-    self.webView.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    self.webView.backgroundColor = toolbarBg;
 
     self.webView.clearsContextBeforeDrawing = YES;
     self.webView.clipsToBounds = YES;
@@ -583,7 +587,7 @@
     UIImage *closeButtonImage = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:closeButtonBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters]];
     [self.closeButton setContentEdgeInsets:UIEdgeInsetsMake(14.0, 14.0, 14.0, 14.0)];
     [self.closeButton setImage:closeButtonImage forState:UIControlStateNormal];
-    [self.closeButton setBackgroundColor:[UIColor redColor]];
+    // [self.closeButton setBackgroundColor:[UIColor redColor]];
     [self.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
 
     // Back button
@@ -593,7 +597,7 @@
     self.backButton = [[UIButton alloc] initWithFrame:frameNavBack];
     [self.backButton setContentEdgeInsets:buttonInsets];
     [self.backButton setImage:backArrowImage forState:UIControlStateNormal];
-    [self.backButton setBackgroundColor:[UIColor yellowColor]];
+    // [self.backButton setBackgroundColor:[UIColor yellowColor]];
     [self.backButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     [self.backButton setEnabled:NO];
 
@@ -604,7 +608,7 @@
     self.forwardButton = [[UIButton alloc] initWithFrame:frameNavForward];
     [self.forwardButton setContentEdgeInsets:buttonInsets];
     [self.forwardButton setImage:forwArrowImage forState:UIControlStateNormal];
-    [self.forwardButton setBackgroundColor:[UIColor orangeColor]];
+    // [self.forwardButton setBackgroundColor:[UIColor orangeColor]];
     [self.forwardButton addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
     [self.forwardButton setEnabled:NO];
 
@@ -620,7 +624,7 @@
     UIView *pageInfoView = [[UIView alloc] initWithFrame:framePageInfo];
     // pageInfoView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-    self.pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 10.0, pageInfoView.bounds.size.width, 16.0)];
+    self.pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 8.0, pageInfoView.bounds.size.width, 16.0)];
     self.pageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.pageTitleLabel.text      = @"Laddar...";
     self.pageTitleLabel.font      = [UIFont boldSystemFontOfSize:13];
@@ -628,7 +632,7 @@
 
     self.pageUrlLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 26.0, pageInfoView.bounds.size.width, 10.0)];
     self.pageUrlLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.pageUrlLabel.text      = @"http://www.example.com";
+    self.pageUrlLabel.text      = @"";
     self.pageUrlLabel.font      = [UIFont systemFontOfSize:10];
     self.pageUrlLabel.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
 
@@ -637,6 +641,14 @@
 
     self.pageTitle = pageInfoView; // [[UIBarButtonItem alloc] initWithCustomView:pageInfoView];
 
+    // Dividers
+    UIView *divider1 = [[UIView alloc] initWithFrame:frameDivider1];
+    UIView *divider2 = [[UIView alloc] initWithFrame:frameDivider2];
+    UIView *divider3 = [[UIView alloc] initWithFrame:frameDivider3];
+    divider1.backgroundColor = toolbarShadow;
+    divider2.backgroundColor = toolbarShadow;
+    divider3.backgroundColor = toolbarShadow;
+
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 20.0;
     CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
@@ -644,11 +656,11 @@
     self.toolbarPlain = [[UIView alloc] initWithFrame:toolbarFrame];
     self.toolbarPlain.backgroundColor = [UIColor greenColor];
     [self.toolbarPlain addSubview:self.closeButton];
-    // [self.toolbarPlain addSubview:];
+    [self.toolbarPlain addSubview:divider1];
     [self.toolbarPlain addSubview:self.pageTitle];
-    // [self.toolbarPlain addSubview:];
+    [self.toolbarPlain addSubview:divider2];
     [self.toolbarPlain addSubview:self.backButton];
-    // [self.toolbarPlain addSubview:];
+    [self.toolbarPlain addSubview:divider3];
     [self.toolbarPlain addSubview:self.forwardButton];
 
     // self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
