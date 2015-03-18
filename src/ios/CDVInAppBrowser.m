@@ -651,9 +651,9 @@
 
     // Fixed space
     UIBarButtonItem* fixedSpaceButtonLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpaceButton.width = 0.0;
+    fixedSpaceButtonLeft.width = 0.0;
     UIBarButtonItem* fixedSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpaceButton2.width = 0.0;
+    fixedSpaceButtonRight.width = 0.0;
 
     [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, self.backButton, self.forwardButton, fixedSpaceButtonRight]];
 
