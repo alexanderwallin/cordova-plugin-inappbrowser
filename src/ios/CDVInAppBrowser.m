@@ -585,6 +585,7 @@
     UIButton *forwButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 44)];
     [forwButton setContentEdgeInsets:buttonInsets];
     [forwButton setImage:forwArrowImage forState:UIControlStateNormal];
+    [forwButton setBackgroundColor:[UIColor orangeColor]];
     [forwButton addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
 
     self.forwardButton = [[UIBarButtonItem alloc] initWithCustomView:forwButton];
@@ -655,7 +656,7 @@
     UIBarButtonItem* fixedSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButtonRight.width = 0.0;
 
-    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, self.backButton, self.forwardButton, fixedSpaceButtonRight]];
+    [self.toolbar setItems:@[flexibleSpaceButtonLeft, self.closeButton, self.pageTitle, self.backButton, self.forwardButton]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
