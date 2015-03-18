@@ -665,9 +665,9 @@
     UIBarButtonItem *noSpace1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     UIBarButtonItem *noSpace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     UIBarButtonItem *noSpace3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    noSpace1.width = -8.0;
-    noSpace2.width = -8.0;
-    noSpace3.width = -8.0;
+    noSpace1.width = -10.0;
+    noSpace2.width = -10.0;
+    noSpace3.width = -10.0;
 
     [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, flexibleSpaceButtonRight, self.backButton, noSpace1, divider1, noSpace2, self.forwardButton, fixedSpaceButtonRight]];
 
