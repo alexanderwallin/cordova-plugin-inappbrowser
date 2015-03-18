@@ -641,23 +641,8 @@
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
     CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
 
-    // self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
-
-    self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
-    self.toolbar.alpha = 1.000;
-    self.toolbar.autoresizesSubviews = YES;
-    self.toolbar.autoresizingMask = toolbarIsAtBottom ? (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin) : UIViewAutoresizingFlexibleWidth;
-    self.toolbar.barStyle = UIBarStyleBlack;
-    self.toolbar.barTintColor = [UIColor colorWithWhite:0.909 alpha:1.0];
-    self.toolbar.clearsContextBeforeDrawing = NO;
-    self.toolbar.clipsToBounds = NO;
-    self.toolbar.contentMode = UIViewContentModeScaleToFill;
-    self.toolbar.hidden = NO;
-    self.toolbar.multipleTouchEnabled = NO;
-    self.toolbar.opaque = NO;
-    self.toolbar.userInteractionEnabled = YES;
-
-    self.toolbarPlain = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, viewBounds.size.width, TOOLBAR_HEIGHT)];
+    self.toolbarPlain = [[UIView alloc] initWithFrame:toolbarFrame];
+    self.toolbarPlain.backgroundColor = [UIColor greenColor];
     [self.toolbarPlain addSubview:self.closeButton];
     // [self.toolbarPlain addSubview:];
     [self.toolbarPlain addSubview:self.pageTitle];
@@ -666,47 +651,63 @@
     // [self.toolbarPlain addSubview:];
     [self.toolbarPlain addSubview:self.forwardButton];
 
-    // Flexible space
-    UIBarButtonItem* flexibleSpaceButtonLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem* flexibleSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    // self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
 
-    // Fixed space
-    UIBarButtonItem* fixedSpaceButtonLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpaceButtonLeft.width = -16.0;
-    UIBarButtonItem* fixedSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpaceButtonRight.width = -16.0;
+    // self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
+    // self.toolbar.alpha = 1.000;
+    // self.toolbar.autoresizesSubviews = YES;
+    // self.toolbar.autoresizingMask = toolbarIsAtBottom ? (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin) : UIViewAutoresizingFlexibleWidth;
+    // self.toolbar.barStyle = UIBarStyleBlack;
+    // self.toolbar.barTintColor = [UIColor colorWithWhite:0.909 alpha:1.0];
+    // self.toolbar.clearsContextBeforeDrawing = NO;
+    // self.toolbar.clipsToBounds = NO;
+    // self.toolbar.contentMode = UIViewContentModeScaleToFill;
+    // self.toolbar.hidden = NO;
+    // self.toolbar.multipleTouchEnabled = NO;
+    // self.toolbar.opaque = NO;
+    // self.toolbar.userInteractionEnabled = YES;
 
-    // Dividers
-    UIView *divider1View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
-    [divider1View setBackgroundColor:[UIColor blackColor]];
-    UIBarButtonItem *divider1 = [[UIBarButtonItem alloc] initWithCustomView:divider1View];
+    // // Flexible space
+    // UIBarButtonItem* flexibleSpaceButtonLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    // UIBarButtonItem* flexibleSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
-    UIView *divider2View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
-    [divider2View setBackgroundColor:[UIColor blackColor]];
-    UIBarButtonItem *divider2 = [[UIBarButtonItem alloc] initWithCustomView:divider2View];
+    // // Fixed space
+    // UIBarButtonItem* fixedSpaceButtonLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    // fixedSpaceButtonLeft.width = -16.0;
+    // UIBarButtonItem* fixedSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    // fixedSpaceButtonRight.width = -16.0;
 
-    UIView *divider3View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
-    [divider3View setBackgroundColor:[UIColor blackColor]];
-    UIBarButtonItem *divider3 = [[UIBarButtonItem alloc] initWithCustomView:divider3View];
+    // // Dividers
+    // UIView *divider1View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
+    // [divider1View setBackgroundColor:[UIColor blackColor]];
+    // UIBarButtonItem *divider1 = [[UIBarButtonItem alloc] initWithCustomView:divider1View];
 
-    UIBarButtonItem *noSpace1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    UIBarButtonItem *noSpace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    UIBarButtonItem *noSpace3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    UIBarButtonItem *noSpace4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    UIBarButtonItem *noSpace5 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    UIBarButtonItem *noSpace6 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    noSpace1.width = -10.0;
-    noSpace2.width = -10.0;
-    noSpace3.width = -10.0;
-    noSpace4.width = -10.0;
-    noSpace5.width = -10.0;
-    noSpace6.width = -10.0;
+    // UIView *divider2View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
+    // [divider2View setBackgroundColor:[UIColor blackColor]];
+    // UIBarButtonItem *divider2 = [[UIBarButtonItem alloc] initWithCustomView:divider2View];
 
-    UIView *aSpace1View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 10.0, TOOLBAR_HEIGHT)];
-    [aSpace1View setBackgroundColor:[UIColor blueColor]];
-    UIBarButtonItem *aSpace1 = [[UIBarButtonItem alloc] initWithCustomView:aSpace1View];
+    // UIView *divider3View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
+    // [divider3View setBackgroundColor:[UIColor blackColor]];
+    // UIBarButtonItem *divider3 = [[UIBarButtonItem alloc] initWithCustomView:divider3View];
 
-    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, noSpace1, divider1, self.pageTitle, flexibleSpaceButtonRight, aSpace1, divider2, noSpace4, self.backButton, noSpace5, divider3, noSpace6, self.forwardButton, fixedSpaceButtonRight]];
+    // UIBarButtonItem *noSpace1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    // UIBarButtonItem *noSpace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    // UIBarButtonItem *noSpace3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    // UIBarButtonItem *noSpace4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    // UIBarButtonItem *noSpace5 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    // UIBarButtonItem *noSpace6 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    // noSpace1.width = -10.0;
+    // noSpace2.width = -10.0;
+    // noSpace3.width = -10.0;
+    // noSpace4.width = -10.0;
+    // noSpace5.width = -10.0;
+    // noSpace6.width = -10.0;
+
+    // UIView *aSpace1View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 10.0, TOOLBAR_HEIGHT)];
+    // [aSpace1View setBackgroundColor:[UIColor blueColor]];
+    // UIBarButtonItem *aSpace1 = [[UIBarButtonItem alloc] initWithCustomView:aSpace1View];
+
+    // [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, noSpace1, divider1, self.pageTitle, flexibleSpaceButtonRight, aSpace1, divider2, noSpace4, self.backButton, noSpace5, divider3, noSpace6, self.forwardButton, fixedSpaceButtonRight]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     // [self.viewContainer addSubview:self.toolbar];
