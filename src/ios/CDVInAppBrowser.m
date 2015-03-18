@@ -653,7 +653,7 @@
     UIBarButtonItem* fixedSpaceButton2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButton2.width = 10;
 
-    [self.toolbar setItems:@[self.backButton, self.forwardButton, self.pageTitle, self.closeButton]];
+    [self.toolbar setItems:@[self.closeButton, self.pageTitle, self.backButton, self.forwardButton]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
