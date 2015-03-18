@@ -479,10 +479,20 @@
     CGRect viewBounds = self.view.bounds;
     CGRect webViewBounds = self.view.bounds;
 
-    // viewBounds.origin.y = 150.0;
-    // viewBounds.size.width = 200.0;
-    // viewBounds.size.height = 300.0;
-    // [self.view setFrame:viewBounds];
+    // Layout parameters
+    float closeButtonWidth = 44.0;
+    float navButtonWidth = 34.0;
+    float pageInfoPadding = 10.0;
+    float dividerWidth = 1.0;
+
+    // Frames
+    CGRect frameCloseButton = CGRectMake(0.0, 0.0, closeButtonWidth, TOOLBAR_HEIGHT);
+    CGRect frameDivider1    = CGRectMake(closeButtonWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
+    CGRect framePageInfo    = CGRectMake(closeButtonWidth + dividerWidth + pageInfoPadding, 0.0, viewBounds.size.width - (2 * navButtonWidth) - closeButtonWidth - (3 * dividerWidth) - (2 * pageInfoPadding), TOOLBAR_HEIGHT);
+    CGRect frameNavBack     = CGRectMake(viewBounds.size.width - (2 * navButtonWidth) - dividerWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
+    CGRect frameDivider2    = CGRectMake(viewBounds.size.width - navButtonWidth - dividerWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
+    CGRect frameNavForward  = CGRectMake(viewBounds.size.width - navButtonWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
+    CGRect frameDivider3    = CGRectMake(closeButtonWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
 
     CGRect containerInitFrame = self.view.bounds;
     // containerInitFrame.origin.y = 100; // containerInitFrame.size.height;
@@ -490,8 +500,8 @@
     
     BOOL toolbarIsAtBottom = ![_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop];
     webViewBounds.size.height -= _browserOptions.location ? FOOTER_HEIGHT : TOOLBAR_HEIGHT;
-    self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
 
+    self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
     self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 
     [self.viewContainer addSubview:self.webView];
@@ -525,17 +535,6 @@
     self.spinner.opaque = NO;
     self.spinner.userInteractionEnabled = NO;
     [self.spinner stopAnimating];
-
-    // Close button
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    NSString *closeButtonBase64String = @"iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAAAXNSR0IArs4c6QAAAuFJREFUeAHt3VFypCAQBuBsLrU5Wt7ikTcnyNKT/BNlEAEZpLt/qpgWREq/ocAHJnl5Saf3UP2WPsXahMDfUCdmRWkJrb5C/gxZLmTKC4jRv5DFbAk5m5ZwVhoiEznLdRuAwIWZGCbTEmrRaB2JnORK4sJNLDdpCSWcTEUib7iyuPD7wCUyOaMyFwWZC9/3uhRPC3tut4VP0ARvr9G63vtIXi9oa5fU8WZAEjmMsIPUjIt+pQOOZGhsYy2utE8mIj+ydMNF10SGRN2CVrU+EfmJuPj+PCN3nxaAGkePyMNwge0JeTiuJ+TLcD0gX45rGXkaXIvI0+FaQp4W1wLy9LiakdXgakRWh6sJWS2uBmT1uDMjm8GdEdkc7kzIZnFnQDaPeyWyG9wrkN3hjkR2izsC2T1uC7Ls/xK4o0TcSEhASncQHSETN8JFsQcycaG5E88gE3cHNa5uQSZurHhQrkUu3fxctVfs4B7Vn64ZlanNznHd0eKoHqzlAXohEzejfxaZuBlcnGpFJi4EC2It8rS4rwUPq6HJHw03Ocs91o5evEHwtazgG2zFJfIAXCJnkM+OXOAicrpYYdfgytuCZEDmoiC7/211La60lyx4OVyccz2SW3CD6y0RGRI78QwuuiQyJKLYAxddEhkSP7EnLrom8hNxiTwA1z3yM6YFoMbR3XQxEhfYbpCvwHWDfCWueeQZcM0iz4RrDnlGXDPIM+OqR9aAqxZZE646ZI24apA1406PbAG3BXnI7iFLuNMhW8SdBtky7uXIHnDXyKX7LrrMyZ5whyN7xB2G7Bn36cjEBXHdX8EumpOJ+4uLo24m3TrCnRmKp21Od2AIc+9Rmo2aL9y7E8P1TVbyD42wnzYXiyZxw7h4tBpksb2lJXwS99ui5LMEWUw36SOUUsgcuRumeyGHvNxbRQcxMnEjoKiYQl6iNg9FIBP3gSZZsUZeki0SlTI5y4VMZQJidV/Q1pf8B+aS7SrsrkmwAAAAAElFTkSuQmCC";
-    UIImage *closeButtonImage = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:closeButtonBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters]];
-    [closeButton setContentEdgeInsets:UIEdgeInsetsMake(14.0, 14.0, 14.0, 14.0)];
-    [closeButton setImage:closeButtonImage forState:UIControlStateNormal];
-    [closeButton setBackgroundColor:[UIColor redColor]];
-    [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
-    self.closeButton = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
-    self.closeButton.enabled = YES;
 
     // URL label
     CGFloat labelInset = 10.0;
@@ -578,37 +577,48 @@
 
     UIEdgeInsets buttonInsets = UIEdgeInsetsMake(14.0, 12.0, 14.0, 12.0);
 
-    // Forward button
-    NSString *forwArrowImageBase64String = @"iVBORw0KGgoAAAANSUhEUgAAADIAAABYCAYAAAC3UKSNAAAAAXNSR0IArs4c6QAAAYNJREFUeAHtnEFOAzEMRYEegVPAQehB2EA5M/vegCU4SJasEha2HOln9EaKEqVj9///pouOOj3dzY9323608Tl/eY/dD5P5bePLxnkPyX9VXmxrmPCxpZlbE1ua+c/EVmZew6Xkwmez/GX2bEaumLEE1A7IqBFxPZDxJNRmyKgRcT2Q8STUZsioEXE9kPEk1GbIqBFxPZDxJNRmyKgRcT2Q8STU5iyZFzUDUc+hzDyZs8x9M2kymInXqdIaMko0ohbIxDSU1pBRohG1QCamobSGjBKNqCVN5iFWC63vhbSUpRziOwwmyvybCyHRHGi5HSTK0TUXQqI50HI7SJSjay6ERHOg5XaQKEfXXAiJ5kDL7SBRjq65EBLNgZbbpW/blN9pYSEmFoabag2JVFwLT4bEwnBTrSGRimvhyZBYGG6qNSRScS08GRILw021PgSJ4Tjz0LH07w2HGf9XgdlT02NvPDktb2IYGcfFxszIViZ+nUzMbGni1szWJtzMmy22+UwM0T/QxZICjR2eTQAAAABJRU5ErkJggg==";
-    NSData *forwArrowImageData = [[NSData alloc] initWithBase64EncodedString:forwArrowImageBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    UIImage *forwArrowImage = [UIImage imageWithData:forwArrowImageData];
-    UIButton *forwButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 33, 44)];
-    [forwButton setContentEdgeInsets:buttonInsets];
-    [forwButton setImage:forwArrowImage forState:UIControlStateNormal];
-    [forwButton setBackgroundColor:[UIColor orangeColor]];
-    [forwButton addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
-
-    self.forwardButton = [[UIBarButtonItem alloc] initWithCustomView:forwButton];
-    self.forwardButton.enabled = YES;
-    self.forwardButton.imageInsets = UIEdgeInsetsZero;
+    // Close button
+    self.closeButton = [[UIButton alloc] initWithFrame:frameCloseButton];
+    NSString *closeButtonBase64String = @"iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAAAXNSR0IArs4c6QAAAuFJREFUeAHt3VFypCAQBuBsLrU5Wt7ikTcnyNKT/BNlEAEZpLt/qpgWREq/ocAHJnl5Saf3UP2WPsXahMDfUCdmRWkJrb5C/gxZLmTKC4jRv5DFbAk5m5ZwVhoiEznLdRuAwIWZGCbTEmrRaB2JnORK4sJNLDdpCSWcTEUib7iyuPD7wCUyOaMyFwWZC9/3uhRPC3tut4VP0ARvr9G63vtIXi9oa5fU8WZAEjmMsIPUjIt+pQOOZGhsYy2utE8mIj+ydMNF10SGRN2CVrU+EfmJuPj+PCN3nxaAGkePyMNwge0JeTiuJ+TLcD0gX45rGXkaXIvI0+FaQp4W1wLy9LiakdXgakRWh6sJWS2uBmT1uDMjm8GdEdkc7kzIZnFnQDaPeyWyG9wrkN3hjkR2izsC2T1uC7Ls/xK4o0TcSEhASncQHSETN8JFsQcycaG5E88gE3cHNa5uQSZurHhQrkUu3fxctVfs4B7Vn64ZlanNznHd0eKoHqzlAXohEzejfxaZuBlcnGpFJi4EC2It8rS4rwUPq6HJHw03Ocs91o5evEHwtazgG2zFJfIAXCJnkM+OXOAicrpYYdfgytuCZEDmoiC7/211La60lyx4OVyccz2SW3CD6y0RGRI78QwuuiQyJKLYAxddEhkSP7EnLrom8hNxiTwA1z3yM6YFoMbR3XQxEhfYbpCvwHWDfCWueeQZcM0iz4RrDnlGXDPIM+OqR9aAqxZZE646ZI24apA1406PbAG3BXnI7iFLuNMhW8SdBtky7uXIHnDXyKX7LrrMyZ5whyN7xB2G7Bn36cjEBXHdX8EumpOJ+4uLo24m3TrCnRmKp21Od2AIc+9Rmo2aL9y7E8P1TVbyD42wnzYXiyZxw7h4tBpksb2lJXwS99ui5LMEWUw36SOUUsgcuRumeyGHvNxbRQcxMnEjoKiYQl6iNg9FIBP3gSZZsUZeki0SlTI5y4VMZQJidV/Q1pf8B+aS7SrsrkmwAAAAAElFTkSuQmCC";
+    UIImage *closeButtonImage = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:closeButtonBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters]];
+    [closeButton setContentEdgeInsets:UIEdgeInsetsMake(14.0, 14.0, 14.0, 14.0)];
+    [closeButton setImage:closeButtonImage forState:UIControlStateNormal];
+    [closeButton setBackgroundColor:[UIColor redColor]];
+    [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
 
     // Back button
     NSString *backArrowImageBase64String = @"iVBORw0KGgoAAAANSUhEUgAAADIAAABYCAYAAAC3UKSNAAAAAXNSR0IArs4c6QAAAU5JREFUeAHtm0sKwlAMRYu7cSO6ECd+Fq47cKivgwuF1sY3MNzUI5SgEZJ7jg+k0GGo9Tq2dS+1Vp5vO4Z4tuvVrtu8XeOTaYgxSMkwSyHKhVkLUSbMNyEU5uR6QnpC3FuIvWMQQrhY+TsTjy2cCUL88vz0nAlMYCIgwM8pAJTWxkQa6mAQJgJAaW1MpKEOBmEiAJTWxkQa6mDQofV1G1O3Zj5V27/ihAgsp7UxkYY6GISJAFBaGxNpqINBmAgApbUxkYY6GISJAFBaexMmdmm4kgZtwopYEUYk3Cpm3IxoH8yIhFvFjJsR7YMZkXCrmHEzon0wIxJuFTNuRrQPZkTCrWLGzYj2wYxIuFXMuBnRPpgRCbeKGTcj2gczIuFWMeNmRPtgRiTcKmbcjGifHjO2Dx33hLnqy+51zUyZEIK8FKZciKUwZUNMw5z1ZlrfQaqRJsc1vK8AAAAASUVORK5CYII=";
     NSData *backArrowImageData = [[NSData alloc] initWithBase64EncodedString:backArrowImageBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
     UIImage *backArrowImage = [UIImage imageWithData:backArrowImageData];
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 33, 44)];
+    self.backButton = [[UIButton alloc] initWithFrame:frameNavBack];
     [backButton setContentEdgeInsets:buttonInsets];
     [backButton setImage:backArrowImage forState:UIControlStateNormal];
     [backButton setBackgroundColor:[UIColor yellowColor]];
     [backButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+    [backButton setEnabled:NO];
+
+    // Forward button
+    NSString *forwArrowImageBase64String = @"iVBORw0KGgoAAAANSUhEUgAAADIAAABYCAYAAAC3UKSNAAAAAXNSR0IArs4c6QAAAYNJREFUeAHtnEFOAzEMRYEegVPAQehB2EA5M/vegCU4SJasEha2HOln9EaKEqVj9///pouOOj3dzY9323608Tl/eY/dD5P5bePLxnkPyX9VXmxrmPCxpZlbE1ua+c/EVmZew6Xkwmez/GX2bEaumLEE1A7IqBFxPZDxJNRmyKgRcT2Q8STUZsioEXE9kPEk1GbIqBFxPZDxJNRmyKgRcT2Q8STU5iyZFzUDUc+hzDyZs8x9M2kymInXqdIaMko0ohbIxDSU1pBRohG1QCamobSGjBKNqCVN5iFWC63vhbSUpRziOwwmyvybCyHRHGi5HSTK0TUXQqI50HI7SJSjay6ERHOg5XaQKEfXXAiJ5kDL7SBRjq65EBLNgZbbpW/blN9pYSEmFoabag2JVFwLT4bEwnBTrSGRimvhyZBYGG6qNSRScS08GRILw021PgSJ4Tjz0LH07w2HGf9XgdlT02NvPDktb2IYGcfFxszIViZ+nUzMbGni1szWJtzMmy22+UwM0T/QxZICjR2eTQAAAABJRU5ErkJggg==";
+    NSData *forwArrowImageData = [[NSData alloc] initWithBase64EncodedString:forwArrowImageBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    UIImage *forwArrowImage = [UIImage imageWithData:forwArrowImageData];
+    self.forwardButton = [[UIButton alloc] initWithFrame:frameNavForward];
+    [forwardButton setContentEdgeInsets:buttonInsets];
+    [forwardButton setImage:forwArrowImage forState:UIControlStateNormal];
+    [forwardButton setBackgroundColor:[UIColor orangeColor]];
+    [forwardButton addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
+    [forwardButton setEnabled:NO];
+
+    // self.forwardButton = [[UIBarButtonItem alloc] initWithCustomView:forwButton];
+    // self.forwardButton.enabled = YES;
+    // self.forwardButton.imageInsets = UIEdgeInsetsZero;
     
-    self.backButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    self.backButton.enabled = YES;
-    self.backButton.imageInsets = UIEdgeInsetsZero;
+    // self.backButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    // self.backButton.enabled = YES;
+    // self.backButton.imageInsets = UIEdgeInsetsZero;
 
     // Page title + url
-    UIView *pageInfoView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, TOOLBAR_HEIGHT)];
-    pageInfoView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    UIView *pageInfoView = [[UIView alloc] initWithFrame:framePageInfo];
+    // pageInfoView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     self.pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 10.0, pageInfoView.bounds.size.width, 16.0)];
     self.pageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -625,7 +635,7 @@
     [pageInfoView addSubview:self.pageTitleLabel];
     [pageInfoView addSubview:self.pageUrlLabel];
 
-    self.pageTitle = [[UIBarButtonItem alloc] initWithCustomView:pageInfoView];
+    self.pageTitle = pageInfoView; // [[UIBarButtonItem alloc] initWithCustomView:pageInfoView];
 
     // Toolbar
     float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 0.0;
@@ -646,6 +656,15 @@
     self.toolbar.multipleTouchEnabled = NO;
     self.toolbar.opaque = NO;
     self.toolbar.userInteractionEnabled = YES;
+
+    self.toolbarPlain = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, viewBounds.size.width, TOOLBAR_HEIGHT)];
+    [self.toolbarPlain addSubview:self.closeButton];
+    // [self.toolbarPlain addSubview:];
+    [self.toolbarPlain addSubview:self.pageTitle];
+    // [self.toolbarPlain addSubview:];
+    [self.toolbarPlain addSubview:self.backButton];
+    // [self.toolbarPlain addSubview:];
+    [self.toolbarPlain addSubview:self.forwardButton];
 
     // Flexible space
     UIBarButtonItem* flexibleSpaceButtonLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -690,7 +709,8 @@
     [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, noSpace1, divider1, self.pageTitle, flexibleSpaceButtonRight, aSpace1, divider2, noSpace4, self.backButton, noSpace5, divider3, noSpace6, self.forwardButton, fixedSpaceButtonRight]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
-    [self.viewContainer addSubview:self.toolbar];
+    // [self.viewContainer addSubview:self.toolbar];
+    [self.viewContainer addSubview:self.toolbarPlain];
     [self.viewContainer addSubview:self.addressLabel];
     [self.viewContainer addSubview:self.spinner];
 

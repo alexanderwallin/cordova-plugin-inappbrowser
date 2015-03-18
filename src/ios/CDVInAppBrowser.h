@@ -74,15 +74,16 @@
 
 @property (nonatomic, strong) IBOutlet UIView *viewContainer;
 @property (nonatomic, strong) IBOutlet UIWebView* webView;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem* closeButton;
+@property (nonatomic, strong) IBOutlet UIBUtton* closeButton;
 @property (nonatomic, strong) IBOutlet UILabel* addressLabel;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem* backButton;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem* forwardButton;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem* pageTitle;
+@property (nonatomic, strong) IBOutlet UIButton* backButton;
+@property (nonatomic, strong) IBOutlet UIButton* forwardButton;
+@property (nonatomic, strong) IBOutlet UIView* pageTitle;
 @property (nonatomic, strong) IBOutlet UILabel* pageTitleLabel;
 @property (nonatomic, strong) IBOutlet UILabel* pageUrlLabel;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView* spinner;
 @property (nonatomic, strong) IBOutlet UIToolbar* toolbar;
+@property (nonatomic, strong) IBOutlet UIView* toolbarPlain;
 
 @property (nonatomic, weak) id <CDVScreenOrientationDelegate> orientationDelegate;
 @property (nonatomic, weak) CDVInAppBrowser* navigationDelegate;
