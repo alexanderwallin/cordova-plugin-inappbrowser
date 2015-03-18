@@ -662,7 +662,14 @@
     [divider1View setBackgroundColor:[UIColor blackColor]];
     UIBarButtonItem *divider1 = [[UIBarButtonItem alloc] initWithCustomView:divider1View];
 
-    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, flexibleSpaceButtonRight, self.backButton, divider1, self.forwardButton, fixedSpaceButtonRight]];
+    UIBarButtonItem *noSpace1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *noSpace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *noSpace3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    noSpace1.width = -16.0;
+    noSpace2.width = -16.0;
+    noSpace3.width = -16.0;
+
+    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, flexibleSpaceButtonRight, self.backButton, noSpace1, divider1, noSpace2, self.forwardButton, fixedSpaceButtonRight]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
