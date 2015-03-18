@@ -534,6 +534,7 @@
     UIImage *closeButtonImage = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:closeButtonBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters]];
     [closeButton setContentEdgeInsets:buttonInsets];
     [closeButton setImage:closeButtonImage forState:UIControlStateNormal];
+    [closeButton setBackgroundColor:[UIColor redColor]];
     [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     self.closeButton = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
     self.closeButton.enabled = YES;
