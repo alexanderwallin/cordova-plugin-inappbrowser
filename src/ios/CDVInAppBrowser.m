@@ -662,14 +662,28 @@
     [divider1View setBackgroundColor:[UIColor blackColor]];
     UIBarButtonItem *divider1 = [[UIBarButtonItem alloc] initWithCustomView:divider1View];
 
+    UIView *divider2View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
+    [divider2View setBackgroundColor:[UIColor blackColor]];
+    UIBarButtonItem *divider2 = [[UIBarButtonItem alloc] initWithCustomView:divider2View];
+
+    UIView *divider3View = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1.0, TOOLBAR_HEIGHT)];
+    [divider3View setBackgroundColor:[UIColor blackColor]];
+    UIBarButtonItem *divider3 = [[UIBarButtonItem alloc] initWithCustomView:divider3View];
+
     UIBarButtonItem *noSpace1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     UIBarButtonItem *noSpace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     UIBarButtonItem *noSpace3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *noSpace4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *noSpace5 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *noSpace6 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     noSpace1.width = -10.0;
     noSpace2.width = -10.0;
     noSpace3.width = -10.0;
+    noSpace4.width = -10.0;
+    noSpace5.width = -10.0;
+    noSpace6.width = -10.0;
 
-    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, flexibleSpaceButtonRight, self.backButton, noSpace1, divider1, noSpace2, self.forwardButton, fixedSpaceButtonRight]];
+    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, noSpace1, divider1, noSpace2, self.pageTitle, flexibleSpaceButtonRight, noSpace3, divider2, noSpace4, self.backButton, noSpace5, divider3, noSpace6, self.forwardButton, fixedSpaceButtonRight]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
