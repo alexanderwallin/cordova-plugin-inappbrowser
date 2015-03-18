@@ -650,12 +650,12 @@
     UIBarButtonItem* flexibleSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
     // Fixed space
-    UIBarButtonItem* fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpaceButton.width = 10;
-    UIBarButtonItem* fixedSpaceButton2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpaceButton2.width = 10;
+    UIBarButtonItem* fixedSpaceButtonLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpaceButton.width = 0.0;
+    UIBarButtonItem* fixedSpaceButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpaceButton2.width = 0.0;
 
-    [self.toolbar setItems:@[flexibleSpaceButtonLeft, self.closeButton, self.pageTitle, self.backButton, self.forwardButton, flexibleSpaceButtonRight]];
+    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, self.pageTitle, self.backButton, self.forwardButton, fixedSpaceButtonRight]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
