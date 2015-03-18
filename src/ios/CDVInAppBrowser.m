@@ -683,7 +683,7 @@
     noSpace5.width = -10.0;
     noSpace6.width = -10.0;
 
-    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, noSpace1, divider1, noSpace2, self.pageTitle, flexibleSpaceButtonRight, noSpace3, divider2, noSpace4, self.backButton, noSpace5, divider3, noSpace6, self.forwardButton, fixedSpaceButtonRight]];
+    [self.toolbar setItems:@[fixedSpaceButtonLeft, self.closeButton, noSpace1, divider1, self.pageTitle, flexibleSpaceButtonRight, divider2, noSpace4, self.backButton, noSpace5, divider3, noSpace6, self.forwardButton, fixedSpaceButtonRight]];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.909 alpha:1.0];
     [self.viewContainer addSubview:self.toolbar];
