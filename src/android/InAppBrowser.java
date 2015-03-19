@@ -626,7 +626,7 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
                 actionButtonContainer.setHorizontalGravity(Gravity.LEFT);
                 actionButtonContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
-                actionButtonContainer.setPadding(0, 0, this.dpToPixels(10), 0);
+                actionButtonContainer.setPadding(0, 0, 0, 0);
                 actionButtonContainer.setAlpha((float) 0.733); // #444
                 actionButtonContainer.setId(1);
 
@@ -670,9 +670,9 @@ public class InAppBrowser extends CordovaPlugin {
                 // Forward button
                 forward = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams forwardLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
-                forwardLayoutParams.addRule(RelativeLayout.RIGHT_OF, 2);
+                // forwardLayoutParams.addRule(RelativeLayout.RIGHT_OF, 2);
                 forward.setLayoutParams(forwardLayoutParams);
-                forward.setPadding(0, this.dpToPixels(10), 0, this.dpToPixels(10));
+                forward.setPadding(this.dpToPixels(2), this.dpToPixels(12), this.dpToPixels(2), this.dpToPixels(12));
                 forward.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 forward.setContentDescription("Forward Button");
                 forward.setId(3);
