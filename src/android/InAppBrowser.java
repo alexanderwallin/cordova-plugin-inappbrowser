@@ -675,14 +675,14 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Close/Done button
                 LinearLayout closeLayout = new LinearLayout(cordova.getActivity());
-                LinearLayout.LayoutParams closeLayoutParams = new LinearLayout.LayoutParams(this.dpToPixels(44), this.dpToPixels(44), 0);
+                LinearLayout.LayoutParams closeLayoutParams = new LinearLayout.LayoutParams(this.dpToPixels(40), this.dpToPixels(40), 0);
                 closeLayout.setLayoutParams(closeLayoutParams);
 
                 ImageButton close = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams closeLayoutBtnParams = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
                 // closeLayoutBtnParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 close.setLayoutParams(closeLayoutBtnParams);
-                close.setPadding(2, this.dpToPixels(12), this.dpToPixels(12), this.dpToPixels(12));
+                close.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
@@ -695,7 +695,14 @@ public class InAppBrowser extends CordovaPlugin {
                     }
                 });
 
+                View closeBorder = new View(cordova.getActivity());
+                closeBorder.setBackgroundColor(android.graphics.Color.argb(255, 215, 215, 215));
+                RelativeLayout.LayoutParams closeBorderLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(1), LayoutParams.FILL_PARENT);
+                closeBorderLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                closeBorder.setLayoutParams(closeBorderLayoutParams);
+
                 closeLayout.addView(close);
+                closeLayout.addView(closeBorder);
 
                 // WebView
                 inAppWebView = new WebView(cordova.getActivity());
