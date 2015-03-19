@@ -974,8 +974,10 @@
     // loading url, start spinner, update back/forward
 
     // self.addressLabel.text = NSLocalizedString(@"Loading...", nil);
-    self.backButton.enabled = theWebView.canGoBack;
+    self.backButton.enabled    = theWebView.canGoBack;
+    self.backButton.alpha      = self.backButton.enabled ? 1.0 : 0.2;
     self.forwardButton.enabled = theWebView.canGoForward;
+    self.forwardButton.alpha   = self.forwardButton.enabled ? 1.0 : 0.2;
 
     [self.spinner startAnimating];
 
@@ -1001,8 +1003,10 @@
     // update url, stop spinner, update back/forward
 
     self.addressLabel.text = [self.currentURL absoluteString];
-    self.backButton.enabled = theWebView.canGoBack;
+    self.backButton.enabled    = theWebView.canGoBack;
+    self.backButton.alpha      = self.backButton.enabled ? 1.0 : 0.2;
     self.forwardButton.enabled = theWebView.canGoForward;
+    self.forwardButton.alpha   = self.forwardButton.enabled ? 1.0 : 0.2;
 
     [self.spinner stopAnimating];
 
@@ -1033,8 +1037,10 @@
     // log fail message, stop spinner, update back/forward
     NSLog(@"webView:didFailLoadWithError - %ld: %@", (long)error.code, [error localizedDescription]);
 
-    self.backButton.enabled = theWebView.canGoBack;
+    self.backButton.enabled    = theWebView.canGoBack;
+    self.backButton.alpha      = self.backButton.enabled ? 1.0 : 0.2;
     self.forwardButton.enabled = theWebView.canGoForward;
+    self.forwardButton.alpha   = self.forwardButton.enabled ? 1.0 : 0.2;
     [self.spinner stopAnimating];
 
     self.addressLabel.text = NSLocalizedString(@"Load Error", nil);
