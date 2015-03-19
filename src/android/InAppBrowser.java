@@ -674,7 +674,7 @@ public class InAppBrowser extends CordovaPlugin {
                 // Close/Done button
                 ImageButton close = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(buttonWidth + this.dpToPixels(10), buttonHeight);
-                closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 close.setLayoutParams(closeLayoutParams);
                 close.setPadding(0, this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -729,9 +729,9 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.addView(forward);
 
                 // Add the views to our toolbar
+                toolbar.addView(close);
                 toolbar.addView(pageInfoContainer);
                 toolbar.addView(actionButtonContainer);
-                toolbar.addView(close);
 
                 // Don't add the toolbar if its been disabled
                 if (getShowToolbar()) {
