@@ -878,8 +878,6 @@
                                              selector:@selector(rePositionViews)
                                                  name:UIApplicationDidChangeStatusBarFrameNotification
                                                object:nil];
-
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)viewDidUnload
@@ -891,7 +889,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleDefault;
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)close
