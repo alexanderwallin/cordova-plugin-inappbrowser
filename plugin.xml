@@ -50,20 +50,20 @@
         <source-file src="src/android/InAppChromeClient.java" target-dir="src/org/apache/cordova/inappbrowser" />
 
         <!--  drawable src/android/resources -->
-        <resource-file src="src/android/res/drawable-hdpi/arrow-right.png" target="res/drawable-hdpi/arrow-right.png" />
-        <resource-file src="src/android/res/drawable-mdpi/arrow-right.png" target="res/drawable-mdpi/arrow-right.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/arrow-right.png" target="res/drawable-xhdpi/arrow-right.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/arrow-right.png" target="res/drawable-xxhdpi/arrow-right.png" />
+        <resource-file src="src/android/res/drawable-hdpi/arrow_right.png" target="res/drawable-hdpi/arrow_right.png" />
+        <resource-file src="src/android/res/drawable-mdpi/arrow_right.png" target="res/drawable-mdpi/arrow_right.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/arrow_right.png" target="res/drawable-xhdpi/arrow_right.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/arrow_right.png" target="res/drawable-xxhdpi/arrow_right.png" />
 
-        <resource-file src="src/android/res/drawable-hdpi/arrow-left.png" target="res/drawable-hdpi/arrow-left.png" />
-        <resource-file src="src/android/res/drawable-mdpi/arrow-left.png" target="res/drawable-mdpi/arrow-left.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/arrow-left.png" target="res/drawable-xhdpi/arrow-left.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/arrow-left.png" target="res/drawable-xxhdpi/arrow-left.png" />
+        <resource-file src="src/android/res/drawable-hdpi/arrow_left.png" target="res/drawable-hdpi/arrow_left.png" />
+        <resource-file src="src/android/res/drawable-mdpi/arrow_left.png" target="res/drawable-mdpi/arrow_left.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/arrow_left.png" target="res/drawable-xhdpi/arrow_left.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/arrow_left.png" target="res/drawable-xxhdpi/arrow_left.png" />
 
-        <resource-file src="src/android/res/drawable-hdpi/close.png" target="res/drawable-hdpi/close.png" />
-        <resource-file src="src/android/res/drawable-mdpi/close.png" target="res/drawable-mdpi/close.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/close.png" target="res/drawable-xhdpi/close.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/close.png" target="res/drawable-xxhdpi/close.png" />
+        <resource-file src="src/android/res/drawable-hdpi/close_2.png" target="res/drawable-hdpi/close_2.png" />
+        <resource-file src="src/android/res/drawable-mdpi/close_2.png" target="res/drawable-mdpi/close_2.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/close_2.png" target="res/drawable-xhdpi/close_2.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/close_2.png" target="res/drawable-xxhdpi/close_2.png" />
 
     </platform>
 
@@ -84,20 +84,20 @@
         <source-file src="src/amazon/InAppChromeClient.java" target-dir="src/org/apache/cordova/inappbrowser" />
         
         <!--  drawable src/android/resources -->
-        <resource-file src="src/android/res/drawable-hdpi/arrow-right.png" target="res/drawable-hdpi/arrow-right.png" />
-        <resource-file src="src/android/res/drawable-mdpi/arrow-right.png" target="res/drawable-mdpi/arrow-right.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/arrow-right.png" target="res/drawable-xhdpi/arrow-right.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/arrow-right.png" target="res/drawable-xxhdpi/arrow-right.png" />
+        <resource-file src="src/android/res/drawable-hdpi/arrow_right.png" target="res/drawable-hdpi/arrow_right.png" />
+        <resource-file src="src/android/res/drawable-mdpi/arrow_right.png" target="res/drawable-mdpi/arrow_right.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/arrow_right.png" target="res/drawable-xhdpi/arrow_right.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/arrow_right.png" target="res/drawable-xxhdpi/arrow_right.png" />
         
-        <resource-file src="src/android/res/drawable-hdpi/arrow-left.png" target="res/drawable-hdpi/arrow-left.png" />
-        <resource-file src="src/android/res/drawable-mdpi/arrow-left.png" target="res/drawable-mdpi/arrow-left.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/arrow-left.png" target="res/drawable-xhdpi/arrow-left.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/arrow-left.png" target="res/drawable-xxhdpi/arrow-left.png" />
+        <resource-file src="src/android/res/drawable-hdpi/arrow_left.png" target="res/drawable-hdpi/arrow_left.png" />
+        <resource-file src="src/android/res/drawable-mdpi/arrow_left.png" target="res/drawable-mdpi/arrow_left.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/arrow_left.png" target="res/drawable-xhdpi/arrow_left.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/arrow_left.png" target="res/drawable-xxhdpi/arrow_left.png" />
         
-        <resource-file src="src/android/res/drawable-hdpi/close.png" target="res/drawable-hdpi/close.png" />
-        <resource-file src="src/android/res/drawable-mdpi/close.png" target="res/drawable-mdpi/close.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/close.png" target="res/drawable-xhdpi/close.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/close.png" target="res/drawable-xxhdpi/close.png" />
+        <resource-file src="src/android/res/drawable-hdpi/close_2.png" target="res/drawable-hdpi/close_2.png" />
+        <resource-file src="src/android/res/drawable-mdpi/close_2.png" target="res/drawable-mdpi/close_2.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/close_2.png" target="res/drawable-xhdpi/close_2.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/close_2.png" target="res/drawable-xxhdpi/close_2.png" />
     </platform>
     
     <!-- ubuntu -->
@@ -110,7 +110,7 @@
         <source-file src="src/ubuntu/inappbrowser.cpp" />
         <resource-file src="src/ubuntu/InAppBrowser.qml" />
         <resource-file src="src/ubuntu/InAppBrowser_escapeScript.js" />
-        <resource-file src="src/ubuntu/close.png" />
+        <resource-file src="src/ubuntu/close_2.png" />
     </platform>
 
     <!-- ios -->
