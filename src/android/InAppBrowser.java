@@ -632,7 +632,7 @@ public class InAppBrowser extends CordovaPlugin {
 
                 Resources activityRes = cordova.getActivity().getResources();
 
-                int buttonWidth  = this.dpToPixels(32);
+                int buttonWidth  = this.dpToPixels(38);
                 int buttonHeight = this.dpToPixels(44);
 
                 // Back border
@@ -646,7 +646,7 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
-                back.setPadding(this.dpToPixels(2), this.dpToPixels(12), this.dpToPixels(2), this.dpToPixels(12));
+                back.setPadding(this.dpToPixels(5), this.dpToPixels(12), this.dpToPixels(5), this.dpToPixels(12));
                 back.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 // back.setBackgroundResource(0);
                 back.setContentDescription("Back Button");
@@ -672,7 +672,7 @@ public class InAppBrowser extends CordovaPlugin {
                 RelativeLayout.LayoutParams forwardLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
                 // forwardLayoutParams.addRule(RelativeLayout.RIGHT_OF, 2);
                 forward.setLayoutParams(forwardLayoutParams);
-                forward.setPadding(this.dpToPixels(2), this.dpToPixels(12), this.dpToPixels(2), this.dpToPixels(12));
+                forward.setPadding(this.dpToPixels(5), this.dpToPixels(12), this.dpToPixels(5), this.dpToPixels(12));
                 forward.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 forward.setContentDescription("Forward Button");
                 forward.setId(3);
