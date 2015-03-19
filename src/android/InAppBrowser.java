@@ -577,7 +577,7 @@ public class InAppBrowser extends CordovaPlugin {
                 toolbar.setOrientation(LinearLayout.HORIZONTAL);
                 toolbar.setBackgroundColor(android.graphics.Color.argb(255, 232, 232, 232));
                 toolbar.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, this.dpToPixels(44)));
-                toolbar.setPadding(this.dpToPixels(2), this.dpToPixels(2), this.dpToPixels(2), this.dpToPixels(2));
+                toolbar.setPadding(0, 0, 0, 0);
                 toolbar.setHorizontalGravity(Gravity.LEFT);
                 toolbar.setVerticalGravity(Gravity.TOP);
 
@@ -620,7 +620,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.addView(urlLabel);
 
                 // Action Button Container layout
-                RelativeLayout actionButtonContainer = new RelativeLayout(cordova.getActivity());
+                LinearLayout actionButtonContainer = new LinearLayout(cordova.getActivity());
                 LinearLayout.LayoutParams actionButtonLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT, 0);
                 // actionButtonLayoutParams.addRule(LinearLayout.LEFT_OF, 5);
                 actionButtonContainer.setLayoutParams(actionButtonLayoutParams);
@@ -632,14 +632,21 @@ public class InAppBrowser extends CordovaPlugin {
 
                 Resources activityRes = cordova.getActivity().getResources();
 
-                int buttonWidth  = this.dpToPixels(30);
-                int buttonHeight = this.dpToPixels(40);
+                int buttonWidth  = this.dpToPixels(32);
+                int buttonHeight = this.dpToPixels(44);
 
+                // Back border
+                View backBorder = new View(cordova.getActivity());
+                RelativeLayout.LayoutParams backBorderLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(1), LayoutParams.FILL_PARENT);
+                backBorder.setLayoutParams(closeBorderLayoutParams);
+                backBorder.setBackgroundColor(android.graphics.Color.argb(255, 215, 215, 215));
+
+                // Back button
                 back = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams backLayoutParams = new RelativeLayout.LayoutParams(buttonWidth, buttonHeight);
                 backLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 back.setLayoutParams(backLayoutParams);
-                back.setPadding(0, this.dpToPixels(10), 0, this.dpToPixels(10));
+                back.setPadding(this.dpToPixels(2), this.dpToPixels(12), this.dpToPixels(2), this.dpToPixels(12));
                 back.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 // back.setBackgroundResource(0);
                 back.setContentDescription("Back Button");
@@ -653,6 +660,12 @@ public class InAppBrowser extends CordovaPlugin {
                         goBack();
                     }
                 });
+
+                // Forward border
+                View forwardBorder = new View(cordova.getActivity());
+                RelativeLayout.LayoutParams forwardBorderLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(1), LayoutParams.FILL_PARENT);
+                forwardBorder.setLayoutParams(closeBorderLayoutParams);
+                forwardBorder.setBackgroundColor(android.graphics.Color.argb(255, 215, 215, 215));
 
                 // Forward button
                 forward = new ImageButton(cordova.getActivity());
@@ -675,14 +688,14 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Close/Done button
                 LinearLayout closeLayout = new LinearLayout(cordova.getActivity());
-                LinearLayout.LayoutParams closeLayoutParams = new LinearLayout.LayoutParams(this.dpToPixels(41), this.dpToPixels(40), 0);
+                LinearLayout.LayoutParams closeLayoutParams = new LinearLayout.LayoutParams(this.dpToPixels(45), this.dpToPixels(44), 0);
                 closeLayout.setLayoutParams(closeLayoutParams);
 
                 ImageButton close = new ImageButton(cordova.getActivity());
-                RelativeLayout.LayoutParams closeLayoutBtnParams = new RelativeLayout.LayoutParams(this.dpToPixels(40), LayoutParams.FILL_PARENT);
+                RelativeLayout.LayoutParams closeLayoutBtnParams = new RelativeLayout.LayoutParams(this.dpToPixels(44), LayoutParams.FILL_PARENT);
                 // closeLayoutBtnParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 close.setLayoutParams(closeLayoutBtnParams);
-                close.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
+                close.setPadding(this.dpToPixels(12), this.dpToPixels(12), this.dpToPixels(12), this.dpToPixels(12));
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
@@ -740,7 +753,9 @@ public class InAppBrowser extends CordovaPlugin {
                 inAppWebView.requestFocusFromTouch();
 
                 // Add the back and forward buttons to our action button container layout
+                actionButtonContainer.addView(backBorder);
                 actionButtonContainer.addView(back);
+                actionButtonContainer.addView(forwardBorder);
                 actionButtonContainer.addView(forward);
 
                 // Add the views to our toolbar
