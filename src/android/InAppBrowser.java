@@ -26,6 +26,8 @@ import android.provider.Browser;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -672,11 +674,15 @@ public class InAppBrowser extends CordovaPlugin {
                 });
 
                 // Close/Done button
+                LinearLayout closeLayout = new LinearLayout(cordova.getActivity());
+                LinearLayout.LayoutParams closeLayoutParams = new LinearLayout.LayoutParams(this.dpToPixels(44), this.dpToPixels(44), 0);
+                closeLayout.setLayoutParams(closeLayoutParams);
+
                 ImageButton close = new ImageButton(cordova.getActivity());
-                RelativeLayout.LayoutParams closeLayoutParams = new RelativeLayout.LayoutParams(buttonWidth + this.dpToPixels(10), buttonHeight);
-                closeLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                RelativeLayout.LayoutParams closeLayoutBtnParams = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
+                // closeLayoutBtnParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 close.setLayoutParams(closeLayoutParams);
-                close.setPadding(0, this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
+                close.setPadding(2, this.dpToPixels(12), this.dpToPixels(12), this.dpToPixels(12));
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
@@ -729,7 +735,7 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.addView(forward);
 
                 // Add the views to our toolbar
-                toolbar.addView(close);
+                toolbar.addView(closeLayout);
                 toolbar.addView(pageInfoContainer);
                 toolbar.addView(actionButtonContainer);
 
