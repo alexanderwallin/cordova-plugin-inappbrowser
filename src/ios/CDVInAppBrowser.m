@@ -656,14 +656,22 @@
     UIView *toolbarShadow = [[UIView alloc] initWithFrame:frameToolbarShadow];
     toolbarShadow.backgroundColor = toolbarShadowBg;
 
+    // Rounded corners top view
+    UIView *corners = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, viewBounds.size.width, 4.0)];
+    corners.backgroundColor = toolbarBg;
+    corners.layer.cornerRadius = 2.0;
+
+    UIView *toolbarBgView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 2.0, viewBounds.size.width, TOOLBAR_HEIGHT - 2.0)];
+    toolbarBgView.backgroundColor = toolbarBg;
+
     // Toolbar
     float toolbarY      = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 20.0;
     CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
 
     self.toolbarPlain = [[UIView alloc] initWithFrame:toolbarFrame];
-    self.toolbarPlain.layer.cornerRadius = 5;
-    self.toolbarPlain.layer.masksToBounds = YES;
-    self.toolbarPlain.backgroundColor = toolbarBg;
+    self.toolbarPlain.backgroundColor = [UIColor clearColor]; // toolbarBg;
+    [self.toolbarPlain addSubview:toolbarBgView];
+    [self.toolbarPlain addSubview:corners];
     [self.toolbarPlain addSubview:self.closeButton];
     [self.toolbarPlain addSubview:divider1];
     [self.toolbarPlain addSubview:self.pageTitle];
