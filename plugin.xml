@@ -129,6 +129,7 @@
 	    <source-file src="src/ios/CDVInAppBrowser.m" />
 	    
 	    <framework src="CoreGraphics.framework" />
+        <framework src="QuartzCore.framework" />
     </platform>
 
     <!-- wp7 -->
