@@ -651,7 +651,7 @@ public class InAppBrowser extends CordovaPlugin {
                 // back.setBackgroundResource(0);
                 back.setContentDescription("Back Button");
                 back.setId(2);
-                back.setImageResource(activityRes.getIdentifier("chevron_left", "drawable", cordova.getActivity().getPackageName()));
+                back.setImageResource(activityRes.getIdentifier("arrow-left", "drawable", cordova.getActivity().getPackageName()));
                 back.setBackgroundResource(0);
                 back.setAlpha((float) 0.25);
 
@@ -676,7 +676,7 @@ public class InAppBrowser extends CordovaPlugin {
                 forward.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 forward.setContentDescription("Forward Button");
                 forward.setId(3);
-                forward.setImageResource(activityRes.getIdentifier("chevron_right", "drawable", cordova.getActivity().getPackageName()));
+                forward.setImageResource(activityRes.getIdentifier("arrow-right", "drawable", cordova.getActivity().getPackageName()));
                 forward.setBackgroundResource(0);
                 forward.setAlpha((float) 0.25);
 
@@ -699,7 +699,7 @@ public class InAppBrowser extends CordovaPlugin {
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
                 close.setId(5);
-                close.setImageResource(activityRes.getIdentifier("close", "drawable", cordova.getActivity().getPackageName()));
+                close.setImageResource(activityRes.getIdentifier("close-2", "drawable", cordova.getActivity().getPackageName()));
                 close.setBackgroundResource(0);
 
                 close.setOnClickListener(new View.OnClickListener() {

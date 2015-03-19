@@ -50,15 +50,15 @@
         <source-file src="src/android/InAppChromeClient.java" target-dir="src/org/apache/cordova/inappbrowser" />
 
         <!--  drawable src/android/resources -->
-        <resource-file src="src/android/res/drawable-hdpi/chevron_right.png" target="res/drawable-hdpi/chevron_right.png" />
-        <resource-file src="src/android/res/drawable-mdpi/chevron_right.png" target="res/drawable-mdpi/chevron_right.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/chevron_right.png" target="res/drawable-xhdpi/chevron_right.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/chevron_right.png" target="res/drawable-xxhdpi/chevron_right.png" />
+        <resource-file src="src/android/res/drawable-hdpi/arrow-right.png" target="res/drawable-hdpi/arrow-right.png" />
+        <resource-file src="src/android/res/drawable-mdpi/arrow-right.png" target="res/drawable-mdpi/arrow-right.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/arrow-right.png" target="res/drawable-xhdpi/arrow-right.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/arrow-right.png" target="res/drawable-xxhdpi/arrow-right.png" />
 
-        <resource-file src="src/android/res/drawable-hdpi/chevron_left.png" target="res/drawable-hdpi/chevron_left.png" />
-        <resource-file src="src/android/res/drawable-mdpi/chevron_left.png" target="res/drawable-mdpi/chevron_left.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/chevron_left.png" target="res/drawable-xhdpi/chevron_left.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/chevron_left.png" target="res/drawable-xxhdpi/chevron_left.png" />
+        <resource-file src="src/android/res/drawable-hdpi/arrow-left.png" target="res/drawable-hdpi/arrow-left.png" />
+        <resource-file src="src/android/res/drawable-mdpi/arrow-left.png" target="res/drawable-mdpi/arrow-left.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/arrow-left.png" target="res/drawable-xhdpi/arrow-left.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/arrow-left.png" target="res/drawable-xxhdpi/arrow-left.png" />
 
         <resource-file src="src/android/res/drawable-hdpi/close.png" target="res/drawable-hdpi/close.png" />
         <resource-file src="src/android/res/drawable-mdpi/close.png" target="res/drawable-mdpi/close.png" />
@@ -84,15 +84,15 @@
         <source-file src="src/amazon/InAppChromeClient.java" target-dir="src/org/apache/cordova/inappbrowser" />
         
         <!--  drawable src/android/resources -->
-        <resource-file src="src/android/res/drawable-hdpi/chevron_right.png" target="res/drawable-hdpi/chevron_right.png" />
-        <resource-file src="src/android/res/drawable-mdpi/chevron_right.png" target="res/drawable-mdpi/chevron_right.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/chevron_right.png" target="res/drawable-xhdpi/chevron_right.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/chevron_right.png" target="res/drawable-xxhdpi/chevron_right.png" />
+        <resource-file src="src/android/res/drawable-hdpi/arrow-right.png" target="res/drawable-hdpi/arrow-right.png" />
+        <resource-file src="src/android/res/drawable-mdpi/arrow-right.png" target="res/drawable-mdpi/arrow-right.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/arrow-right.png" target="res/drawable-xhdpi/arrow-right.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/arrow-right.png" target="res/drawable-xxhdpi/arrow-right.png" />
         
-        <resource-file src="src/android/res/drawable-hdpi/chevron_left.png" target="res/drawable-hdpi/chevron_left.png" />
-        <resource-file src="src/android/res/drawable-mdpi/chevron_left.png" target="res/drawable-mdpi/chevron_left.png" />
-        <resource-file src="src/android/res/drawable-xhdpi/chevron_left.png" target="res/drawable-xhdpi/chevron_left.png" />
-        <resource-file src="src/android/res/drawable-xxhdpi/chevron_left.png" target="res/drawable-xxhdpi/chevron_left.png" />
+        <resource-file src="src/android/res/drawable-hdpi/arrow-left.png" target="res/drawable-hdpi/arrow-left.png" />
+        <resource-file src="src/android/res/drawable-mdpi/arrow-left.png" target="res/drawable-mdpi/arrow-left.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/arrow-left.png" target="res/drawable-xhdpi/arrow-left.png" />
+        <resource-file src="src/android/res/drawable-xxhdpi/arrow-left.png" target="res/drawable-xxhdpi/arrow-left.png" />
         
         <resource-file src="src/android/res/drawable-hdpi/close.png" target="res/drawable-hdpi/close.png" />
         <resource-file src="src/android/res/drawable-mdpi/close.png" target="res/drawable-mdpi/close.png" />
