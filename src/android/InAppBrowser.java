@@ -588,7 +588,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.setLayoutParams(pageInfoLayoutParams);
                 pageInfoContainer.setHorizontalGravity(Gravity.LEFT);
                 pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
-                pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(5), this.dpToPixels(8), this.dpToPixels(5));
+                pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(8), this.dpToPixels(8), this.dpToPixels(8));
                 pageInfoContainer.setId(10);
 
                 // Page title label
