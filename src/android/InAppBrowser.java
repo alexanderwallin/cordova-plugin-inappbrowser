@@ -675,11 +675,11 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Close/Done button
                 LinearLayout closeLayout = new LinearLayout(cordova.getActivity());
-                LinearLayout.LayoutParams closeLayoutParams = new LinearLayout.LayoutParams(this.dpToPixels(40), this.dpToPixels(40), 0);
+                LinearLayout.LayoutParams closeLayoutParams = new LinearLayout.LayoutParams(this.dpToPixels(41), this.dpToPixels(40), 0);
                 closeLayout.setLayoutParams(closeLayoutParams);
 
                 ImageButton close = new ImageButton(cordova.getActivity());
-                RelativeLayout.LayoutParams closeLayoutBtnParams = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
+                RelativeLayout.LayoutParams closeLayoutBtnParams = new RelativeLayout.LayoutParams(this.dpToPixels(40), LayoutParams.FILL_PARENT);
                 // closeLayoutBtnParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 close.setLayoutParams(closeLayoutBtnParams);
                 close.setPadding(this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10), this.dpToPixels(10));
