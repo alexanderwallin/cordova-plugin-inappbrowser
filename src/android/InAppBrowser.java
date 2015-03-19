@@ -638,7 +638,7 @@ public class InAppBrowser extends CordovaPlugin {
                 // Back border
                 View backBorder = new View(cordova.getActivity());
                 RelativeLayout.LayoutParams backBorderLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(1), LayoutParams.FILL_PARENT);
-                backBorder.setLayoutParams(closeBorderLayoutParams);
+                backBorder.setLayoutParams(backBorderLayoutParams);
                 backBorder.setBackgroundColor(android.graphics.Color.argb(255, 215, 215, 215));
 
                 // Back button
@@ -664,7 +664,7 @@ public class InAppBrowser extends CordovaPlugin {
                 // Forward border
                 View forwardBorder = new View(cordova.getActivity());
                 RelativeLayout.LayoutParams forwardBorderLayoutParams = new RelativeLayout.LayoutParams(this.dpToPixels(1), LayoutParams.FILL_PARENT);
-                forwardBorder.setLayoutParams(closeBorderLayoutParams);
+                forwardBorder.setLayoutParams(forwardBorderLayoutParams);
                 forwardBorder.setBackgroundColor(android.graphics.Color.argb(255, 215, 215, 215));
 
                 // Forward button
