@@ -681,7 +681,7 @@ public class InAppBrowser extends CordovaPlugin {
                 ImageButton close = new ImageButton(cordova.getActivity());
                 RelativeLayout.LayoutParams closeLayoutBtnParams = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
                 // closeLayoutBtnParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                close.setLayoutParams(closeLayoutParams);
+                close.setLayoutParams(closeLayoutBtnParams);
                 close.setPadding(2, this.dpToPixels(12), this.dpToPixels(12), this.dpToPixels(12));
                 close.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 close.setContentDescription("Close Button");
@@ -694,6 +694,8 @@ public class InAppBrowser extends CordovaPlugin {
                         closeDialog();
                     }
                 });
+
+                closeLayout.addView(close);
 
                 // WebView
                 inAppWebView = new WebView(cordova.getActivity());
