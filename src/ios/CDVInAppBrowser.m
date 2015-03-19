@@ -476,27 +476,29 @@
     // We create the views in code for primarily for ease of upgrades and not requiring an external .xib to be included
 
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-    CGRect viewBounds = self.view.bounds;
-    CGRect webViewBounds = self.view.bounds;
+    CGRect viewBounds     = self.view.bounds;
+    CGRect webViewBounds  = self.view.bounds;
 
     // Layout parameters
     float closeButtonWidth = 44.0;
-    float navButtonWidth = 34.0;
-    float pageInfoPadding = 10.0;
-    float dividerWidth = 1.0;
+    float navButtonWidth   = 34.0;
+    float pageInfoPadding  = 10.0;
+    float dividerWidth     = 1.0;
+    float shadowHeight     = 2.0;
 
     // Frames
-    CGRect frameCloseButton = CGRectMake(0.0, 0.0, closeButtonWidth, TOOLBAR_HEIGHT);
-    CGRect frameDivider1    = CGRectMake(closeButtonWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
-    CGRect framePageInfo    = CGRectMake(closeButtonWidth + dividerWidth + pageInfoPadding, 0.0, viewBounds.size.width - (2 * navButtonWidth) - closeButtonWidth - (3 * dividerWidth) - (2 * pageInfoPadding), TOOLBAR_HEIGHT);
-    CGRect frameDivider2    = CGRectMake(viewBounds.size.width - (2 * navButtonWidth) - (2 * dividerWidth), 0.0, dividerWidth, TOOLBAR_HEIGHT);
-    CGRect frameNavBack     = CGRectMake(viewBounds.size.width - (2 * navButtonWidth) - dividerWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
-    CGRect frameDivider3    = CGRectMake(viewBounds.size.width - navButtonWidth - dividerWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
-    CGRect frameNavForward  = CGRectMake(viewBounds.size.width - navButtonWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
+    CGRect frameCloseButton   = CGRectMake(0.0, 0.0, closeButtonWidth, TOOLBAR_HEIGHT);
+    CGRect frameDivider1      = CGRectMake(closeButtonWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
+    CGRect framePageInfo      = CGRectMake(closeButtonWidth + dividerWidth + pageInfoPadding, 0.0, viewBounds.size.width - (2 * navButtonWidth) - closeButtonWidth - (3 * dividerWidth) - (2 * pageInfoPadding), TOOLBAR_HEIGHT);
+    CGRect frameDivider2      = CGRectMake(viewBounds.size.width - (2 * navButtonWidth) - (2 * dividerWidth), 0.0, dividerWidth, TOOLBAR_HEIGHT);
+    CGRect frameNavBack       = CGRectMake(viewBounds.size.width - (2 * navButtonWidth) - dividerWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
+    CGRect frameDivider3      = CGRectMake(viewBounds.size.width - navButtonWidth - dividerWidth, 0.0, dividerWidth, TOOLBAR_HEIGHT);
+    CGRect frameNavForward    = CGRectMake(viewBounds.size.width - navButtonWidth, 0.0, navButtonWidth, TOOLBAR_HEIGHT);
+    CGRect frameToolbarShadow = CGRectMake(0.0, TOOLBAR_HEIGHT - shadowHeight, viewBounds.size.width, shadowHeight);
 
     // Colors
-    UIColor *toolbarBg     = [UIColor colorWithWhite:0.937 alpha:1.0];
-    UIColor *toolbarShadow = [UIColor colorWithWhite:0.843 alpha:1.0];
+    UIColor *toolbarBg       = [UIColor colorWithWhite:0.937 alpha:1.0];
+    UIColor *toolbarShadowBg = [UIColor colorWithWhite:0.843 alpha:1.0];
 
     CGRect containerInitFrame = self.view.bounds;
     // containerInitFrame.origin.y = 100; // containerInitFrame.size.height;
@@ -518,26 +520,26 @@
     self.webView.backgroundColor = toolbarBg;
 
     self.webView.clearsContextBeforeDrawing = YES;
-    self.webView.clipsToBounds = YES;
-    self.webView.contentMode = UIViewContentModeScaleToFill;
-    self.webView.multipleTouchEnabled = YES;
-    self.webView.opaque = YES;
-    self.webView.scalesPageToFit = NO;
-    self.webView.userInteractionEnabled = YES;
+    self.webView.clipsToBounds              = YES;
+    self.webView.contentMode                = UIViewContentModeScaleToFill;
+    self.webView.multipleTouchEnabled       = YES;
+    self.webView.opaque                     = YES;
+    self.webView.scalesPageToFit            = NO;
+    self.webView.userInteractionEnabled     = YES;
 
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    self.spinner.alpha = 1.000;
-    self.spinner.autoresizesSubviews = YES;
-    self.spinner.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+    self.spinner.alpha                      = 1.0;
+    self.spinner.autoresizesSubviews        = YES;
+    self.spinner.autoresizingMask           = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
     self.spinner.clearsContextBeforeDrawing = NO;
-    self.spinner.clipsToBounds = NO;
-    self.spinner.contentMode = UIViewContentModeScaleToFill;
-    self.spinner.frame = CGRectMake(454.0, 231.0, 20.0, 20.0);
-    self.spinner.hidden = YES;
-    self.spinner.hidesWhenStopped = YES;
-    self.spinner.multipleTouchEnabled = NO;
-    self.spinner.opaque = NO;
-    self.spinner.userInteractionEnabled = NO;
+    self.spinner.clipsToBounds              = NO;
+    self.spinner.contentMode                = UIViewContentModeScaleToFill;
+    self.spinner.frame                      = CGRectMake(454.0, 231.0, 20.0, 20.0);
+    self.spinner.hidden                     = YES;
+    self.spinner.hidesWhenStopped           = YES;
+    self.spinner.multipleTouchEnabled       = NO;
+    self.spinner.opaque                     = NO;
+    self.spinner.userInteractionEnabled     = NO;
     [self.spinner stopAnimating];
 
     // URL label
@@ -545,19 +547,19 @@
     float locationBarY = toolbarIsAtBottom ? self.view.bounds.size.height - FOOTER_HEIGHT : self.view.bounds.size.height - LOCATIONBAR_HEIGHT;
 
     self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelInset, locationBarY, self.view.bounds.size.width - labelInset, LOCATIONBAR_HEIGHT)];
-    self.addressLabel.adjustsFontSizeToFitWidth = NO;
-    self.addressLabel.alpha = 1.0;
-    self.addressLabel.autoresizesSubviews = YES;
-    self.addressLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
-    self.addressLabel.backgroundColor = [UIColor clearColor];
-    self.addressLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+    self.addressLabel.adjustsFontSizeToFitWidth  = NO;
+    self.addressLabel.alpha                      = 1.0;
+    self.addressLabel.autoresizesSubviews        = YES;
+    self.addressLabel.autoresizingMask           = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+    self.addressLabel.backgroundColor            = [UIColor clearColor];
+    self.addressLabel.baselineAdjustment         = UIBaselineAdjustmentAlignCenters;
     self.addressLabel.clearsContextBeforeDrawing = YES;
-    self.addressLabel.clipsToBounds = YES;
-    self.addressLabel.contentMode = UIViewContentModeScaleToFill;
-    self.addressLabel.enabled = YES;
-    self.addressLabel.font = [UIFont systemFontOfSize:12];
-    self.addressLabel.hidden = NO;
-    self.addressLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.addressLabel.clipsToBounds              = YES;
+    self.addressLabel.contentMode                = UIViewContentModeScaleToFill;
+    self.addressLabel.enabled                    = YES;
+    self.addressLabel.font                       = [UIFont systemFontOfSize:12];
+    self.addressLabel.hidden                     = NO;
+    self.addressLabel.lineBreakMode              = NSLineBreakByTruncatingTail;
 
     if ([self.addressLabel respondsToSelector:NSSelectorFromString(@"setMinimumScaleFactor:")]) {
         [self.addressLabel setValue:@(10.0/[UIFont labelFontSize]) forKey:@"minimumScaleFactor"];
@@ -565,13 +567,13 @@
         [self.addressLabel setValue:@(10.0) forKey:@"minimumFontSize"];
     }
 
-    self.addressLabel.multipleTouchEnabled = NO;
-    self.addressLabel.numberOfLines = 1;
-    self.addressLabel.opaque = NO;
-    self.addressLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-    self.addressLabel.text = NSLocalizedString(@"Laddar...", nil);
-    self.addressLabel.textAlignment = NSTextAlignmentLeft;
-    self.addressLabel.textColor = [UIColor colorWithWhite:0.25 alpha:1.0];
+    self.addressLabel.multipleTouchEnabled   = NO;
+    self.addressLabel.numberOfLines          = 1;
+    self.addressLabel.opaque                 = NO;
+    self.addressLabel.shadowOffset           = CGSizeMake(0.0, -1.0);
+    self.addressLabel.text                   = NSLocalizedString(@"Laddar...", nil);
+    self.addressLabel.textAlignment          = NSTextAlignmentLeft;
+    self.addressLabel.textColor              = [UIColor colorWithWhite:0.25 alpha:1.0];
     self.addressLabel.userInteractionEnabled = NO;
 
     // w: 256, h: 448
@@ -626,15 +628,15 @@
 
     self.pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 8.0, pageInfoView.bounds.size.width, 16.0)];
     self.pageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.pageTitleLabel.text      = @"Laddar...";
-    self.pageTitleLabel.font      = [UIFont boldSystemFontOfSize:13];
-    self.pageTitleLabel.textColor = [UIColor colorWithWhite:0.267 alpha:1.0];
+    self.pageTitleLabel.text             = @"Laddar...";
+    self.pageTitleLabel.font             = [UIFont boldSystemFontOfSize:13];
+    self.pageTitleLabel.textColor        = [UIColor colorWithWhite:0.267 alpha:1.0];
 
     self.pageUrlLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 26.0, pageInfoView.bounds.size.width, 10.0)];
     self.pageUrlLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.pageUrlLabel.text      = @"";
-    self.pageUrlLabel.font      = [UIFont systemFontOfSize:10];
-    self.pageUrlLabel.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+    self.pageUrlLabel.text             = @"";
+    self.pageUrlLabel.font             = [UIFont systemFontOfSize:10];
+    self.pageUrlLabel.textColor        = [UIColor colorWithWhite:0.7 alpha:1.0];
 
     [pageInfoView addSubview:self.pageTitleLabel];
     [pageInfoView addSubview:self.pageUrlLabel];
@@ -645,12 +647,16 @@
     UIView *divider1 = [[UIView alloc] initWithFrame:frameDivider1];
     UIView *divider2 = [[UIView alloc] initWithFrame:frameDivider2];
     UIView *divider3 = [[UIView alloc] initWithFrame:frameDivider3];
-    divider1.backgroundColor = toolbarShadow;
-    divider2.backgroundColor = toolbarShadow;
-    divider3.backgroundColor = toolbarShadow;
+    divider1.backgroundColor = toolbarShadowBg;
+    divider2.backgroundColor = toolbarShadowBg;
+    divider3.backgroundColor = toolbarShadowBg;
+
+    // Shadow
+    UIView *toolbarShadow = [[UIView alloc] initWithFrame:frameToolbarShadow];
+    toolbarShadow.backgroundColor = toolbarShadowBg;
 
     // Toolbar
-    float toolbarY = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 20.0;
+    float toolbarY      = toolbarIsAtBottom ? self.view.bounds.size.height - TOOLBAR_HEIGHT : 20.0;
     CGRect toolbarFrame = CGRectMake(0.0, toolbarY, self.view.bounds.size.width, TOOLBAR_HEIGHT);
 
     self.toolbarPlain = [[UIView alloc] initWithFrame:toolbarFrame];
@@ -662,6 +668,7 @@
     [self.toolbarPlain addSubview:self.backButton];
     [self.toolbarPlain addSubview:divider3];
     [self.toolbarPlain addSubview:self.forwardButton];
+    [self.toolbarPlain addSubview:toolbarShadow];
 
     // self.addressLabel.text = [NSString stringWithFormat:@"w: %f, h: %f", statusBarFrame.size.width, statusBarFrame.size.height];
 
