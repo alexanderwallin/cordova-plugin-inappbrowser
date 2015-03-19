@@ -497,6 +497,7 @@
     CGRect frameToolbarShadow = CGRectMake(0.0, TOOLBAR_HEIGHT - shadowHeight, viewBounds.size.width, shadowHeight);
 
     // Colors
+    UIColor *mainBg          = [UIColor colorWithWhite:0.067 alpha:1.0];
     UIColor *toolbarBg       = [UIColor colorWithWhite:0.937 alpha:1.0];
     UIColor *toolbarShadowBg = [UIColor colorWithWhite:0.843 alpha:1.0];
 
@@ -514,7 +515,7 @@
     [self.viewContainer sendSubviewToBack:self.webView];
 
     // self.view.backgroundColor = [UIColor colorWithWhite:0.067 alpha:0.0];
-    self.view.backgroundColor = toolbarBg;
+    self.view.backgroundColor = mainBg;
 
     self.webView.delegate = _webViewDelegate;
     self.webView.backgroundColor = toolbarBg;
