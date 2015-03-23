@@ -133,7 +133,7 @@ public class InAppBrowser extends CordovaPlugin {
             Log.d(LOG_TAG, "target = " + target);
             Log.d(LOG_TAG, "url = " + url);
 
-            final Boolearn shouldLeaveIab = urlMatcher.find();
+            final Boolean shouldLeaveIab = urlMatcher.find();
 
             Log.d(LOG_TAG, "leave iab = " + shouldLeaveIab);
             
