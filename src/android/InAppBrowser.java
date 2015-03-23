@@ -128,8 +128,8 @@ public class InAppBrowser extends CordovaPlugin {
             final HashMap<String, Boolean> features = parseFeature(args.optString(2));
             
             Log.d(LOG_TAG, "target = " + target);
-
-            Log.d(LOG_TAG, "leave iab = " + Pattern.compile(LEAVE_IAB).matcher(url).matches());
+            Log.d(LOG_TAG, "url = " + url);
+            Log.d(LOG_TAG, "leave iab = " + Pattern.matches(LEAVE_IAB, url);
             
             this.cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -459,6 +459,8 @@ public class InAppBrowser extends CordovaPlugin {
     private void navigate(String url) {
         InputMethodManager imm = (InputMethodManager)this.cordova.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(urlLabel.getWindowToken(), 0);
+
+        Log.d(LOG_TAG, "navigate = " + url);
 
         if (!url.startsWith("http") && !url.startsWith("file:")) {
             this.inAppWebView.loadUrl("http://" + url);
