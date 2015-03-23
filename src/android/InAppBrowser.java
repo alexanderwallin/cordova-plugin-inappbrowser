@@ -132,7 +132,10 @@ public class InAppBrowser extends CordovaPlugin {
 
             Log.d(LOG_TAG, "target = " + target);
             Log.d(LOG_TAG, "url = " + url);
-            Log.d(LOG_TAG, "leave iab = " + urlMatcher.find());
+
+            final Boolearn shouldLeaveIab = urlMatcher.find();
+
+            Log.d(LOG_TAG, "leave iab = " + shouldLeaveIab);
             
             this.cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -194,7 +197,7 @@ public class InAppBrowser extends CordovaPlugin {
                         }
                     }
                     // SYSTEM
-                    else if (SYSTEM.equals(target) || urlMatcher.find()) {
+                    else if (SYSTEM.equals(target) || shouldLeaveIab) {
                         Log.d(LOG_TAG, "in system");
                         result = openExternal(url);
                     }
