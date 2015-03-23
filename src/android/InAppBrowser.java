@@ -129,7 +129,7 @@ public class InAppBrowser extends CordovaPlugin {
             
             Log.d(LOG_TAG, "target = " + target);
             Log.d(LOG_TAG, "url = " + url);
-            Log.d(LOG_TAG, "leave iab = " + Pattern.matches(LEAVE_IAB, url);
+            Log.d(LOG_TAG, "leave iab = " + Pattern.matches(LEAVE_IAB, url));
             
             this.cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
