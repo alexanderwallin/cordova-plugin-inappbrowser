@@ -127,9 +127,12 @@ public class InAppBrowser extends CordovaPlugin {
             final String target = t;
             final HashMap<String, Boolean> features = parseFeature(args.optString(2));
             
+            Pattern urlPattern = Pattern.compile(LEAVE_IAB);
+            Matcher urlMatcher = urlPattern.matcher(url);
+
             Log.d(LOG_TAG, "target = " + target);
             Log.d(LOG_TAG, "url = " + url);
-            Log.d(LOG_TAG, "leave iab = " + Pattern.matches(LEAVE_IAB, url));
+            Log.d(LOG_TAG, "leave iab = " + urlMatcher.find());
             
             this.cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -191,7 +194,7 @@ public class InAppBrowser extends CordovaPlugin {
                         }
                     }
                     // SYSTEM
-                    else if (SYSTEM.equals(target) || Pattern.compile(LEAVE_IAB).matcher(url).matches()) {
+                    else if (SYSTEM.equals(target) || urlMatcher.find()) {
                         Log.d(LOG_TAG, "in system");
                         result = openExternal(url);
                     }
