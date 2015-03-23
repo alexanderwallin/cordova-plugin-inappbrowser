@@ -128,6 +128,8 @@ public class InAppBrowser extends CordovaPlugin {
             final HashMap<String, Boolean> features = parseFeature(args.optString(2));
             
             Log.d(LOG_TAG, "target = " + target);
+
+            Log.d(LOG_TAG, "leave iab = " + Pattern.compile(LEAVE_IAB).matcher(url).matches());
             
             this.cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
