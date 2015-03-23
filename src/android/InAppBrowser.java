@@ -68,6 +68,8 @@ import org.json.JSONObject;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.StringTokenizer;
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -77,6 +79,7 @@ public class InAppBrowser extends CordovaPlugin {
     protected static final String LOG_TAG = "InAppBrowser";
     private static final String SELF = "_self";
     private static final String SYSTEM = "_system";
+    private static final String LEAVE_IAB = 'leaveiab';
     // private static final String BLANK = "_blank";
     private static final String EXIT_EVENT = "exit";
     private static final String LOCATION = "location";
@@ -186,7 +189,7 @@ public class InAppBrowser extends CordovaPlugin {
                         }
                     }
                     // SYSTEM
-                    else if (SYSTEM.equals(target)) {
+                    else if (SYSTEM.equals(target) || Pattern.compile(LEAVE_IAB).matcher(url).matches()) {
                         Log.d(LOG_TAG, "in system");
                         result = openExternal(url);
                     }
