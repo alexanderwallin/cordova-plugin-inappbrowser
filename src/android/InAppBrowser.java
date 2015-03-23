@@ -127,8 +127,8 @@ public class InAppBrowser extends CordovaPlugin {
             final String target = t;
             final HashMap<String, Boolean> features = parseFeature(args.optString(2));
             
-            Pattern urlPattern = Pattern.compile(LEAVE_IAB);
-            Matcher urlMatcher = urlPattern.matcher(url);
+            final Pattern urlPattern = Pattern.compile(LEAVE_IAB);
+            final Matcher urlMatcher = urlPattern.matcher(url);
 
             Log.d(LOG_TAG, "target = " + target);
             Log.d(LOG_TAG, "url = " + url);
