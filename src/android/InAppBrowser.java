@@ -131,7 +131,7 @@ public class InAppBrowser extends CordovaPlugin {
             // Get leave regex from options
             StringTokenizer featureStrs = new StringTokenizer(optString, ",");
             StringTokenizer option;
-            while (features.hasMoreElements()) {
+            while (featureStrs.hasMoreElements()) {
                 option = new StringTokenizer(featureStrs.nextToken(), "=");
                 if (option.hasMoreElements()) {
                     String key = option.nextToken();
