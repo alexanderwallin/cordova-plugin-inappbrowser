@@ -79,7 +79,7 @@ public class InAppBrowser extends CordovaPlugin {
     protected static final String LOG_TAG = "InAppBrowser";
     private static final String SELF = "_self";
     private static final String SYSTEM = "_system";
-    private static final String LEAVE_IAB = "leaveiab";
+    private static final String LEAVE_IAB_REGEX = "leaveiab";
     // private static final String BLANK = "_blank";
     private static final String EXIT_EVENT = "exit";
     private static final String LOCATION = "location";
@@ -107,6 +107,7 @@ public class InAppBrowser extends CordovaPlugin {
     private boolean clearAllCache= false;
     private boolean clearSessionCache=false;
     private boolean hadwareBackButton=true;
+    public String leaveIabRegex = "";
 
     /**
      * Executes the request and returns PluginResult.
@@ -127,9 +128,11 @@ public class InAppBrowser extends CordovaPlugin {
             final String target = t;
             final HashMap<String, Boolean> features = parseFeature(args.optString(2));
             
-            final Pattern urlPattern = Pattern.compile(LEAVE_IAB);
+            this.leaveIabRegex = features.get(LEAVE_IAB_REGEX);
+            final Pattern urlPattern = Pattern.compile(this.leaveIabRegex);
             final Matcher urlMatcher = urlPattern.matcher(url);
 
+            Log.d(LOG_TAG, "leave regex = " + this.leaveIabRegex);
             Log.d(LOG_TAG, "target = " + target);
             Log.d(LOG_TAG, "url = " + url);
 
@@ -394,11 +397,11 @@ public class InAppBrowser extends CordovaPlugin {
                 childView.setWebViewClient(new WebViewClient() {
                     // NB: wait for about:blank before dismissing
                     public void onPageFinished(WebView view, String url) {
-                if (dialog != null) {
-                    dialog.dismiss();
-                }
-            }
-        });
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                    }
+                });
                 // NB: From SDK 19: "If you call methods on WebView from any thread 
                 // other than your app's UI thread, it can cause unexpected results."
                 // http://developer.android.com/guide/webapps/migrating.html#Threads
@@ -856,7 +859,17 @@ public class InAppBrowser extends CordovaPlugin {
         public void onPageStarted(WebView view, String url,  Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
             String newloc = "";
-            if (url.startsWith("http:") || url.startsWith("https:") || url.startsWith("file:")) {
+
+            Pattern leaveRegex = Pattern.compile(this.delegate.leaveIabRegex);
+            Boolean shouldLeaveIab = Pattern.matcher(url).find();
+
+            if (shouldLeaveIab) {
+                Log.d(LOG_TAG, "leaving url = " + url);
+                view.stopLoading();
+                this.delegate.openExternal(url);
+                return;
+            }
+            else if (url.startsWith("http:") || url.startsWith("https:") || url.startsWith("file:")) {
                 newloc = url;
 
                 this.delegate.pageTitle.setText("Laddar...");
