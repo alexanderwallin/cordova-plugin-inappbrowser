@@ -20,7 +20,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="se.laget.cordova.plugins.iab"
-      version="0.2.0">
+      version="0.3.0">
 
     <name>Laget.se - InAppBrowser</name>
     <description>Laget.se Cordova InAppBrowser Plugin</description>
