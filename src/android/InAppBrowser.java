@@ -874,8 +874,12 @@ public class InAppBrowser extends CordovaPlugin {
             Pattern leaveRegexPattern = Pattern.compile(this.delegate.leaveIabRegex);
             Boolean shouldLeaveIab    = leaveRegexPattern.matcher(url).find();
 
+            Log.d(LOG_TAG, "start loading url = " + url);
+            Log.d(LOG_TAG, "compare against regex = " + this.delegate.leaveIabRegex);
+            Log.d(LOG_TAG, "should leave iab = " + shouldLeaveIab);
+
             if (shouldLeaveIab) {
-                Log.d(LOG_TAG, "leaving url = " + url);
+                Log.d(LOG_TAG, "leave and stop");
                 view.stopLoading();
                 this.delegate.openExternal(url);
                 return;
