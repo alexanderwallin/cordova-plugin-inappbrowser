@@ -128,14 +128,25 @@ public class InAppBrowser extends CordovaPlugin {
             final String target = t;
             final HashMap<String, Boolean> features = parseFeature(args.optString(2));
             
-            this.leaveIabRegex = features.get(LEAVE_IAB_REGEX);
-            final Pattern urlPattern = Pattern.compile(this.leaveIabRegex);
-            final Matcher urlMatcher = urlPattern.matcher(url);
+            // Get leave regex from options
+            StringTokenizer featureStrs = new StringTokenizer(optString, ",");
+            StringTokenizer option;
+            while (features.hasMoreElements()) {
+                option = new StringTokenizer(featureStrs.nextToken(), "=");
+                if (option.hasMoreElements()) {
+                    String key = option.nextToken();
+                    if (key.equals(LEAVE_IAB_REGEX)) {
+                        this.leaveIabRegex = option.nextToken();
+                    }
+                }
+            }
 
             Log.d(LOG_TAG, "leave regex = " + this.leaveIabRegex);
             Log.d(LOG_TAG, "target = " + target);
             Log.d(LOG_TAG, "url = " + url);
 
+            final Pattern urlPattern     = Pattern.compile(this.leaveIabRegex);
+            final Matcher urlMatcher     = urlPattern.matcher(url);
             final Boolean shouldLeaveIab = urlMatcher.find();
 
             Log.d(LOG_TAG, "leave iab = " + shouldLeaveIab);
