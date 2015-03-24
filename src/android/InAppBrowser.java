@@ -129,7 +129,7 @@ public class InAppBrowser extends CordovaPlugin {
             final HashMap<String, Boolean> features = parseFeature(args.optString(2));
             
             // Get leave regex from options
-            StringTokenizer featureStrs = new StringTokenizer(optString, ",");
+            StringTokenizer featureStrs = new StringTokenizer(args.optString(2), ",");
             StringTokenizer option;
             while (featureStrs.hasMoreElements()) {
                 option = new StringTokenizer(featureStrs.nextToken(), "=");
