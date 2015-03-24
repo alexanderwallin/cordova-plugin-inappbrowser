@@ -860,8 +860,8 @@ public class InAppBrowser extends CordovaPlugin {
             super.onPageStarted(view, url, favicon);
             String newloc = "";
 
-            Pattern leaveRegex = Pattern.compile(this.delegate.leaveIabRegex);
-            Boolean shouldLeaveIab = Pattern.matcher(url).find();
+            Pattern leaveRegexPattern = Pattern.compile(this.delegate.leaveIabRegex);
+            Boolean shouldLeaveIab    = leaveRegexPattern.matcher(url).find();
 
             if (shouldLeaveIab) {
                 Log.d(LOG_TAG, "leaving url = " + url);
