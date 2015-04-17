@@ -483,7 +483,7 @@
     float closeButtonWidth = 44.0;
     float navButtonWidth   = 34.0;
     float pageInfoPadding  = 10.0;
-    float dividerWidth     = 1.0;
+    float dividerWidth     = 0.0;
     float shadowHeight     = 2.0;
 
     // Frames
