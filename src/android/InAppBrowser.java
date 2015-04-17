@@ -615,7 +615,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageInfoContainer.setLayoutParams(pageInfoLayoutParams);
                 pageInfoContainer.setHorizontalGravity(Gravity.LEFT);
                 pageInfoContainer.setVerticalGravity(Gravity.CENTER_VERTICAL);
-                pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(7), this.dpToPixels(8), this.dpToPixels(7));
+                pageInfoContainer.setPadding(this.dpToPixels(8), this.dpToPixels(2), this.dpToPixels(8), this.dpToPixels(2));
                 pageInfoContainer.setId(10);
 
                 // Page title label
@@ -742,7 +742,7 @@ public class InAppBrowser extends CordovaPlugin {
                 closeBorder.setLayoutParams(closeBorderLayoutParams);
 
                 closeLayout.addView(close);
-                closeLayout.addView(closeBorder);
+                // closeLayout.addView(closeBorder);
 
                 // WebView
                 inAppWebView = new WebView(cordova.getActivity());
@@ -780,9 +780,9 @@ public class InAppBrowser extends CordovaPlugin {
                 inAppWebView.requestFocusFromTouch();
 
                 // Add the back and forward buttons to our action button container layout
-                actionButtonContainer.addView(backBorder);
+                // actionButtonContainer.addView(backBorder);
                 actionButtonContainer.addView(back);
-                actionButtonContainer.addView(forwardBorder);
+                // actionButtonContainer.addView(forwardBorder);
                 actionButtonContainer.addView(forward);
 
                 // Add the views to our toolbar
