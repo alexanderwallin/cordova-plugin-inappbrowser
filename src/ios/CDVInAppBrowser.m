@@ -646,12 +646,14 @@
     self.pageTitleLabel.text             = @"Laddar...";
     self.pageTitleLabel.font             = [UIFont boldSystemFontOfSize:13];
     self.pageTitleLabel.textColor        = [UIColor colorWithWhite:0.267 alpha:1.0];
+    self.pageTitleLabel.backgroundColor  = [UIColor clearColor];
 
     self.pageUrlLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 26.0, pageInfoView.bounds.size.width, 10.0)];
     self.pageUrlLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.pageUrlLabel.text             = @"";
     self.pageUrlLabel.font             = [UIFont systemFontOfSize:10];
     self.pageUrlLabel.textColor        = [UIColor colorWithWhite:0.7 alpha:1.0];
+    self.pageUrlLabel.backgroundColor  = [UIColor clearColor];
 
     [pageInfoView addSubview:self.pageTitleLabel];
     [pageInfoView addSubview:self.pageUrlLabel];
