@@ -592,7 +592,7 @@
     NSData *closeButtonImageData;
     NSData *backArrowImageData;
     NSData *forwArrowImageData;
-    if ([[NSData alloc] respondsToSelector:@selector(@"initWithBase64EncodedString:options:")]) {
+    if ([[NSData alloc] respondsToSelector:@selector(initWithBase64EncodedString:options:)]) {
         closeButtonImageData = [[NSData alloc] initWithBase64EncodedString:closeButtonBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
         backArrowImageData = [[NSData alloc] initWithBase64EncodedString:backArrowImageBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
         forwArrowImageData = [[NSData alloc] initWithBase64EncodedString:forwArrowImageBase64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
