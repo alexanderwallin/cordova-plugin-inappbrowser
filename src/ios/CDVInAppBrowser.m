@@ -765,7 +765,6 @@
 }
 
 - (void) setWebViewFrame : (CGRect) frame {
-    NSLog(@"Setting the WebView's frame to %@", NSStringFromCGRect(frame));
     [self.webView setFrame:frame];
 }
 
@@ -980,15 +979,12 @@
 - (float) getStatusBarOffset {
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
     float statusBarOffset = IsAtLeastiOSVersion(@"7.0") ? MIN(statusBarFrame.size.width, statusBarFrame.size.height) : 0.0;
-    NSLog(@"getStatusBarOffset: %f", statusBarOffset);
     return statusBarOffset;
 }
 
 - (void) rePositionViews {
-    NSLog(@"reposition views");
-
     if ([_browserOptions.toolbarposition isEqualToString:kInAppBrowserToolbarBarPositionTop]) {
-        [self.webView setFrame:CGRectMake(self.webView.frame.origin.x, TOOLBAR_HEIGHT, self.webView.frame.size.width, self.view.frame.size.height - 20.0)];
+        [self.webView setFrame:CGRectMake(self.webView.frame.origin.x, TOOLBAR_HEIGHT, self.webView.frame.size.width, self.view.frame.size.height - self.toolbarPlain.frame.size.height)];
         [self.toolbar setFrame:CGRectMake(self.toolbar.frame.origin.x, 20.0, self.toolbar.frame.size.width, self.toolbar.frame.size.height)];
     }
 }
