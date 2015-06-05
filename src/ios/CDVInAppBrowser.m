@@ -69,11 +69,11 @@
 
 - (BOOL) isSystemUrl:(NSURL*)url
 {
-	if ([[url host] isEqualToString:@"itunes.apple.com"]) {
-		return YES;
-	}
+    if ([[url host] isEqualToString:@"itunes.apple.com"]) {
+        return YES;
+    }
 
-	return NO;
+    return NO;
 }
 
 - (void)open:(CDVInvokedUrlCommand*)command
@@ -195,6 +195,11 @@
     if (IsAtLeastiOSVersion(@"6.0")) {
         self.inAppBrowserViewController.webView.keyboardDisplayRequiresUserAction = browserOptions.keyboarddisplayrequiresuseraction;
         self.inAppBrowserViewController.webView.suppressesIncrementalRendering = browserOptions.suppressesincrementalrendering;
+    }
+    
+    // Texts
+    if (browserOptions.loadingcaption != nil) {
+        self.inAppBrowserViewController.pageLoadingLabel = browserOptions.loadingcaption;
     }
 
     [self.inAppBrowserViewController navigateTo:url];
@@ -572,7 +577,7 @@
     self.addressLabel.numberOfLines          = 1;
     self.addressLabel.opaque                 = NO;
     self.addressLabel.shadowOffset           = CGSizeMake(0.0, -1.0);
-    self.addressLabel.text                   = NSLocalizedString(@"Laddar...", nil);
+    self.addressLabel.text                   = self.pageLoadingLabel;
     self.addressLabel.textAlignment          = NSTextAlignmentLeft;
     self.addressLabel.textColor              = [UIColor colorWithWhite:0.25 alpha:1.0];
     self.addressLabel.userInteractionEnabled = NO;
@@ -643,7 +648,7 @@
 
     self.pageTitleLabel  = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 8.0, pageInfoView.bounds.size.width, 16.0)];
     self.pageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.pageTitleLabel.text             = @"Laddar...";
+    self.pageTitleLabel.text             = self.pageLoadingLabel;
     self.pageTitleLabel.font             = [UIFont boldSystemFontOfSize:13];
     self.pageTitleLabel.textColor        = [UIColor colorWithWhite:0.267 alpha:1.0];
     self.pageTitleLabel.backgroundColor  = [UIColor clearColor];
@@ -1014,7 +1019,7 @@
         self.currentURL = request.URL;
 
         // Update URL label
-        self.pageTitleLabel.text = @"Laddar...";
+        self.pageTitleLabel.text = self.pageLoadingLabel;
         self.pageUrlLabel.text   = request.URL.absoluteString;
     }
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
@@ -1109,6 +1114,7 @@
         self.location = YES;
         self.toolbar = YES;
         self.closebuttoncaption = nil;
+        self.loadingcaption = @"Loading...";
         self.toolbarposition = kInAppBrowserToolbarBarPositionBottom;
         self.clearcache = NO;
         self.clearsessioncache = NO;

@@ -44,6 +44,7 @@
 @property (nonatomic, assign) BOOL location;
 @property (nonatomic, assign) BOOL toolbar;
 @property (nonatomic, copy) NSString* closebuttoncaption;
+@property (nonatomic, copy) NSString* loadingcaption;
 @property (nonatomic, copy) NSString* toolbarposition;
 @property (nonatomic, assign) BOOL clearcache;
 @property (nonatomic, assign) BOOL clearsessioncache;
@@ -79,6 +80,7 @@
 @property (nonatomic, strong) IBOutlet UIButton* backButton;
 @property (nonatomic, strong) IBOutlet UIButton* forwardButton;
 @property (nonatomic, strong) IBOutlet UIView* pageTitle;
+@property (nonatomic, strong) NSString* pageLoadingLabel;
 @property (nonatomic, strong) IBOutlet UILabel* pageTitleLabel;
 @property (nonatomic, strong) IBOutlet UILabel* pageUrlLabel;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView* spinner;
