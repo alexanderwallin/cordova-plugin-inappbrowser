@@ -892,7 +892,7 @@ public class InAppBrowser extends CordovaPlugin {
             else if (url.startsWith("http:") || url.startsWith("https:") || url.startsWith("file:")) {
                 newloc = url;
 
-                this.delegate.pageTitle.setText("Laddar...");
+                this.delegate.pageTitle.setText(this.delegate.loadingCaption);
                 this.delegate.urlLabel.setText(url);
             } 
             // If dialing phone (tel:5551212)
