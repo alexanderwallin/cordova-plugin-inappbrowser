@@ -80,6 +80,7 @@ public class InAppBrowser extends CordovaPlugin {
     private static final String SELF = "_self";
     private static final String SYSTEM = "_system";
     private static final String LEAVE_IAB_REGEX = "leaveiab";
+    private static final String LOADING_CAPTION = "loadingcaption";
     // private static final String BLANK = "_blank";
     private static final String EXIT_EVENT = "exit";
     private static final String LOCATION = "location";
@@ -108,6 +109,7 @@ public class InAppBrowser extends CordovaPlugin {
     private boolean clearSessionCache=false;
     private boolean hadwareBackButton=true;
     public String leaveIabRegex = "";
+    public String loadingCaption = "Laddar...";
 
     /**
      * Executes the request and returns PluginResult.
@@ -137,6 +139,9 @@ public class InAppBrowser extends CordovaPlugin {
                     String key = option.nextToken();
                     if (key.equals(LEAVE_IAB_REGEX)) {
                         this.leaveIabRegex = option.nextToken();
+                    }
+                    else if (key.equals(LOADING_CAPTION)) {
+                        this.loadingCaption = option.nextToken();
                     }
                 }
             }
@@ -624,7 +629,7 @@ public class InAppBrowser extends CordovaPlugin {
                 pageTitle.setLayoutParams(pageTitleLayoutParams);
                 pageTitle.setId(11);
                 pageTitle.setSingleLine(true);
-                pageTitle.setText("Laddar...");
+                pageTitle.setText(self.loadingCaption);
                 pageTitle.setEllipsize(TextUtils.TruncateAt.END);
                 pageTitle.setTextColor(android.graphics.Color.argb(255, 68, 68, 68));
                 pageTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
